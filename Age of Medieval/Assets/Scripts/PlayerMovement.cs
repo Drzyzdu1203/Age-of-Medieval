@@ -16,6 +16,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private LayerMask groundMask;
     [SerializeField] private float gravity;
 
+    [SerializeField] private float jumpHeight;
+
     private CharacterController controller;
 
     private void Start()
@@ -56,6 +58,11 @@ public class PlayerMovement : MonoBehaviour
             }
 
             moveDirection *= moveSpeed;
+
+            if(Input.GetKeyDown(KeyCode.Space))
+            {
+                Jump();
+            }
         }
 
         controller.Move(moveDirection * Time.deltaTime);
@@ -75,5 +82,9 @@ public class PlayerMovement : MonoBehaviour
     private void Run()
     {
         moveSpeed = runSpeed;
+    }
+    private void Jump()
+    {
+        velocity.y = Mathf.Sqrt(jumpHeight * -2 * gravity);
     }
 }
