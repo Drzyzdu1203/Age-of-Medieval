@@ -39,8 +39,9 @@ public class PlayerMovement : MonoBehaviour
         }
 
         float moveZ = Input.GetAxis("Vertical");
+        float moveY = Input.GetAxis("Horizontal");
 
-        moveDirection = new Vector3(0, 0, moveZ);
+        moveDirection = new Vector3(moveY, 0, moveZ);
         moveDirection = transform.TransformDirection(moveDirection);
        
         if (isGrounded)
