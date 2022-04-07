@@ -19,10 +19,12 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float jumpHeight;
 
     private CharacterController controller;
+    private Animator anim;
 
     private void Start()
     {
         controller = GetComponent<CharacterController>();
+        anim = GetComponentInChildren<Animator>();
     }
 
     private void Update()
@@ -75,11 +77,12 @@ public class PlayerMovement : MonoBehaviour
     
     private void Idle()
     {
-
+        anim.SetFloat("Speed", 0);
     }
     private void Walk()
     {
         moveSpeed = walkSpeed;
+        anim.SetFloat("Speed", 1f);
     }
     private void Run()
     {

@@ -20,7 +20,7 @@ public class CameraController : MonoBehaviour
     }
     private void Rotate()
     {
-        float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime; ;
+        float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
         parent.Rotate(Vector3.up, mouseX);
     }
 }
