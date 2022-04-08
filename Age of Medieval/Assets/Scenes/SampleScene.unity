@@ -399,7 +399,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 0
   walkSpeed: 5
-  runSpeed: 20
+  runSpeed: 7
   isGrounded: 0
   groundCheckDistance: 2
   groundMask:
@@ -766,7 +766,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 0.6938776, y: 1}
+    m_SensorSize: {x: 1.0461539, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
