@@ -22,11 +22,19 @@ namespace Script2
         public float followSpeed = 0.1f;
         public float pivotSpeed = 0.03f;
 
+        //kolizja kamery
+        private float targetPosition;
+
         private float defaultPosition;
         private float lookAngle;
         private float pivotAngle;
         public float minimumPivot = -35;
         public float maximumPivot = 35;
+
+        //kolizja
+        public float cameraSphereRadius = 0.2f;
+        public float cameraCollisionOffSet = 0.2f;
+        public float minimumCollisionOffSet = 0.2f;
 
 
         private void Awake()
@@ -43,8 +51,8 @@ namespace Script2
             //usprawenienie kamery. Aktualizacja z 'Vector3.Lerp(myTransform.position, targetTransform.position, delta / followSpeed);'
             Vector3 targetPosition = Vector3.SmoothDamp(myTransform.position, targetTransform.position, ref cameraFollowVelocity, delta / followSpeed);
             myTransform.position = targetPosition;
-
-
+            //Kolizja kamery
+            HandleCameraCollision(delta);
         }
 
         public void HandleCameraRotation(float delta, float mouseXInput, float mouseYInput)
@@ -63,6 +71,24 @@ namespace Script2
 
             targetRotation = Quaternion.Euler(rotation);
             cameraPivotTransform.localRotation = targetRotation;
+        }
+
+
+        //Kolizja kamery
+        private void HandleCameraCollision(float delta)
+        {
+            targetPosition = defaultPosition;
+            RaycastHit hit;
+            Vector3 direction = cameraTransform.position - cameraPivotTransform.position;
+            direction.Normalize();
+
+            if (Physics.SphereCast(cameraPivotTransform.position, cameraSphereRadius, direction, out hit, Mathf.Abs(targetPosition), ignoreLayers))
+            {
+                float dis = Vector3.Distance(cameraPivotTransform.position, hit.point);
+                targetPosition = -(dis - cameraCollisionOffSet);
+            }
+            cameraTransformPosition.z = Mathf.Lerp(cameraTransform.localPosition.z, targetPosition, delta / 0.2f);
+            cameraTransform.localPosition = cameraTransformPosition;
         }
     }
 }
