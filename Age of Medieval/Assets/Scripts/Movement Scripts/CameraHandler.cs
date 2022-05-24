@@ -13,6 +13,9 @@ namespace Script2
         private Vector3 cameraTransformPosition;
         private LayerMask ignoreLayers;
 
+        //Usprawnienie kamery
+        private Vector3 cameraFollowVelocity = Vector3.zero;
+
         public static CameraHandler singleton;
 
         public float lookSpeed = 0.1f;
@@ -37,7 +40,8 @@ namespace Script2
 
         public void FollowTarget(float delta)
         {
-            Vector3 targetPosition = Vector3.Lerp(myTransform.position, targetTransform.position, delta / followSpeed);
+            //usprawenienie kamery. Aktualizacja z 'Vector3.Lerp(myTransform.position, targetTransform.position, delta / followSpeed);'
+            Vector3 targetPosition = Vector3.SmoothDamp(myTransform.position, targetTransform.position, ref cameraFollowVelocity, delta / followSpeed);
             myTransform.position = targetPosition;
 
 
