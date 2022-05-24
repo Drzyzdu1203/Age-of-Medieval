@@ -3,12 +3,12 @@
     "maps": [
         {
             "name": "Player Movement",
-            "id": "0574ea52-c4d7-47e7-9c6b-710533bea043",
+            "id": "7317b587-2dbf-4376-922b-f219b0de2384",
             "actions": [
                 {
                     "name": "Movement",
                     "type": "PassThrough",
-                    "id": "7ec68cd3-21f9-4a3b-9656-e094a037eda2",
+                    "id": "5a911d6c-18db-427d-897c-31904bc8d1f2",
                     "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": "",
@@ -16,9 +16,9 @@
                 },
                 {
                     "name": "Camera",
-                    "type": "Button",
-                    "id": "54f571af-0b3a-4acd-bfec-a9cf725ad3c0",
-                    "expectedControlType": "Button",
+                    "type": "PassThrough",
+                    "id": "6b9a3810-9891-470a-b998-16f9622b5098",
+                    "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -27,7 +27,7 @@
             "bindings": [
                 {
                     "name": "WASD",
-                    "id": "ecdfb1dc-4ff4-453b-8b89-161883afad84",
+                    "id": "3ff682cb-419f-4f02-8d9b-71ee9a42905d",
                     "path": "2DVector(mode=2)",
                     "interactions": "",
                     "processors": "",
@@ -38,7 +38,7 @@
                 },
                 {
                     "name": "up",
-                    "id": "caeb7a2b-4782-417e-bbb7-affe6650ea6c",
+                    "id": "7d09fc77-c025-48b6-a0e3-8d7ba6b279b5",
                     "path": "<Keyboard>/w",
                     "interactions": "",
                     "processors": "",
@@ -49,7 +49,7 @@
                 },
                 {
                     "name": "down",
-                    "id": "815aa2c4-06a1-47f2-a322-5670d19f7614",
+                    "id": "82ec9271-f193-4740-b44f-42714adb35bb",
                     "path": "<Keyboard>/s",
                     "interactions": "",
                     "processors": "",
@@ -60,7 +60,7 @@
                 },
                 {
                     "name": "left",
-                    "id": "822c84ec-8b36-4ce0-aa07-ae353f347f12",
+                    "id": "7d1ed944-0da8-4b87-b44f-6134bc79ae23",
                     "path": "<Keyboard>/a",
                     "interactions": "",
                     "processors": "",
@@ -71,7 +71,7 @@
                 },
                 {
                     "name": "right",
-                    "id": "8ec534ab-8511-477e-b32a-5674b467a16e",
+                    "id": "930ef799-acdb-401d-9f06-831ce588e6f3",
                     "path": "<Keyboard>/d",
                     "interactions": "",
                     "processors": "",
@@ -82,10 +82,21 @@
                 },
                 {
                     "name": "",
-                    "id": "109c18cd-ff67-4e58-a619-df77787d671e",
-                    "path": "<Mouse>/middleButton",
+                    "id": "41262149-a52f-4b8b-a360-0353c72404a8",
+                    "path": "<Gamepad>/rightStick",
                     "interactions": "",
-                    "processors": "",
+                    "processors": "StickDeadzone",
+                    "groups": "",
+                    "action": "Camera",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c524f051-006f-406e-bf92-1e8f37d6568a",
+                    "path": "<Mouse>/delta",
+                    "interactions": "",
+                    "processors": "NormalizeVector2",
                     "groups": "",
                     "action": "Camera",
                     "isComposite": false,

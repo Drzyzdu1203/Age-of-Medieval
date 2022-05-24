@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace AoM
 {
-    public class ImputHandler : MonoBehaviour
+    public class InputHandler : MonoBehaviour
     {
         public float horizontal;
         public float vertical;
