@@ -59,7 +59,5 @@ sysinfo.txt
 # Crashlytics generated file
 crashlytics-build.properties
 
-*.dwlt
 
-*.dwlt
-Age of Medieval/UserSettings/Layouts/default-2021.dwlt
+*.meta
