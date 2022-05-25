@@ -3,7 +3,14 @@ guid: 180ded44558a7ad4dbd7a3cec6b9161a
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - agent: {instanceID: 0}
+  - player: {instanceID: 0}
+  - gun: {instanceID: 0}
+  - green: {fileID: 2100000, guid: ef8f8b70d7aad38439073ad0222d6e34, type: 2}
+  - red: {fileID: 2100000, guid: 58235a9c450319a43b48ea4773413ff1, type: 2}
+  - yellow: {fileID: 2100000, guid: d50384934a14df04baecc419296b504e, type: 2}
+  - projectile: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
