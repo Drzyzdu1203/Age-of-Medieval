@@ -8,6 +8,7 @@ namespace Script2
     {
         Transform cameraObject;
         InputHandler inputHandler;
+        PlayerManager playerManager;
         Vector3 moveDirection;
 
         [HideInInspector]
@@ -20,7 +21,7 @@ namespace Script2
         public new Rigidbody rigidbody;
         public GameObject normalCamera;
 
-        [Header("Stats")]
+        [Header("Movement Stats")]
         [SerializeField]
         float movementSpeed = 5;
         [SerializeField]
@@ -29,11 +30,10 @@ namespace Script2
         [SerializeField]
         float sprintSpeed = 7;
 
-        //Dodanie sprintu
-        public bool isSprinting;
 
         void Start()
         {
+            playerManager = GetComponent<PlayerManager>();
             rigidbody = GetComponent<Rigidbody>();
             inputHandler = GetComponent<InputHandler>();
             //Dodanie adnimatorHandler. Zanim to doda³em wsyzstko dzia³a³o.
@@ -47,19 +47,7 @@ namespace Script2
 
         }
 
-        public void Update()
-        {
-            float delta = Time.deltaTime;
-
-            //sprint
-            isSprinting = inputHandler.sprint_input;
-
-            inputHandler.TickInput(delta);
-            HandleMovement(delta);
-            //rolling
-            HandleRollingAndSprinting(delta);
-
-        }
+        
 
         #region Movement
         Vector3 normalVector;
@@ -114,7 +102,7 @@ namespace Script2
             if (inputHandler.sprintFlag)
             {
                 speed = sprintSpeed;
-                isSprinting = true;
+                playerManager.isSprinting = true;
                 moveDirection *= speed;
             }
             else
@@ -129,7 +117,7 @@ namespace Script2
 
             //Dodanie po animacji. Dzia³a³o przed tym pt.2
             //Dodanie sprintu
-            animatorHandler.UpdateAnimatorValues(inputHandler.moveAmount, 0, isSprinting);
+            animatorHandler.UpdateAnimatorValues(inputHandler.moveAmount, 0, playerManager.isSprinting);
 
 
             //Dodanie adnimatorHandler. Zanim to doda³em wsyzstko dzia³a³o.
@@ -166,7 +154,7 @@ namespace Script2
             }
             if (inputHandler.sprintFlag)
             {
-                isSprinting = true;
+                playerManager.isSprinting = true;
             }
         }
         #endregion

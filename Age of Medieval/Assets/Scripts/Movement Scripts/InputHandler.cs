@@ -16,7 +16,6 @@ namespace Script2
         public bool b_Input;
         public bool jump_input;
         public bool rollFlag;
-        public bool isinteracting;
 
         //dodanie sprintu
         public bool sprint_input;
@@ -24,31 +23,14 @@ namespace Script2
         public bool sprintFlag;
 
         PlayerControls inputActions;
-        #region Film z kamer¹2
-        //Dodanie rzeczy z filmu trzeciego o kamera handling. przedtem dzia³a³o
-        CameraHandler cameraHandler;
-        //END
-        #endregion
 
         Vector2 movementInput;
         Vector2 cameraInput;
         #region Film z kamer¹
         //Dodanie rzeczy z filmu trzeciego o kamera handling. przedtem dzia³a³o
-        private void Awake()
-        {
-            cameraHandler = CameraHandler.singleton;
-        }
 
-        private void FixedUpdate()
-        {
-            float delta = Time.deltaTime;
 
-            if (cameraHandler != null)
-            {
-                cameraHandler.FollowTarget(delta);
-                cameraHandler.HandleCameraRotation(delta, mouseX, mouseY);
-            }
-        }
+        
         //END
         #endregion
         public void OnEnable()
