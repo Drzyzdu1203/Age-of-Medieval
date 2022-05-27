@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Script2
+namespace AoM
 {
     public class AnimatorHandler : MonoBehaviour
     {
