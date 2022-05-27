@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace AoM
 {
-    public class EnemyStats : MonoBehaviour
+    public class EnemyStats : CharacterStats
     {
         public int healthLevel = 10;
         public int maxHealth;
@@ -32,12 +32,12 @@ namespace AoM
         {
             currentHealth = currentHealth - damage;
 
-            animator.Play("Damage_01");
+            animator.Play("infantry_05_damage");
 
             if (currentHealth <= 0 )
             {
                 currentHealth = 0;
-                animator.Play("Damage_01");
+                animator.Play("infantry_06_death_A");
             }
         }
     }
