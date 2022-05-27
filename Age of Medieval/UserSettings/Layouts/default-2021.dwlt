@@ -48,7 +48,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 107
+  controlID: 136
 --- !u!114 &3
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -223,7 +223,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 200}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 108
+  controlID: 64
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -248,7 +248,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 109
+  controlID: 65
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -268,8 +268,8 @@ MonoBehaviour:
     y: 0
     width: 873.6
     height: 497.6
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 202, y: 221}
+  m_MaxSize: {x: 4002, y: 4021}
   m_ActualView: {fileID: 15}
   m_Panes:
   - {fileID: 15}
@@ -317,34 +317,34 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/low poly medieval buildings
+    - Assets/Supercyan Free Forest Sample/Prefabs/High Quality/Foliage/Mushroom
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/low poly medieval buildings
+  - Assets/Supercyan Free Forest Sample/Prefabs/High Quality/Foliage/Mushroom
   m_LastFoldersGridSize: -1
   m_LastProjectPath: "C:\\Users\\Pawe\u0142\\Desktop\\Age of Medival\\Age-of-Medieval\\Age
     of Medieval"
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 120}
-    m_SelectedIDs: 4cb00000
-    m_LastClickedID: 45132
-    m_ExpandedIDs: 00000000fa890000fc890000fe890000008a0000889200000c9900004cb000001cb2000078b80000b4b80000b8b80000bab80000d0b80000e8b800002ab9000000ca9a3bffffff7f
+    scrollPos: {x: 0, y: 600}
+    m_SelectedIDs: 946b0000
+    m_LastClickedID: 27540
+    m_ExpandedIDs: 00000000306b0000326b0000346b0000366b00003a6b00003e6b0000406b0000426b0000446b0000466b0000486b00004a6b00004c6b0000846b00008e6b0000906b0000a06b0000a66b0000e0780000e27800000a79000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: Ground x
-      m_OriginalName: Ground x
+      m_Name: Foliage
+      m_OriginalName: Foliage
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 38604
+      m_UserData: 27468
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
       m_OriginalEventType: 0
@@ -361,7 +361,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000fa890000fc890000fe890000008a0000028a0000
+    m_ExpandedIDs: 00000000306b0000326b0000346b0000366b0000386b00003a6b00003c6b00003e6b0000406b0000426b0000446b0000466b0000486b00004a6b00004c6b0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -388,7 +388,7 @@ MonoBehaviour:
   m_ListAreaState:
     m_SelectedInstanceIDs: 
     m_LastClickedInstanceID: 0
-    m_HadKeyboardFocusLastEvent: 1
+    m_HadKeyboardFocusLastEvent: 0
     m_ExpandedInstanceIDs: c623000000000000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -488,10 +488,10 @@ MonoBehaviour:
     m_SaveData: []
   m_SceneHierarchy:
     m_TreeViewState:
-      scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: ec66fdff
-      m_LastClickedID: -170260
-      m_ExpandedIDs: 3a95feffb6c2feff8ecbfeff8accfefffccdfeffcacefeff844fffff924fffffc05affffb275ffffb67fffffc47fffff3897ffff4ea5ffff02b3ffffbcd0ffff80dfffff
+      scrollPos: {x: 0, y: 1936.3999}
+      m_SelectedIDs: 1674feff
+      m_LastClickedID: -101354
+      m_ExpandedIDs: 2cabfefff2b2feff1a80ffff8283ffff9486ffff348effffc8d3ffff3edbffff1efbffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -548,8 +548,8 @@ MonoBehaviour:
       floating: 0
       collapsed: 0
       displayed: 1
-      snapOffset: {x: -100, y: -25.600006}
-      snapOffsetDelta: {x: 0, y: 0}
+      snapOffset: {x: 0, y: 0}
+      snapOffsetDelta: {x: -100, y: -25.600006}
       snapCorner: 3
       id: Tool Settings
       index: 0
@@ -559,9 +559,9 @@ MonoBehaviour:
       floating: 0
       collapsed: 0
       displayed: 1
-      snapOffset: {x: -141, y: -229.4}
+      snapOffset: {x: -141, y: 149}
       snapOffsetDelta: {x: 0, y: 0}
-      snapCorner: 3
+      snapCorner: 1
       id: unity-grid-and-snap-toolbar
       index: 1
       layout: 1
@@ -570,7 +570,7 @@ MonoBehaviour:
       floating: 0
       collapsed: 0
       displayed: 1
-      snapOffset: {x: 0, y: 24.8}
+      snapOffset: {x: 0, y: 0}
       snapOffsetDelta: {x: 0, y: 0}
       snapCorner: 0
       id: unity-scene-view-toolbar
@@ -740,9 +740,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 111.242775, y: 52.006283, z: 49.357807}
+    m_Target: {x: 432.16312, y: 15.056153, z: 281.67203}
     speed: 2
-    m_Value: {x: 111.242775, y: 52.006283, z: 49.357807}
+    m_Value: {x: 432.16312, y: 15.056153, z: 281.67203}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -789,13 +789,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: 0.10636795, y: -0.8528707, z: 0.19180223, w: 0.47402808}
+    m_Target: {x: -0.0038375237, y: 0.3302026, z: 0.0017644719, w: 0.94406736}
     speed: 2
-    m_Value: {x: 0.10664523, y: -0.85207635, z: 0.19162394, w: 0.4752609}
+    m_Value: {x: -0.0038448202, y: 0.3258997, z: 0.0017469104, w: 0.94539493}
   m_Size:
-    m_Target: 0.0144064855
+    m_Target: 0.00988698
     speed: 2
-    m_Value: 0.0144064855
+    m_Value: 0.009461225
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -901,8 +901,8 @@ MonoBehaviour:
     vZoomLockedByDefault: 0
     m_HBaseRangeMin: -348.63998
     m_HBaseRangeMax: 348.63998
-    m_VBaseRangeMin: -152.8
-    m_VBaseRangeMax: 152.8
+    m_VBaseRangeMin: -161.2
+    m_VBaseRangeMax: 161.2
     m_HAllowExceedBaseRangeMin: 1
     m_HAllowExceedBaseRangeMax: 1
     m_VAllowExceedBaseRangeMin: 1
@@ -919,11 +919,11 @@ MonoBehaviour:
     m_DrawArea:
       serializedVersion: 2
       x: 0
-      y: 21
+      y: 0
       width: 871.6
-      height: 382
+      height: 403
     m_Scale: {x: 1, y: 1}
-    m_Translation: {x: 435.8, y: 191}
+    m_Translation: {x: 435.8, y: 201.5}
     m_MarginLeft: 0
     m_MarginRight: 0
     m_MarginTop: 0
@@ -931,9 +931,9 @@ MonoBehaviour:
     m_LastShownAreaInsideMargins:
       serializedVersion: 2
       x: -435.8
-      y: -191
+      y: -201.5
       width: 871.6
-      height: 382
+      height: 403
     m_MinimalGUI: 1
   m_defaultScale: 1
   m_LastWindowPixelSize: {x: 1089.5, y: 503.75}
