@@ -1,14 +1,8 @@
 fileFormatVersion: 2
-<<<<<<<< HEAD:Age of Medieval/Assets/Prefabs/TT_Crossbowman.prefab.meta
 guid: e93eced9cc2d545428e4a4b45713048d
 timeCreated: 1544658916
 licenseType: Store
-========
-guid: d50384934a14df04baecc419296b504e
->>>>>>>> Enemy-AI:Age of Medieval/Assets/Materials/Yellow.mat.meta
 NativeFormatImporter:
-  externalObjects: {}
-  mainObjectFileID: 2100000
   userData: 
   assetBundleName: 
   assetBundleVariant: 

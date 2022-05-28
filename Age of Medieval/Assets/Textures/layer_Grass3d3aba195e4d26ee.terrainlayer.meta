@@ -1,12 +1,8 @@
 fileFormatVersion: 2
-<<<<<<<< HEAD:Age of Medieval/Assets/Textures/layer_Grass3d3aba195e4d26ee.terrainlayer.meta
 guid: 759d1744260c8d84a8b0177d0c4e80ed
-========
-guid: 58235a9c450319a43b48ea4773413ff1
->>>>>>>> Enemy-AI:Age of Medieval/Assets/Materials/Red.mat.meta
 NativeFormatImporter:
   externalObjects: {}
-  mainObjectFileID: 2100000
+  mainObjectFileID: 8574412962073106934
   userData: 
   assetBundleName: 
   assetBundleVariant: 
