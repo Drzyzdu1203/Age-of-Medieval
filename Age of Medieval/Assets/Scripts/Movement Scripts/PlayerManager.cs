@@ -17,6 +17,10 @@ namespace Script2
         //Dodanie sprintu
         [Header("Player Flags")]
         public bool isSprinting;
+        public bool isInAir;
+        public bool isGrounded;
+
+
         // Start is called before the first frame update
         void Start()
         {
@@ -39,6 +43,8 @@ namespace Script2
             playerLocomotion.HandleMovement(delta);
             //rolling
             playerLocomotion.HandleRollingAndSprinting(delta);
+
+            playerLocomotion.HandleFalling(delta, playerLocomotion.moveDirection);
         }
 
         private void FixedUpdate()
@@ -58,6 +64,11 @@ namespace Script2
             inputHandler.rollFlag = false;
             inputHandler.sprintFlag = false;
             isSprinting = inputHandler.sprint_input;
+
+            if (isInAir)
+            {
+                playerLocomotion.inAirTimer = playerLocomotion.inAirTimer + Time.deltaTime;
+            }
         }
     }
 }
