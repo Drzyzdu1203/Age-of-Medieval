@@ -9,9 +9,13 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: DesertRocks
   m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
+<<<<<<< HEAD
   m_ValidKeywords:
   - _EMISSION
   m_InvalidKeywords: []
+=======
+  m_ShaderKeywords: _EMISSION
+>>>>>>> main
   m_LightmapFlags: 1
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
