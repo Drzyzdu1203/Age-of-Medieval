@@ -18,7 +18,7 @@ namespace AoM
         {
 
         }
-        private void HandleCurrentAcrion()
+       /* private void HandleCurrentAcrion()
         {
             Collider[] colliders = Physics.OverlapSphere(transform.position, enemyManager.detectionRadius, detectionLayer);
 
@@ -27,6 +27,6 @@ namespace AoM
 
             }
         }
-
+        */
     }
 }
