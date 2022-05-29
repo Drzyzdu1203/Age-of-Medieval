@@ -275,6 +275,34 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 328626794}
   m_CullTransparentMesh: 1
+--- !u!1 &378167076 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6245380910272834636, guid: 9d7e6c6a14166ce4eb53bce6fa7cc8bf, type: 3}
+  m_PrefabInstance: {fileID: 6245380910708464983}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &378167078
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 378167076}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22bd61371c5117b45833d85a816eb8f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetTransform: {fileID: 1394983558}
+  cameraTransform: {fileID: 1972728206}
+  cameraPivotTransform: {fileID: 1162837112}
+  lookSpeed: 0.1
+  followSpeed: 0.1
+  pivotSpeed: 0.03
+  minimumPivot: -35
+  maximumPivot: 35
+  cameraSphereRadius: 0.2
+  cameraCollisionOffSet: 0.2
+  minimumCollisionOffSet: 0.2
 --- !u!1 &569201909
 GameObject:
   m_ObjectHideFlags: 0
@@ -638,6 +666,11 @@ Transform:
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7207275189045827732, guid: 17c59d1f7478a9c4497833505e63defd, type: 3}
   m_PrefabInstance: {fileID: 7207275188259772945}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1162837112 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6245380911518856170, guid: 9d7e6c6a14166ce4eb53bce6fa7cc8bf, type: 3}
+  m_PrefabInstance: {fileID: 6245380910708464983}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1228123659
 GameObject:
@@ -1067,6 +1100,11 @@ Camera:
   m_CorrespondingSourceObject: {fileID: 6245380910349151451, guid: 9d7e6c6a14166ce4eb53bce6fa7cc8bf, type: 3}
   m_PrefabInstance: {fileID: 6245380910708464983}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &1972728206 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6245380910349151453, guid: 9d7e6c6a14166ce4eb53bce6fa7cc8bf, type: 3}
+  m_PrefabInstance: {fileID: 6245380910708464983}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6245380910708464983
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1126,7 +1164,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Camera Holder
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6245380910272834633, guid: 9d7e6c6a14166ce4eb53bce6fa7cc8bf, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 9d7e6c6a14166ce4eb53bce6fa7cc8bf, type: 3}
 --- !u!1001 &7207275188259772945
 PrefabInstance:
