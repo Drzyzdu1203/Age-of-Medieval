@@ -10,21 +10,27 @@ namespace AoM
         EnemyManager enemyManager;
         EnemyAnimatorManager enemyAnimatorManager;
         NavMeshAgent navMeshAgent;
-        Rigidbody enemyRigidBody;
+        public Rigidbody enemyRigidBody;
 
         public CharacterStats currentTarget;
         public LayerMask detectionLayer;
 
         public float distanceFromTarget;
-        public float stoppingDistance = 0.5f;
+        public float stoppingDistance = 1f;
         public float rotationSpeed = 15;
 
         private void Awake()
         {
             enemyManager = GetComponent<EnemyManager>();
-            EnemyAnimatorManager = GetComponentInChildren<EnemyAnimatorManager>();
+            enemyAnimatorManager = GetComponentInChildren<EnemyAnimatorManager>();
             navMeshAgent = GetComponentInChildren<NavMeshAgent>();
             enemyRigidBody = GetComponent<Rigidbody>();
+        }
+
+        private void Start()
+        {
+            navMeshAgent.enabled = false;
+            enemyRigidBody.isKinematic = false;
         }
         public void HandleDetection() 
         {
@@ -66,12 +72,16 @@ namespace AoM
                 {
                     enemyAnimatorManager.anim.SetFloat("Vertical", 1, 0.1f, Time.deltaTime);
                 }
+                else if (distanceFromTarget <= stoppingDistance)
+                {
+                    enemyAnimatorManager.anim.SetFloat("Vertical", 0, 0.1f, Time.deltaTime);
+                }
             }
 
             HandleRotateTowardsTarget();
 
             navMeshAgent.transform.localPosition = Vector3.zero;
-            navMeshAgent.transform.localPosition = Quaternion.identity;
+            navMeshAgent.transform.localRotation = Quaternion.identity;
         }
 
         private void HandleRotateTowardsTarget()
@@ -94,7 +104,7 @@ namespace AoM
             //ROTACJA Z PATHFINDING (NAVMESH)
             else
             {
-                Vector3 relativeDirection = transform.InverseTransformDirection(NavMeshAgent.desiredVelocity);
+                Vector3 relativeDirection = transform.InverseTransformDirection(navMeshAgent.desiredVelocity);
                 Vector3 targetVelocity = enemyRigidBody.velocity;
 
                 navMeshAgent.enabled = true;
