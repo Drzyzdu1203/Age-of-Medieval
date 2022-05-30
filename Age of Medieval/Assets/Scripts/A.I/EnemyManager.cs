@@ -7,7 +7,7 @@ namespace AoM
     public class EnemyManager : CharacterManager
     {
         EnemyLocomotionManager enemyLocomotionManager;
-        bool isPreformingAction;
+        public bool isPreformingAction;
 
         [Header("A.I Settings")]
         public float detectionRadius = 20;
@@ -22,11 +22,20 @@ namespace AoM
             HandleCurrentAction();
         }
 
+        private void FixedUpdate()
+        {
+            HandleCurrentAction();
+        }
+
         private void HandleCurrentAction()
         {
             if (enemyLocomotionManager.currentTarget == null)
             {
                 enemyLocomotionManager.HandleDetection();
+            }
+            else
+            {
+                enemyLocomotionManager.HandleMoveToTarget();
             }
         }
     }
