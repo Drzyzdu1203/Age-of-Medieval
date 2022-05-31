@@ -7,14 +7,16 @@ namespace AoM
     public class AnimatorHandler : AnimatorManager
     {
         
-        public InputHandler inputHandler;
-        public PlayerLocomotion playerLocomotion;
+        PlayerManager playerManager;
+        InputHandler inputHandler;
+        PlayerLocomotion playerLocomotion;
         int vertical;
         int horizontal;
         public bool canRotate;
 
         public void Initialize()
         {
+            playerManager = GetComponentInParent<PlayerManager>();
             anim = GetComponent<Animator>();
             inputHandler = GetComponentInParent<InputHandler>();
             playerLocomotion = GetComponentInParent<PlayerLocomotion>();
@@ -24,7 +26,7 @@ namespace AoM
 
 
         }
-        //dodanie Sprintu
+        
         public void UpdateAnimatorValues(float verticalMovement, float horizontalMovement, bool isSprinting)
         {
             #region Vertical
@@ -99,10 +101,9 @@ namespace AoM
 
         private void OnAnimatorMove()
         {
-            if (inputHandler.isinteracting == false)
-            {
-                return;
-            }
+            if (playerManager.isinteracting == false)
+            return;
+            
             float delta = Time.deltaTime;
             playerLocomotion.rigidbody.drag = 0;
             Vector3 deltaPosition = anim.deltaPosition;
@@ -110,5 +111,7 @@ namespace AoM
             Vector3 velocity = deltaPosition / delta;
             playerLocomotion.rigidbody.velocity = velocity;
         }
+        
+       
     }
 }

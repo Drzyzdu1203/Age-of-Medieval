@@ -41,7 +41,7 @@ namespace AoM
 
             if (currentHealth <= 0)
             {currentHealth = 0;
-                animatorHandler.PlayTargetAnimation("infantry_06_death_A", true);
+                animatorHandler.PlayTargetAnimation("twohanded_06_death_B", true);
 
             }
         }

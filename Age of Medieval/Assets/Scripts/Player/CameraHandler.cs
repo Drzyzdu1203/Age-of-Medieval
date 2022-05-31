@@ -48,7 +48,6 @@ namespace AoM
 
         public void FollowTarget(float delta)
         {
-            //usprawenienie kamery. Aktualizacja z 'Vector3.Lerp(myTransform.position, targetTransform.position, delta / followSpeed);'
             Vector3 targetPosition = Vector3.SmoothDamp(myTransform.position, targetTransform.position, ref cameraFollowVelocity, delta / followSpeed);
             myTransform.position = targetPosition;
             //Kolizja kamery
@@ -87,6 +86,11 @@ namespace AoM
                 float dis = Vector3.Distance(cameraPivotTransform.position, hit.point);
                 targetPosition = -(dis - cameraCollisionOffSet);
             }
+            if (Mathf.Abs(targetPosition) < minimumCollisionOffSet)
+            {
+                targetPosition = -minimumCollisionOffSet;
+            }
+
             cameraTransformPosition.z = Mathf.Lerp(cameraTransform.localPosition.z, targetPosition, delta / 0.2f);
             cameraTransform.localPosition = cameraTransformPosition;
         }

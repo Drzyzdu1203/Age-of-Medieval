@@ -12,45 +12,23 @@ namespace AoM
         public float mouseX;
         public float mouseY;
 
-        //Roll
         public bool b_Input;
-        public bool jump_input;
-        public bool rollFlag;
-        public bool isinteracting;
 
-        //dodanie sprintu
-        public bool sprint_input;
-        public float rollInputTimer;
+        public bool rollFlag;
         public bool sprintFlag;
+        public float rollInputTimer;
+        
+
 
         PlayerControls inputActions;
-        #region Film z kamer¹2
-        //Dodanie rzeczy z filmu trzeciego o kamera handling. przedtem dzia³a³o
-        CameraHandler cameraHandler;
-        //END
-        #endregion
+
 
         Vector2 movementInput;
         Vector2 cameraInput;
-        #region Film z kamer¹
-        //Dodanie rzeczy z filmu trzeciego o kamera handling. przedtem dzia³a³o
-        private void Awake()
-        {
-            cameraHandler = CameraHandler.singleton;
-        }
 
-        private void FixedUpdate()
-        {
-            float delta = Time.deltaTime;
 
-            if (cameraHandler != null)
-            {
-                cameraHandler.FollowTarget(delta);
-                cameraHandler.HandleCameraRotation(delta, mouseX, mouseY);
-            }
-        }
-        //END
-        #endregion
+
+
         public void OnEnable()
         {
             if (inputActions == null)
@@ -85,20 +63,8 @@ namespace AoM
 
         private void HandleRollInput(float delta)
         {
-            //b_Input = inputActions.PlayerActions.Roll.phase == UnityEngine.InputSystem.InputActionPhase.Started;
-            b_Input = inputActions.PlayerActions.Roll.triggered;
-            sprint_input = inputActions.PlayerActions.Sprint.phase == UnityEngine.InputSystem.InputActionPhase.Performed;
-
-
-            if (sprint_input)
-            {
-                sprintFlag = true;
-                Debug.Log("Wcisniety Shift");
-            }
-            else
-            {
-                sprintFlag = false;
-            }
+            b_Input = inputActions.PlayerActions.Roll.phase == UnityEngine.InputSystem.InputActionPhase.Started;
+            
 
             if (b_Input)
             {
@@ -109,7 +75,7 @@ namespace AoM
             {
                 if (rollInputTimer > 0 && rollInputTimer < 0.5f)
                 {
-                    //sprintFlag = false;
+                    sprintFlag = false;
                     rollFlag = true;
                 }
 
