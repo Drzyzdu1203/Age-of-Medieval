@@ -13,7 +13,8 @@ namespace AoM
         public float mouseY;
 
         public bool b_Input;
-
+        public bool jump_input;//
+        public bool sprint_input;//
         public bool rollFlag;
         public bool sprintFlag;
         public float rollInputTimer;
@@ -64,7 +65,19 @@ namespace AoM
         private void HandleRollInput(float delta)
         {
             b_Input = inputActions.PlayerActions.Roll.phase == UnityEngine.InputSystem.InputActionPhase.Started;
-            
+            b_Input = inputActions.PlayerActions.Roll.triggered;//
+            sprint_input = inputActions.PlayerActions.Sprint.phase == UnityEngine.InputSystem.InputActionPhase.Performed; //
+
+
+            if (sprint_input)
+            {
+                sprintFlag = true;
+                Debug.Log("Wcisniety Shift");
+            }
+            else
+            {
+                sprintFlag = false;
+            }
 
             if (b_Input)
             {
@@ -75,7 +88,7 @@ namespace AoM
             {
                 if (rollInputTimer > 0 && rollInputTimer < 0.5f)
                 {
-                    sprintFlag = false;
+                    //sprintFlag = false;
                     rollFlag = true;
                 }
 

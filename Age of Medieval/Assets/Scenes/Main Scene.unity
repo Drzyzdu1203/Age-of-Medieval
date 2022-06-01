@@ -1503,6 +1503,10 @@ PrefabInstance:
       propertyPath: healthbar
       value: 
       objectReference: {fileID: 1646160041}
+    - target: {fileID: 4582848393045967956, guid: 581e3a83b910bd84e9e7554e0a6eb28f, type: 3}
+      propertyPath: rollInputTimer
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4582848393045967960, guid: 581e3a83b910bd84e9e7554e0a6eb28f, type: 3}
       propertyPath: m_Name
       value: Player

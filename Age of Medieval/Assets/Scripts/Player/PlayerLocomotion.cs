@@ -21,9 +21,9 @@ namespace AoM
 
         [Header("Movement Stats")]
         [SerializeField]
-        float movementSpeed = 3;
+        float movementSpeed = 2;
         [SerializeField]
-        float sprintSpeed = 5;
+        float sprintSpeed = 3;
         [SerializeField]
         float rotationSpeed = 10;
         
