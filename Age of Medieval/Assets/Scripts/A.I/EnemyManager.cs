@@ -8,10 +8,12 @@ namespace AoM
     {
         EnemyLocomotionManager enemyLocomotionManager;
         EnemyAnimatorManager enemyAnimatorManager;
-        public bool isPreformingAction;
+        EnemyStats enemyStats;
+        
+        public State currentState;
+        public CharacterStats currentTarget;
 
-        public EnemyAttackAction[] enemyAttacks;
-        public EnemyAttackAction currentAttack;
+        public bool isPreformingAction;
 
         [Header("A.I Settings")]
         public float detectionRadius = 20;
@@ -23,6 +25,7 @@ namespace AoM
         {
             enemyLocomotionManager = GetComponent<EnemyLocomotionManager>();
             enemyAnimatorManager = GetComponentInChildren<EnemyAnimatorManager>();
+            enemyStats = GetComponent<EnemyStats>();
 
         }
         private void Update()
@@ -32,29 +35,25 @@ namespace AoM
 
         private void FixedUpdate()
         {
-            HandleCurrentAction();
+            HandleStateMachine();
         }
 
-        private void HandleCurrentAction()
+        private void HandleStateMachine()
         {
-            if(enemyLocomotionManager.currentTarget != null)
+            if(currentState !=null)
             {
-                enemyLocomotionManager.distanceFromTarget =
-                Vector3.Distance(enemyLocomotionManager.currentTarget.transform.position, transform.position);
-            }
+                State nextState = currentState.Tick(this, enemyStats, enemyAnimatorManager);
 
-            if (enemyLocomotionManager.currentTarget == null)
-            {
-                enemyLocomotionManager.HandleDetection();
+                if(nextState != null)
+                {
+                    SwitchToNextState(nextState);
+                }
             }
-            else if (enemyLocomotionManager.distanceFromTarget > enemyLocomotionManager.stoppingDistance)
-            {
-                enemyLocomotionManager.HandleMoveToTarget();
-            }
-            else if ( enemyLocomotionManager.distanceFromTarget <= enemyLocomotionManager.stoppingDistance)
-            {
-                AttackTarget();
-            }
+        }
+
+        private void SwitchToNextState(State state)
+        {
+            currentState = state;
         }
 
         private void HandleRecoveryTimer()
@@ -76,7 +75,7 @@ namespace AoM
         #region Attacks
         private void AttackTarget()
         {
-            if (isPreformingAction)
+           /* if (isPreformingAction)
                 return;
 
             if(currentAttack == null)
@@ -89,12 +88,12 @@ namespace AoM
                 currentRecoveryTime = currentAttack.recoveryTime;
                 enemyAnimatorManager.PlayTargetAnimation(currentAttack.actionAnimation, true);
                 currentAttack = null;
-            }
+            } */
         }
 
         private void GetNewAttack()
         {
-            Vector3 targetDirection = enemyLocomotionManager.currentTarget.transform.position - transform.position;
+           /* Vector3 targetDirection = enemyLocomotionManager.currentTarget.transform.position - transform.position;
             float viewableAngle = Vector3.Angle(targetDirection, transform.forward);
             enemyLocomotionManager.distanceFromTarget = Vector3.Distance(enemyLocomotionManager.currentTarget.transform.position, transform.position);
 
@@ -140,7 +139,7 @@ namespace AoM
                     }
                 }
 
-            }
+            }*/
         }
         #endregion
     }
