@@ -17,6 +17,7 @@ namespace AoM
         public Rigidbody enemyRigidBody;
 
         public bool isPreformingAction;
+        public bool isinteracting;
         public float distanceFromTarget;
         public float rotationSpeed = 15;
         public float maximumAttackRange = 1.5f;
@@ -45,7 +46,9 @@ namespace AoM
 
         private void Update()
         {
-           HandleRecoveryTimer();
+            HandleRecoveryTimer();
+
+            isinteracting = enemyAnimatorManager.anim.GetBool("isinteracting");
         }
 
         private void FixedUpdate()
