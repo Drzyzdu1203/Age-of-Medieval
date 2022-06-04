@@ -18,7 +18,6 @@ namespace AoM
 
         public bool isPreformingAction;
         public bool isinteracting;
-        public float distanceFromTarget;
         public float rotationSpeed = 15;
         public float maximumAttackRange = 1.5f;
 
@@ -26,8 +25,7 @@ namespace AoM
         public float detectionRadius = 20;
         public float maximumDetectionAngle = 50;
         public float minimumDetectionAngle = -50;
-        public float viewableAngle;
-
+        
         public float currentRecoveryTime = 0;
         private void Awake()
         {
