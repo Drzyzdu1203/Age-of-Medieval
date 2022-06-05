@@ -14,6 +14,8 @@ namespace AoM
         public bool isinteracting;
         [Header("Player Flags")]
         public bool isSprinting;
+        public bool isInAir;
+        public bool isGrounded;
         private void Awake()
         {
             cameraHandler = CameraHandler.singleton;
@@ -28,16 +30,12 @@ namespace AoM
         void Update()
         {
             float delta = Time.deltaTime;
-
             isinteracting = anim.GetBool("isinteracting");
-
-
 
             inputHandler.TickInput(delta);
             playerLocomotion.HandleMovement(delta);
             playerLocomotion.HandleRollingAndSprinting(delta);
-
-
+            playerLocomotion.HandleFalling(delta, playerLocomotion.moveDirection);
             
         }
         private void FixedUpdate()
@@ -55,6 +53,11 @@ namespace AoM
             inputHandler.rollFlag = false;
             inputHandler.sprintFlag = false;
             isSprinting = inputHandler.b_Input;
+
+            if(isInAir)
+            {
+                playerLocomotion.inAirTimer = playerLocomotion.inAirTimer + Time.deltaTime;
+            }
         }
     }
 }
