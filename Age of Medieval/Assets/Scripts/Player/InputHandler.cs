@@ -88,7 +88,7 @@ namespace AoM
             {
                 if (rollInputTimer > 0 && rollInputTimer < 0.5f)
                 {
-                    //sprintFlag = false;
+                   // sprintFlag = false;
                     rollFlag = true;
                 }
 
