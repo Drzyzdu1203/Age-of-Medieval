@@ -7,8 +7,17 @@ namespace AoM
     public class InputManager : MonoBehaviour
     {
         PlayerControls playerControls;
+        AnimationManager animationManager;
 
         public Vector2 movementInput;
+        private float moveAmount;
+        public float verticalInput;
+        public float horizontalInput;
+
+        private void Awake()
+        {
+            animationManager = GetComponent<AnimationManager>();
+        }
 
         private void OnEnable()
         {
@@ -24,6 +33,21 @@ namespace AoM
         private void OnDisable()
         {
             playerControls.Disable();
+        }
+
+        public void HandleAllInputs()
+        {
+            HandleMovementInput();
+        }
+
+        private void HandleMovementInput()
+        {
+            verticalInput = movementInput.y;
+            horizontalInput = movementInput.x;
+
+            moveAmount = Mathf.Clamp01(Mathf.Abs(horizontalInput) + Mathf.Abs(verticalInput));
+
+            animationManager.UpdateAnimatorValues(0, moveAmount);
         }
     }
 }
