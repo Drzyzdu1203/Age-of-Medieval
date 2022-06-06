@@ -207,6 +207,7 @@ namespace AoM
 
             if (Physics.Raycast(origin, -Vector3.up, out hit, minimumDistanceNeededToBeginFall, ignoreForGroundCheck))
             {
+                moveDirection.y = 0;
                 normalVector = hit.normal;
                 Vector3 tp = hit.point;
                 playerManager.isGrounded = true;
@@ -223,7 +224,7 @@ namespace AoM
                     }
                     else
                     {
-                        animatorHandler.PlayTargetAnimation("Locomotion", false);
+                        animatorHandler.PlayTargetAnimation("Locomotion", true);
                         inAirTimer = 0;
                     }
 
@@ -248,7 +249,7 @@ namespace AoM
 
                     Vector3 vel = rigidbody.velocity;
                     vel.Normalize();
-                    rigidbody.velocity = vel * (movementSpeed / 2);
+                    rigidbody.velocity = vel * (movementSpeed / 10);
                     playerManager.isInAir = true;
                 }
             }

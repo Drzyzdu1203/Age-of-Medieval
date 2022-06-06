@@ -75,7 +75,6 @@ namespace AoM
             if (sprint_input)
             {
                 sprintFlag = true;
-                Debug.Log("Wcisniety Shift");
             }
             else
             {

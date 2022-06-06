@@ -44,7 +44,7 @@ namespace AoM
             //rolling
             playerLocomotion.HandleRollingAndSprinting(delta);
 
-            playerLocomotion.HandleFalling(delta, playerLocomotion.moveDirection);
+            //playerLocomotion.HandleFalling(delta, playerLocomotion.moveDirection);
         }
 
         private void FixedUpdate()
