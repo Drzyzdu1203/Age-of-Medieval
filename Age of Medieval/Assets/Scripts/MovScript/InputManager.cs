@@ -10,7 +10,12 @@ namespace AoM
         AnimationManager animationManager;
 
         public Vector2 movementInput;
-        private float moveAmount;
+        public Vector2 cameraInput;
+
+        public float cameraInputX;
+        public float cameraInputY;
+
+        public float moveAmount;
         public float verticalInput;
         public float horizontalInput;
 
@@ -25,6 +30,8 @@ namespace AoM
             {
                 playerControls = new PlayerControls();
                 playerControls.PlayerMovement.Movement.performed += i => movementInput = i.ReadValue<Vector2>();
+
+                playerControls.PlayerMovement.Camera.performed += i => cameraInput = i.ReadValue<Vector2>();
             }
 
             playerControls.Enable();
@@ -44,6 +51,9 @@ namespace AoM
         {
             verticalInput = movementInput.y;
             horizontalInput = movementInput.x;
+
+            cameraInputX = cameraInput.x;
+            cameraInputY = cameraInput.y;
 
             moveAmount = Mathf.Clamp01(Mathf.Abs(horizontalInput) + Mathf.Abs(verticalInput));
 
