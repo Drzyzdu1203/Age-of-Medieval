@@ -16,11 +16,14 @@ namespace AoM
             horizontal = Animator.StringToHash("Horizontal");
             vertical = Animator.StringToHash("Vertical");
         }
-        public void UpdateAnimatorValues(float horizontalMovement, float verticalMovement)
+        public void UpdateAnimatorValues(float horizontalMovement, float verticalMovement, bool isSprinting)
         {
             //Anim Snaping
             float snappedHorizontal;
             float snappedVertical;
+
+
+
             #region snappedHorizontal
             if (horizontalMovement > 0 && horizontalMovement < 0.55f)
             {
@@ -66,6 +69,12 @@ namespace AoM
                 snappedVertical = 0;
             }
             #endregion
+
+            if (isSprinting)
+            {
+                snappedHorizontal = horizontalMovement;
+                snappedVertical = 2;
+            }
 
             animator.SetFloat(horizontal, snappedHorizontal, 0.1f, Time.deltaTime);
             animator.SetFloat(vertical, snappedVertical, 0.1f, Time.deltaTime);

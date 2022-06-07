@@ -39,14 +39,23 @@ namespace AoM
             moveDirection.Normalize();
             moveDirection.y = 0;
 
-            if (inputManager.moveAmount >= 0.5f)
+            if (isSprinting)
             {
-                moveDirection = moveDirection * runningSpeed;
+                moveDirection = moveDirection * sprintingSpeed;
             }
             else
             {
-                moveDirection = moveDirection * walkingSpeed;
+                if (inputManager.moveAmount >= 0.5f)
+                {
+                    moveDirection = moveDirection * runningSpeed;
+                }
+                else
+                {
+                    moveDirection = moveDirection * walkingSpeed;
+                }
             }
+
+            
 
             Vector3 movementVelocity = moveDirection;
             playerRigidbody.velocity = movementVelocity;

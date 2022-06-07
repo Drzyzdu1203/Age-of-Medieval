@@ -20,7 +20,7 @@ namespace AoM
 
         public float cameraCollisionOffSet = 0.2f; // odleg³oœæ odsuniêcia kamery od obiektu
         public float minimumCollisionOffSet = 0.2f;
-        public float cameraCollisionRadius = 0.2f;
+        public float cameraCollisionRadius = 0.1f;
         public float cameraFollowSpeed = 0.2f;
         public float cameraLookSpeed = 0.5f;
         public float cameraPivotSpeed = 0.5f;

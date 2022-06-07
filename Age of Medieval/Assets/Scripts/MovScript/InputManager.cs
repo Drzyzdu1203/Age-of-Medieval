@@ -7,6 +7,7 @@ namespace AoM
     public class InputManager : MonoBehaviour
     {
         PlayerControls playerControls;
+        PlayerLocomotion playerLocomotion;
         AnimationManager animationManager;
 
         public Vector2 movementInput;
@@ -19,9 +20,12 @@ namespace AoM
         public float verticalInput;
         public float horizontalInput;
 
+        public bool sprint_input;
+
         private void Awake()
         {
             animationManager = GetComponent<AnimationManager>();
+            playerLocomotion = GetComponent<PlayerLocomotion>();
         }
 
         private void OnEnable()
@@ -32,6 +36,9 @@ namespace AoM
                 playerControls.PlayerMovement.Movement.performed += i => movementInput = i.ReadValue<Vector2>();
 
                 playerControls.PlayerMovement.Camera.performed += i => cameraInput = i.ReadValue<Vector2>();
+
+                playerControls.PlayerActions.Sprint.performed += i => sprint_input = true;
+                playerControls.PlayerActions.Sprint.canceled += i => sprint_input = false;
             }
 
             playerControls.Enable();
@@ -45,6 +52,7 @@ namespace AoM
         public void HandleAllInputs()
         {
             HandleMovementInput();
+            HandleSprintingInput();
         }
 
         private void HandleMovementInput()
@@ -57,7 +65,19 @@ namespace AoM
 
             moveAmount = Mathf.Clamp01(Mathf.Abs(horizontalInput) + Mathf.Abs(verticalInput));
 
-            animationManager.UpdateAnimatorValues(0, moveAmount);
+            animationManager.UpdateAnimatorValues(0, moveAmount, playerLocomotion.isSprinting);
+        }
+
+        private void HandleSprintingInput()
+        {
+            if (sprint_input && moveAmount > 0.5f)
+            {
+                playerLocomotion.isSprinting = true;
+            }
+            else
+            {
+                playerLocomotion.isSprinting = false;
+            }
         }
     }
 }
