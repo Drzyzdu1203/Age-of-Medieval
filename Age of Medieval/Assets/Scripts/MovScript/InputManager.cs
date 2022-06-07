@@ -21,6 +21,7 @@ namespace AoM
         public float horizontalInput;
 
         public bool sprint_input;
+        public bool jump_input;
 
         private void Awake()
         {
@@ -39,6 +40,7 @@ namespace AoM
 
                 playerControls.PlayerActions.Sprint.performed += i => sprint_input = true;
                 playerControls.PlayerActions.Sprint.canceled += i => sprint_input = false;
+                playerControls.PlayerActions.Jump.performed += i => jump_input = true;
             }
 
             playerControls.Enable();
@@ -53,6 +55,7 @@ namespace AoM
         {
             HandleMovementInput();
             HandleSprintingInput();
+            HandleJumpingInput();
         }
 
         private void HandleMovementInput()
@@ -77,6 +80,15 @@ namespace AoM
             else
             {
                 playerLocomotion.isSprinting = false;
+            }
+        }
+
+        private void HandleJumpingInput()
+        {
+            if (jump_input)
+            {
+                jump_input = false;
+                playerLocomotion.HandleJumping();
             }
         }
     }

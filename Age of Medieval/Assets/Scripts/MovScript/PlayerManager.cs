@@ -35,6 +35,8 @@ namespace AoM
             cameraManager.HandleAllCameraMovement();
 
             isinteracting = animator.GetBool("isInteracting");
+            playerLocomotion.isJumping = animator.GetBool("isJumping");
+            animator.SetBool("isGrounded", playerLocomotion.isGrounded);
         }
     }
 }

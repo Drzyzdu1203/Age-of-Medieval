@@ -6,7 +6,7 @@ namespace AoM
 {
     public class AnimationManager : MonoBehaviour
     {
-        Animator animator;
+        public Animator animator;
         int horizontal;
         int vertical;
 
