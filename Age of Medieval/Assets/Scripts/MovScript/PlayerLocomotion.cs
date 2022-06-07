@@ -6,12 +6,24 @@ namespace AoM
 {
     public class PlayerLocomotion : MonoBehaviour
     {
+        PlayerManager playerManager;
+        AnimationManager animatorManager;
         InputManager inputManager;
         Vector3 moveDirection;
         Transform cameraObject;
         Rigidbody playerRigidbody;
 
+        [Header("Falling")]
+        public float inAirTimer;
+        public float leapingVelocity;
+        public float fallingVelocity;
+        public float rayCastHeightOffSet = 0.5f;
+        public LayerMask groundLayer;
+
+
+        [Header("Movement Flags")]
         public bool isSprinting;
+        public bool isGrounded;
 
         [Header("Movement Speeds")]
         public float walkingSpeed = 1.5f;
@@ -21,6 +33,8 @@ namespace AoM
 
         private void Awake()
         {
+            playerManager = GetComponent<PlayerManager>();
+            animatorManager = GetComponent<AnimationManager>();
             inputManager = GetComponent<InputManager>();
             playerRigidbody = GetComponent<Rigidbody>();
             cameraObject = Camera.main.transform;
@@ -28,6 +42,11 @@ namespace AoM
 
         public void HandleAllMovement()
         {
+            HandleFallingAndLanding();
+            if (playerManager.isinteracting)
+            {
+                return;
+            }
             HandleMovement();
             HandleRotation();
         }
@@ -79,6 +98,40 @@ namespace AoM
             Quaternion playerRotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
 
             transform.rotation = playerRotation;
+        }
+
+        private void HandleFallingAndLanding()
+        {
+            RaycastHit hit;
+            Vector3 rayCastOrigin = transform.position;
+            rayCastOrigin.y = rayCastOrigin.y + rayCastHeightOffSet;
+
+            if (!isGrounded)
+            {
+                if (!playerManager.isinteracting)
+                {
+                    animatorManager.PlayTargetAnimation("Falling", true);
+                    moveDirection = moveDirection * 2;
+                }
+
+                inAirTimer = inAirTimer + Time.deltaTime;
+                playerRigidbody.AddForce(transform.forward * leapingVelocity);
+                playerRigidbody.AddForce(Vector3.down * fallingVelocity * inAirTimer);
+            }
+
+            if (Physics.SphereCast(rayCastOrigin, 0.2f, Vector3.down, out hit, 0.5f, groundLayer))
+            {
+                if (!isGrounded && !playerManager.isinteracting)
+                {
+                    animatorManager.PlayTargetAnimation("Land", true);
+                }
+                inAirTimer = 0;
+                isGrounded = true;
+            }
+            else
+            {
+                isGrounded = false;
+            }
         }
     }
 }
