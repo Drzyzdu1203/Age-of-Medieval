@@ -408,6 +408,10 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 0134b6eab9b427442b6bf6b6d9e1f48a, type: 2}
+    - target: {fileID: 9500000, guid: 02ded044b8e0963439276550f50be6f9, type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 02ded044b8e0963439276550f50be6f9, type: 3}
 --- !u!1 &646726922
@@ -802,6 +806,7 @@ MonoBehaviour:
   verticalInput: 0
   horizontalInput: 0
   sprint_input: 0
+  jump_input: 0
 --- !u!114 &1814723227
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -814,6 +819,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a70b49911a482942b573e74680ec8d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isinteracting: 0
 --- !u!114 &1814723228
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -826,11 +832,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5975531d0390174428c378cb7e22e064, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inAirTimer: 0
+  leapingVelocity: 3
+  fallingVelocity: 33
+  rayCastHeightOffSet: 0.5
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 1
   isSprinting: 0
+  isGrounded: 1
+  isJumping: 0
   walkingSpeed: 1.5
   runningSpeed: 5
   sprintingSpeed: 7
   rotationSpeed: 15
+  jumpHeight: 3
+  gravityIntensity: -15
 --- !u!114 &1814723231
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -843,3 +860,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d0aa17be9e0a524aafe405d4cc0a81a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 0}
