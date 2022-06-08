@@ -22,6 +22,9 @@ namespace AoM
 
         public bool sprint_input;
         public bool jump_input;
+        //z innego
+        public bool roll_input;
+        public bool rollFlag;
 
         private void Awake()
         {
@@ -41,6 +44,8 @@ namespace AoM
                 playerControls.PlayerActions.Sprint.performed += i => sprint_input = true;
                 playerControls.PlayerActions.Sprint.canceled += i => sprint_input = false;
                 playerControls.PlayerActions.Jump.performed += i => jump_input = true;
+                //z innego
+                playerControls.PlayerActions.Roll.performed += i => roll_input = true;
             }
 
             playerControls.Enable();
@@ -56,6 +61,7 @@ namespace AoM
             HandleMovementInput();
             HandleSprintingInput();
             HandleJumpingInput();
+            HandleRollInput();
         }
 
         private void HandleMovementInput()
@@ -85,10 +91,25 @@ namespace AoM
 
         private void HandleJumpingInput()
         {
-            if (jump_input)
+            if (jump_input && !rollFlag)
             {
                 jump_input = false;
                 playerLocomotion.HandleJumping();
+            }
+        }
+
+        //z innego
+        private void HandleRollInput()
+        {
+
+            //roll_input = playerControls.PlayerActions.Roll.triggered;
+
+            if (roll_input)
+            {
+                rollFlag = true;
+                roll_input = false;
+                playerLocomotion.HandleRolling();
+                rollFlag = false;
             }
         }
     }

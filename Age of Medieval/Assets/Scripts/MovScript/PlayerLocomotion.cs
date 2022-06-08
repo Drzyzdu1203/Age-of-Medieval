@@ -54,8 +54,11 @@ namespace AoM
             {
                 return;
             }
-            HandleMovement();
-            HandleRotation();
+            if (isGrounded)
+            {
+                HandleMovement();
+                HandleRotation();
+            }
         }
 
         private void HandleMovement()
@@ -143,6 +146,7 @@ namespace AoM
                 {
                     animatorManager.PlayTargetAnimation("Land", true);
                 }
+                Vector3 rayCastHitPoint = hit.point;
                 inAirTimer = 0;
                 isGrounded = true;
             }
@@ -163,6 +167,33 @@ namespace AoM
                 Vector3 playerVelocity = moveDirection;
                 playerVelocity.y = jumpingVelocity;
                 playerRigidbody.velocity = playerVelocity;
+            }
+        }
+
+        public void HandleRolling()
+        {
+            if (animatorManager.animator.GetBool("isInteracting") || !isGrounded)
+            {
+                return;
+            }
+
+            if (inputManager.rollFlag)
+            {
+                moveDirection = cameraObject.forward * inputManager.verticalInput;
+                moveDirection += cameraObject.right * inputManager.horizontalInput;
+                Debug.Log("Wykona³o siê");
+
+                if (inputManager.moveAmount > 0)
+                {
+                    animatorManager.PlayTargetAnimation("Rolling", false);
+                    moveDirection.y = 0;
+                    Quaternion rollRotation = Quaternion.LookRotation(moveDirection);
+                    transform.rotation = rollRotation;
+                }
+                else
+                {
+                    animatorManager.PlayTargetAnimation("Backstep", true);
+                }
             }
         }
     }

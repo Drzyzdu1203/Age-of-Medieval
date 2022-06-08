@@ -19,6 +19,8 @@ namespace AoM
 
         public void PlayTargetAnimation(string targetAnimation, bool isInteracting)
         {
+            // z innego
+            animator.applyRootMotion = false;
             animator.SetBool("isInteracting", isInteracting);
             animator.CrossFade(targetAnimation, 0.2f);
         }
