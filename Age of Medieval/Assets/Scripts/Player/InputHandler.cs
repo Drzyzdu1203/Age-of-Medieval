@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+
 namespace AoM
 {
     public class InputHandler : MonoBehaviour
@@ -18,17 +20,26 @@ namespace AoM
         public bool rollFlag;
         public bool sprintFlag;
         public float rollInputTimer;
-        
+
+
+        public bool lockOnInput;
+        public bool right_Stick_Right_Input;
+        public bool right_Stick_Left_Input;
+        public bool lockOnFlag;
 
 
         PlayerControls inputActions;
+        CameraHandler cameraHandler;
 
 
         Vector2 movementInput;
         Vector2 cameraInput;
 
 
-
+        private void Awake()
+        {
+            cameraHandler = FindObjectOfType<CameraHandler>();
+        }
 
         public void OnEnable()
         {
@@ -37,6 +48,9 @@ namespace AoM
                 inputActions = new PlayerControls();
                 inputActions.PlayerMovement.Movement.performed += inputActions => movementInput = inputActions.ReadValue<Vector2>();
                 inputActions.PlayerMovement.Camera.performed += i => cameraInput = i.ReadValue<Vector2>();
+                inputActions.PlayerActions.LockOn.performed += i => lockOnInput = true;
+                inputActions.PlayerMovement.LockOnTargetRight.performed += i => right_Stick_Right_Input = true;
+                inputActions.PlayerMovement.LockOnTargetLeft.performed += i => right_Stick_Left_Input = true;
             }
 
             inputActions.Enable();
@@ -47,10 +61,12 @@ namespace AoM
             inputActions.Disable();
         }
 
+
         public void TickInput(float delta)
         {
             MoveInput(delta);
             HandleRollInput(delta);
+            HandleLockOnInput();
         }
 
         private void MoveInput(float delta)
@@ -93,6 +109,50 @@ namespace AoM
                 }
 
                 rollInputTimer = 0;
+            }
+        }
+           
+        private void HandleLockOnInput()
+        {
+            if (lockOnInput && lockOnFlag == false)
+            {
+                cameraHandler.ClearLockOnTargets();
+                lockOnInput = false;
+                cameraHandler.HandleLockOn();
+                if(cameraHandler.nearestLockOnTarget != null)
+                {
+                    cameraHandler.currentLockOnTarget = cameraHandler.nearestLockOnTarget;
+                    lockOnFlag = true;
+                }
+            }
+            else if (lockOnInput && lockOnFlag)
+            {
+                lockOnInput = false;
+                lockOnFlag = false;
+                cameraHandler.ClearLockOnTargets();
+                //Clear Lock On targets
+
+            }
+
+            if (lockOnFlag && right_Stick_Left_Input )
+            {
+                right_Stick_Left_Input = false;
+                cameraHandler.HandleLockOn();
+                if(cameraHandler.leftLockTarget != null)
+                {
+                    cameraHandler.currentLockOnTarget = cameraHandler.leftLockTarget;
+                }
+            }
+
+            if (lockOnFlag && right_Stick_Right_Input)
+            {
+                right_Stick_Right_Input = false;
+                cameraHandler.HandleLockOn();
+                if(cameraHandler.rightLockTarget != null)
+                {
+                    cameraHandler.currentLockOnTarget = cameraHandler.rightLockTarget;
+                }
+                   
             }
         }
 
