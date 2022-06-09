@@ -77,18 +77,18 @@ namespace AoM
             else
             {
                 sprintFlag = false;
+                
             }
 
             if (b_Input)
             {
-                rollInputTimer += delta;
-                sprintFlag = true;
+                rollInputTimer += delta;             
             }
             else
             {
                 if (rollInputTimer > 0 && rollInputTimer < 0.5f)
                 {
-                   // sprintFlag = false;
+                    //sprintFlag = false;
                     rollFlag = true;
                 }
 
