@@ -7,132 +7,194 @@ namespace AoM
     public class PlayerLocomotion : MonoBehaviour
     {
         PlayerManager playerManager;
-        Transform cameraObject;
-        InputHandler inputHandler;
+        AnimationManager animatorManager;
+        InputManager inputManager;
         Vector3 moveDirection;
+        Transform cameraObject;
+        Rigidbody playerRigidbody;
 
-        [HideInInspector]
-        public Transform myTransform;
-        [HideInInspector]
-        public AnimatorHandler animatorHandler;
+        [Header("Falling")]
+        public float inAirTimer;
+        public float leapingVelocity;
+        public float fallingVelocity;
+        public float rayCastHeightOffSet = 0.5f;
+        public LayerMask groundLayer;
 
-        public new Rigidbody rigidbody;
-        public GameObject normalCamera;
 
-        [Header("Movement Stats")]
-        [SerializeField]
-        float movementSpeed = 2;
-        [SerializeField]
-        float sprintSpeed = 3;
-        [SerializeField]
-        float rotationSpeed = 10;
-        
+        [Header("Movement Flags")]
+        public bool isSprinting;
+        public bool isGrounded;
+        public bool isJumping;
 
-        void Start()
+        [Header("Movement Speeds")]
+        public float walkingSpeed = 1.5f;
+        public float runningSpeed = 5;
+        public float sprintingSpeed = 7;
+        public float rotationSpeed = 5;
+
+        [Header("Jump Speeds")]
+        public float jumpHeight = 3;
+        public float gravityIntensity = -15;
+
+        private void Awake()
         {
-            playerManager = GetComponent<PlayerManager>();  
-            rigidbody = GetComponent<Rigidbody>();
-            inputHandler = GetComponent<InputHandler>();    
-            animatorHandler = GetComponentInChildren<AnimatorHandler>();
+            playerManager = GetComponent<PlayerManager>();
+            animatorManager = GetComponent<AnimationManager>();
+            inputManager = GetComponent<InputManager>();
+            playerRigidbody = GetComponent<Rigidbody>();
             cameraObject = Camera.main.transform;
-            myTransform = transform;
-            animatorHandler.Initialize();
         }
 
-
-        #region Movement
-        Vector3 normalVector;
-        Vector3 targetPosition;
-
-        private void HandleRotation(float delta)
+        public void HandleAllMovement()
         {
-            Vector3 targetDir = Vector3.zero;
-            float moveOverride = inputHandler.moveAmount;
 
-            targetDir = cameraObject.forward * inputHandler.vertical;
-            targetDir += cameraObject.right * inputHandler.horizontal;
 
-            targetDir.Normalize();
-            targetDir.y = 0;
-
-            if (targetDir == Vector3.zero)
-                targetDir = myTransform.forward;
-            
-            float rs = rotationSpeed;
-
-            Quaternion tr = Quaternion.LookRotation(targetDir);
-            Quaternion targetRotation = Quaternion.Slerp(myTransform.rotation, tr, rs * delta);
-
-            myTransform.rotation = targetRotation;
+            HandleFallingAndLanding();
+            if (playerManager.isinteracting)
+            {
+                return;
+            }
+            if (isGrounded)
+            {
+                HandleMovement();
+                HandleRotation();
+            }
         }
 
-        public void HandleMovement(float delta)
+        private void HandleMovement()
         {
-            if (inputHandler.rollFlag)
-             return;
-            
 
-            moveDirection = cameraObject.forward * inputHandler.vertical;
-            moveDirection += cameraObject.right * inputHandler.horizontal;
+            if (isJumping)
+            {
+                return;
+            }
+
+            moveDirection = cameraObject.forward * inputManager.verticalInput;
+            moveDirection = moveDirection + cameraObject.right * inputManager.horizontalInput;
             moveDirection.Normalize();
             moveDirection.y = 0;
-            
-            float speed = movementSpeed;
 
-            if (inputHandler.sprintFlag)
+            if (isSprinting)
             {
-                speed = sprintSpeed;
-                playerManager.isSprinting = true;
-                moveDirection *= speed;
+                moveDirection = moveDirection * sprintingSpeed;
             }
             else
             {
-                moveDirection *= speed;
-
-            }
-
-
-            Vector3 projectedVelocity = Vector3.ProjectOnPlane(moveDirection, normalVector);
-            rigidbody.velocity = projectedVelocity;
-
-            animatorHandler.UpdateAnimatorValues(inputHandler.moveAmount, 0, playerManager.isSprinting);
-
-
-
-            if (animatorHandler.canRotate)
-            {
-                HandleRotation(delta);
-            }
-
-        }
-
-        public void HandleRollingAndSprinting(float delta)
-        {
-            if (animatorHandler.anim.GetBool("isinteracting"))
-            return;
-            
-           if (inputHandler.rollFlag)
-            {
-                moveDirection = cameraObject.forward * inputHandler.vertical;
-                moveDirection += cameraObject.right * inputHandler.horizontal;
-
-                if (inputHandler.moveAmount > 0)
+                if (inputManager.moveAmount >= 0.5f)
                 {
-                    animatorHandler.PlayTargetAnimation("Rolling", true);
-                    moveDirection.y = 0;
-                    Quaternion rollRotation = Quaternion.LookRotation(moveDirection);
-                    myTransform.rotation = rollRotation;
+                    moveDirection = moveDirection * runningSpeed;
                 }
                 else
                 {
-                    animatorHandler.PlayTargetAnimation("Backstep", true);
+                    moveDirection = moveDirection * walkingSpeed;
                 }
             }
-            if (inputHandler.sprintFlag)
-            {   // samodzielna zmiana chuj wie czy tak maa byc isSprinting = true;
-                playerManager.isSprinting = true;
+
+            
+
+            Vector3 movementVelocity = moveDirection;
+            playerRigidbody.velocity = movementVelocity;
+        }
+
+        private void HandleRotation()
+        {
+
+            if (isJumping)
+            {
+                return;
+            }
+            Vector3 targetDirection = Vector3.zero;
+
+            targetDirection = cameraObject.forward * inputManager.verticalInput;
+            targetDirection = targetDirection + cameraObject.right * inputManager.horizontalInput;
+            targetDirection.Normalize();
+            targetDirection.y = 0;
+
+            if (targetDirection == Vector3.zero)
+            {
+                targetDirection = transform.forward;
+            }
+
+            Quaternion targetRotation = Quaternion.LookRotation(targetDirection);
+            Quaternion playerRotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+
+            transform.rotation = playerRotation;
+        }
+
+        private void HandleFallingAndLanding()
+        {
+            RaycastHit hit;
+            Vector3 rayCastOrigin = transform.position;
+            rayCastOrigin.y = rayCastOrigin.y + rayCastHeightOffSet;
+
+            if (!isGrounded && !isJumping)
+            {
+                if (!playerManager.isinteracting)
+                {
+                    animatorManager.PlayTargetAnimation("Falling", true);
+                }
+
+                inAirTimer = inAirTimer + Time.deltaTime;
+
+                playerRigidbody.AddForce(transform.forward * leapingVelocity);
+                playerRigidbody.AddForce(Vector3.down * fallingVelocity * inAirTimer);
+            }
+
+            if (Physics.SphereCast(rayCastOrigin, 0.2f, Vector3.down, out hit, 0.5f, groundLayer))
+            {
+                if (!isGrounded && !playerManager.isinteracting)
+                {
+                    animatorManager.PlayTargetAnimation("Land", true);
+                }
+                Vector3 rayCastHitPoint = hit.point;
+                inAirTimer = 0;
+                isGrounded = true;
+            }
+            else
+            {
+                isGrounded = false;
             }
         }
-        #endregion
+
+        public void HandleJumping()
+        {
+            if (isGrounded)
+            {
+                animatorManager.animator.SetBool("isJumping", true);
+                animatorManager.PlayTargetAnimation("Jump", false);
+
+                float jumpingVelocity = Mathf.Sqrt(-2 * gravityIntensity * jumpHeight);
+                Vector3 playerVelocity = moveDirection;
+                playerVelocity.y = jumpingVelocity;
+                playerRigidbody.velocity = playerVelocity;
+            }
+        }
+
+        public void HandleRolling()
+        {
+            if (animatorManager.animator.GetBool("isInteracting") || !isGrounded)
+            {
+                return;
+            }
+
+            if (inputManager.rollFlag)
+            {
+                moveDirection = cameraObject.forward * inputManager.verticalInput;
+                moveDirection += cameraObject.right * inputManager.horizontalInput;
+                Debug.Log("Wykona³o siê");
+
+                if (inputManager.moveAmount > 0)
+                {
+                    animatorManager.PlayTargetAnimation("Rolling", false);
+                    moveDirection.y = 0;
+                    Quaternion rollRotation = Quaternion.LookRotation(moveDirection);
+                    transform.rotation = rollRotation;
+                }
+                else
+                {
+                    animatorManager.PlayTargetAnimation("Backstep", true);
+                }
+            }
+        }
     }
 }

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace AoM2
+namespace AoM
 {
     public class CameraManager : MonoBehaviour
     {

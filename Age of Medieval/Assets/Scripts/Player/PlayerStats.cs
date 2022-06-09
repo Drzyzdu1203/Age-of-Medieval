@@ -11,11 +11,11 @@ namespace AoM
 
         public HealthBar healthbar;
 
-        AnimatorHandler animatorHandler;
+        AnimationManager animatorHandler;
 
         private void Awake()
         {
-            animatorHandler = GetComponentInChildren<AnimatorHandler>();
+            animatorHandler = GetComponentInChildren<AnimationManager>();
         }
 
         void Start()

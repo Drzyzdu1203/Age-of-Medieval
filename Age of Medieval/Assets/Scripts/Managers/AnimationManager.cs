@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace AoM2
+namespace AoM
 {
     public class AnimationManager : MonoBehaviour
     {
@@ -87,6 +87,8 @@ namespace AoM2
 
             animator.SetFloat(horizontal, snappedHorizontal, 0.1f, Time.deltaTime);
             animator.SetFloat(vertical, snappedVertical, 0.1f, Time.deltaTime);
+            Debug.Log(snappedVertical);
+            Debug.Log(snappedHorizontal);
         }
     }
 

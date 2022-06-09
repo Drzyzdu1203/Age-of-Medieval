@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace AoM2
+namespace AoM
 {
     public class InputManager : MonoBehaviour
     {
-        PlayerControls2 playerControls;
+        PlayerControls playerControls;
         PlayerLocomotion playerLocomotion;
         AnimationManager animationManager;
 
@@ -36,7 +36,7 @@ namespace AoM2
         {
             if (playerControls == null)
             {
-                playerControls = new PlayerControls2();
+                playerControls = new PlayerControls();
                 playerControls.PlayerMovement.Movement.performed += i => movementInput = i.ReadValue<Vector2>();
 
                 playerControls.PlayerMovement.Camera.performed += i => cameraInput = i.ReadValue<Vector2>();
