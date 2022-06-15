@@ -12,6 +12,9 @@ namespace AoM
         public float mouseX;
         public float mouseY;
 
+        public bool lightAttack_Input;
+        public bool heavyAttack_Input;
+
         public bool b_Input;
         public bool jump_input;//
         public bool sprint_input;//
@@ -19,17 +22,18 @@ namespace AoM
         public bool sprintFlag;
         public float rollInputTimer;
         
-
-
         PlayerControls inputActions;
-
+        PlayerAttacker playerAttacker;
+        PlayerInventory playerInventory;
 
         Vector2 movementInput;
         Vector2 cameraInput;
 
-
-
-
+        private void Awake()
+        {
+            playerAttacker = GetComponent<PlayerAttacker>();
+            playerInventory = GetComponent<PlayerInventory>();  
+        }
         public void OnEnable()
         {
             if (inputActions == null)
@@ -51,6 +55,7 @@ namespace AoM
         {
             MoveInput(delta);
             HandleRollInput(delta);
+            HandleAttackInput(delta);
         }
 
         private void MoveInput(float delta)
@@ -96,5 +101,20 @@ namespace AoM
             }
         }
 
+        private void HandleAttackInput(float delta)
+        {
+            inputActions.PlayerActions.LightAttack.performed += i => lightAttack_Input = true;
+            inputActions.PlayerActions.HeavyAttack.performed += i => heavyAttack_Input = true;
+
+            if(lightAttack_Input)
+            {
+                playerAttacker.HandleLightAttack(playerInventory.rightWeapon);
+            }
+
+            if (heavyAttack_Input)
+            {
+                playerAttacker.HandleHeavyAttack(playerInventory.rightWeapon);
+            }
+        }
     }
 }

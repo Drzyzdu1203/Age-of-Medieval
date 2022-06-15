@@ -52,7 +52,8 @@ namespace AoM
         {
             inputHandler.rollFlag = false;
             inputHandler.sprintFlag = false;
-            isSprinting = inputHandler.b_Input;
+            inputHandler.lightAttack_Input = false;
+            inputHandler.heavyAttack_Input = false;
 
             if(isInAir)
             {
