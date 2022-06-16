@@ -231,17 +231,6 @@ namespace AoM
                 }
             }
 
-            /*if(playerManager.isGrounded)
-            {
-                if(playerManager.isinteracting || inputHandler.moveAmount > 0)
-                {
-                    myTransform.position = Vector3.Lerp(myTransform.position, targetPosition, Time.deltaTime);
-                }
-                else
-                {
-                    myTransform.position = targetPosition;
-                }
-            }*/
             if (playerManager.isinteracting || inputHandler.moveAmount > 0)
             {
                 myTransform.position = Vector3.Lerp (myTransform.position, targetPosition, Time.deltaTime / 0.1f);

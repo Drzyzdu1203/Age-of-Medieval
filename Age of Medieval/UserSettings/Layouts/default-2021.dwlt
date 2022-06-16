@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 1920
     height: 1007
   m_ShowMode: 4
-  m_Title: Game
+  m_Title: Hierarchy
   m_RootView: {fileID: 2}
   m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
@@ -119,7 +119,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 19
+  controlID: 121
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -144,7 +144,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 200}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 20
+  controlID: 49
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -169,7 +169,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 21
+  controlID: 50
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -180,7 +180,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 1
   m_Script: {fileID: 12006, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: GameView
+  m_Name: SceneView
   m_EditorClassIdentifier: 
   m_Children: []
   m_Position:
@@ -191,12 +191,12 @@ MonoBehaviour:
     height: 683
   m_MinSize: {x: 201, y: 221}
   m_MaxSize: {x: 4001, y: 4021}
-  m_ActualView: {fileID: 12}
+  m_ActualView: {fileID: 13}
   m_Panes:
   - {fileID: 13}
   - {fileID: 12}
   - {fileID: 14}
-  m_Selected: 1
+  m_Selected: 0
   m_LastSelected: 2
 --- !u!114 &9
 MonoBehaviour:
@@ -217,8 +217,8 @@ MonoBehaviour:
     y: 0
     width: 278
     height: 683
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 202, y: 221}
+  m_MaxSize: {x: 4002, y: 4021}
   m_ActualView: {fileID: 15}
   m_Panes:
   - {fileID: 15}
@@ -270,8 +270,8 @@ MonoBehaviour:
     y: 0
     width: 298
     height: 957
-  m_MinSize: {x: 275, y: 50}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 276, y: 71}
+  m_MaxSize: {x: 4001, y: 4021}
   m_ActualView: {fileID: 18}
   m_Panes:
   - {fileID: 18}
@@ -449,7 +449,7 @@ MonoBehaviour:
       floating: 0
       collapsed: 0
       displayed: 1
-      snapOffset: {x: 0, y: 0}
+      snapOffset: {x: 0, y: 25}
       snapOffsetDelta: {x: 0, y: 0}
       snapCorner: 0
       id: unity-transform-toolbar
@@ -597,9 +597,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 51.847115, y: -30.531008, z: 3.149584}
+    m_Target: {x: 52.36397, y: -29.691938, z: 1.0656681}
     speed: 2
-    m_Value: {x: 51.847115, y: -30.531008, z: 3.149584}
+    m_Value: {x: 52.36397, y: -29.691938, z: 1.0656681}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -646,9 +646,9 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: 0.22827269, y: 0.6678304, z: -0.2271833, w: 0.67104155}
+    m_Target: {x: 0.22321258, y: 0.68951523, z: -0.23802723, w: 0.64660877}
     speed: 2
-    m_Value: {x: 0.22827101, y: 0.66782546, z: -0.22718161, w: 0.6710366}
+    m_Value: {x: 0.22321092, y: 0.68951005, z: -0.23802544, w: 0.64660394}
   m_Size:
     m_Target: 36.170704
     speed: 2
@@ -779,14 +779,14 @@ MonoBehaviour:
       e31: 0
       e32: 0
       e33: 1
-    - e00: 0.95838034
+    - e00: 0.9676834
       e01: 0
       e02: 0
-      e03: -38.424774
+      e03: -123.47998
       e10: 0
-      e11: 0.95838034
+      e11: 0.9676834
       e12: 0
-      e13: 38.186523
+      e13: 343.51727
       e20: 0
       e21: 0
       e22: 1
@@ -811,14 +811,14 @@ MonoBehaviour:
       e31: 0
       e32: 0
       e33: 1
-    - e00: 0.9009177
+    - e00: 0.9676834
       e01: 0
       e02: 0
-      e03: -89.60376
+      e03: -123.47998
       e10: 0
-      e11: 0.9009177
+      e11: 0.9676834
       e12: 0
-      e13: 349.735
+      e13: 343.51727
       e20: 0
       e21: 0
       e22: 1
@@ -874,9 +874,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: b25e0000
-      m_LastClickedID: 0
-      m_ExpandedIDs: 18fbffff
+      m_SelectedIDs: e4faffff
+      m_LastClickedID: -1308
+      m_ExpandedIDs: 18fbffffb45d00001a5e0000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -941,22 +941,22 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Items/Weapons
+    - Assets/Animations/Combat
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Items/Weapons
+  - Assets/Animations/Combat
   m_LastFoldersGridSize: -1
   m_LastProjectPath: E:\Unity projects\Age-of-Medieval\Age of Medieval
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 151}
-    m_SelectedIDs: 42850000
-    m_LastClickedID: 34114
-    m_ExpandedIDs: 00000000667b0000687b00006a7b00006c7b00006e7b0000707b0000727b0000747b0000767b0000787b00007a7b00007c7b00007e7b0000807b0000827b0000847b0000da7b0000
+    scrollPos: {x: 0, y: 31}
+    m_SelectedIDs: ba7b0000
+    m_LastClickedID: 31674
+    m_ExpandedIDs: 00000000707b0000727b0000747b0000767b0000787b00007a7b00007c7b00007e7b0000807b0000827b0000847b0000867b0000887b00008a7b00008c7b00008e7b0000e47b0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -984,7 +984,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000667b0000687b00006a7b00006c7b00006e7b0000707b0000727b0000747b0000767b0000787b00007a7b00007c7b00007e7b0000807b0000827b0000847b0000
+    m_ExpandedIDs: 00000000707b0000727b0000747b0000767b0000787b00007a7b00007c7b00007e7b0000807b0000827b0000847b0000867b0000887b00008a7b00008c7b00008e7b0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1012,7 +1012,7 @@ MonoBehaviour:
     m_SelectedInstanceIDs: 
     m_LastClickedInstanceID: 0
     m_HadKeyboardFocusLastEvent: 1
-    m_ExpandedInstanceIDs: c62300006401010052bd01009c5d0000965d0000408101001a83010020610000126100001661000000000000567400005a74000064740000b69b02005a8b0100984a0200244c020074660000bc2200004acf00003ccf000040cf00004ecf00003a810000445e0000d4ba0000e6b700007e3f0000e2b80000e8b8000056b900005cb9000078ba00007eba0000a03f0000e4bb0000b4bb00005cbb000044bb00003cbb000036bb00006a250000deb800005c84000084810000008000000a800000d2800000d8800000e2800000e8800000cc8000006a5e0000f6800000307e000042800000667e0000f2800000d85e0000
+    m_ExpandedInstanceIDs: c62300006401010052bd01009c5d0000965d0000408101001a83010020610000126100001661000000000000567400005a74000064740000b69b02005a8b0100984a0200244c020074660000bc2200004acf00003ccf000040cf00004ecf00003a810000445e0000d4ba0000e6b700007e3f0000e2b80000e8b8000056b900005cb9000078ba00007eba0000a03f0000e4bb0000b4bb00005cbb000044bb00003cbb000036bb00006a250000deb800005c84000084810000008000000a800000d2800000d8800000e2800000e8800000cc8000006a5e0000f6800000307e000042800000667e0000f2800000d85e0000fe800000de5e0000128100001681000062800000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
