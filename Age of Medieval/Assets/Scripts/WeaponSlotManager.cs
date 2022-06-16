@@ -42,7 +42,7 @@ namespace AoM
             }
         }
 
-        #region Handle Weapon's Damage Collider
+        //#region Handle Weapon's Damage Collider
        
 
         private void LoadLeftWeaponDamageCollider()
@@ -75,6 +75,6 @@ namespace AoM
             leftHandDamageCollider.DisaleDamageCollider();
         }
 
-        #endregion
+        //#endregion
     }
 }

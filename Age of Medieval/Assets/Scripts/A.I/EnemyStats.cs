@@ -32,10 +32,10 @@ namespace AoM
 
             animator.Play("infantry_05_damage");
 
-            if (currentHealth <= 0 )
+            if (currentHealth <= 0)
             {
                 currentHealth = 0;
-                animator.Play("infantry_06_death_A");
+                animator.Play("twohanded_06_death_B");
             }
         }
     }
