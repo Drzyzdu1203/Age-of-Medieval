@@ -26,7 +26,7 @@ namespace AoM
 
 
         }
-        
+
         public void UpdateAnimatorValues(float verticalMovement, float horizontalMovement, bool isSprinting)
         {
             #region Vertical
@@ -99,11 +99,21 @@ namespace AoM
             canRotate = false;
         }
 
+        public void EnableCombo()
+        {
+            anim.SetBool("canDoCombo", true);
+        }
+
+        public void DisableCombo()
+        {
+            anim.SetBool("canDoCombo", false);
+        }
+
         private void OnAnimatorMove()
         {
-            if (playerManager.isinteracting == false)
-            return;
-            
+            if (playerManager.isInteracting == false)
+                return;
+
             float delta = Time.deltaTime;
             playerLocomotion.rigidbody.drag = 0;
             Vector3 deltaPosition = anim.deltaPosition;
@@ -111,7 +121,7 @@ namespace AoM
             Vector3 velocity = deltaPosition / delta;
             playerLocomotion.rigidbody.velocity = velocity;
         }
-        
-       
+
+
     }
 }

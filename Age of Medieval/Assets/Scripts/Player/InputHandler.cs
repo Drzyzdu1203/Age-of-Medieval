@@ -12,19 +12,20 @@ namespace AoM
         public float mouseX;
         public float mouseY;
 
-        public bool lightAttack_Input;
-        public bool heavyAttack_Input;
-
         public bool b_Input;
-        public bool jump_input;//
-        public bool sprint_input;//
+        public bool rb_Input;
+        public bool rt_Input;
+        public bool jump_Input;
+
         public bool rollFlag;
         public bool sprintFlag;
+        public bool comboFlag;
         public float rollInputTimer;
         
         PlayerControls inputActions;
         PlayerAttacker playerAttacker;
         PlayerInventory playerInventory;
+        PlayerManager playerManager;
 
         Vector2 movementInput;
         Vector2 cameraInput;
@@ -32,7 +33,8 @@ namespace AoM
         private void Awake()
         {
             playerAttacker = GetComponent<PlayerAttacker>();
-            playerInventory = GetComponent<PlayerInventory>();  
+            playerInventory = GetComponent<PlayerInventory>();
+            playerManager = GetComponent<PlayerManager>();
         }
         public void OnEnable()
         {
@@ -56,6 +58,8 @@ namespace AoM
             MoveInput(delta);
             HandleRollInput(delta);
             HandleAttackInput(delta);
+
+            HandleJumpInput();
         }
 
         private void MoveInput(float delta)
@@ -70,30 +74,17 @@ namespace AoM
         private void HandleRollInput(float delta)
         {
             b_Input = inputActions.PlayerActions.Roll.phase == UnityEngine.InputSystem.InputActionPhase.Started;
-            b_Input = inputActions.PlayerActions.Roll.triggered;//
-            sprint_input = inputActions.PlayerActions.Sprint.phase == UnityEngine.InputSystem.InputActionPhase.Performed; //
-
-
-            if (sprint_input)
-            {
-                sprintFlag = true;
-                Debug.Log("Wcisniety Shift");
-            }
-            else
-            {
-                sprintFlag = false;
-                
-            }
 
             if (b_Input)
             {
-                rollInputTimer += delta;             
+                rollInputTimer += delta;
+                sprintFlag = true;
             }
             else
             {
                 if (rollInputTimer > 0 && rollInputTimer < 0.5f)
                 {
-                    //sprintFlag = false;
+                    sprintFlag = false;
                     rollFlag = true;
                 }
 
@@ -103,18 +94,38 @@ namespace AoM
 
         private void HandleAttackInput(float delta)
         {
-            inputActions.PlayerActions.LightAttack.performed += i => lightAttack_Input = true;
-            inputActions.PlayerActions.HeavyAttack.performed += i => heavyAttack_Input = true;
+            inputActions.PlayerActions.RB.performed += i => rb_Input = true;
+            inputActions.PlayerActions.RT.performed += i => rt_Input = true;
 
-            if(lightAttack_Input)
+            if (rb_Input)
             {
-                playerAttacker.HandleLightAttack(playerInventory.rightWeapon);
+                if (playerManager.canDoCombo)
+                {
+                    comboFlag = true;
+                    playerAttacker.HandleWeaponCombo(playerInventory.rightWeapon);
+                    comboFlag = false;
+                }
+                else
+                {
+                    if (playerManager.isInteracting)
+                        return;
+
+                    if (playerManager.canDoCombo)
+                        return;
+
+                    playerAttacker.HandleLightAttack(playerInventory.rightWeapon);
+                }
             }
 
-            if (heavyAttack_Input)
+            if (rt_Input)
             {
                 playerAttacker.HandleHeavyAttack(playerInventory.rightWeapon);
             }
+        }
+
+        private void HandleJumpInput()
+        {
+            inputActions.PlayerActions.Jump.performed += i => jump_Input = true;
         }
     }
 }

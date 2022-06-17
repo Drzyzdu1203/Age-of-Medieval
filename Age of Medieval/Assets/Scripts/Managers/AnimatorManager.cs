@@ -7,10 +7,10 @@ namespace AoM
     public class AnimatorManager : MonoBehaviour
     {
         public Animator anim;
-        public void PlayTargetAnimation(string targetAnim, bool isinteracting)
+        public void PlayTargetAnimation(string targetAnim, bool isInteracting)
         {
-            anim.applyRootMotion = isinteracting;
-            anim.SetBool("isinteracting", isinteracting);
+            anim.applyRootMotion = isInteracting;
+            anim.SetBool("isInteracting", isInteracting);
             anim.CrossFade(targetAnim, 0.2f);
         }
 
