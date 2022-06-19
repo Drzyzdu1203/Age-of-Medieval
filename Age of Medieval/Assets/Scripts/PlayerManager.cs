@@ -16,9 +16,10 @@ namespace AoM
         public bool isSprinting;
         public bool isInAir;
         public bool isGrounded;
+        public bool canDoCombo;
         private void Awake()
         {
-            cameraHandler = CameraHandler.singleton;
+            cameraHandler = FindObjectOfType<CameraHandler>();
         }
         void Start()
         {
@@ -31,6 +32,7 @@ namespace AoM
         {
             float delta = Time.deltaTime;
             isinteracting = anim.GetBool("isinteracting");
+            canDoCombo = anim.GetBool("canDoCombo");
 
             inputHandler.TickInput(delta);
             playerLocomotion.HandleMovement(delta);

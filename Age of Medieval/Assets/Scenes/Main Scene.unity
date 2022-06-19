@@ -1489,6 +1489,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9bb4b5687f0bb94ca8e9c0d5317ba29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lastAttack: 
 --- !u!1 &1523751013
 GameObject:
   m_ObjectHideFlags: 0
@@ -2096,15 +2097,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 470941574084164124, guid: 581e3a83b910bd84e9e7554e0a6eb28f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: -9.305441
+      value: -0.43508568
       objectReference: {fileID: 0}
     - target: {fileID: 470941574084164124, guid: 581e3a83b910bd84e9e7554e0a6eb28f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 5.4093437
+      value: 2.483982
       objectReference: {fileID: 0}
     - target: {fileID: 470941574084164124, guid: 581e3a83b910bd84e9e7554e0a6eb28f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 176.62544
+      value: 173.1958
       objectReference: {fileID: 0}
     - target: {fileID: 492665858462894077, guid: 581e3a83b910bd84e9e7554e0a6eb28f, type: 3}
       propertyPath: m_Layer
@@ -2180,7 +2181,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4582848393045967960, guid: 581e3a83b910bd84e9e7554e0a6eb28f, type: 3}
       propertyPath: m_TagString
-      value: Hittable
+      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 4582848393045967962, guid: 581e3a83b910bd84e9e7554e0a6eb28f, type: 3}
       propertyPath: isInAir
@@ -2405,6 +2406,10 @@ PrefabInstance:
     - target: {fileID: 4582848393666413823, guid: 581e3a83b910bd84e9e7554e0a6eb28f, type: 3}
       propertyPath: m_Layer
       value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4582848393666413825, guid: 581e3a83b910bd84e9e7554e0a6eb28f, type: 3}
+      propertyPath: m_Name
+      value: Player model
       objectReference: {fileID: 0}
     - target: {fileID: 4582848393666413825, guid: 581e3a83b910bd84e9e7554e0a6eb28f, type: 3}
       propertyPath: m_Layer

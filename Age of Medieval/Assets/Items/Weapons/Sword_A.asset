@@ -17,4 +17,5 @@ MonoBehaviour:
   modelPrefab: {fileID: 254104694888737250, guid: f0b6568be42bcf844ac82dffa43ddca2, type: 3}
   isUnarmed: 0
   infantry_04_attack_A: infantry_04_attack_A
+  infantry_04_attack_B: infantry_04_attack_B
   meleeAttack_TwoHanded: meleeAttack_TwoHanded
