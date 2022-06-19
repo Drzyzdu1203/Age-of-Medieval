@@ -191,7 +191,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "RT",
+                    "name": "LightAttack",
                     "type": "Button",
                     "id": "c0508f75-8432-4a06-9f24-b0e7c33738d0",
                     "expectedControlType": "Button",
@@ -200,7 +200,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "RB",
+                    "name": "HeavyAttack",
                     "type": "Button",
                     "id": "9b63baf1-0f64-4aa8-80e0-852fff1cfbcf",
                     "expectedControlType": "Button",
@@ -283,7 +283,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "RT",
+                    "action": "LightAttack",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -294,7 +294,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "RT",
+                    "action": "LightAttack",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -305,7 +305,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "RB",
+                    "action": "HeavyAttack",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -316,7 +316,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "RB",
+                    "action": "HeavyAttack",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

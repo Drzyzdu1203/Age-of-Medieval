@@ -46,7 +46,7 @@ namespace AoM
         {
             HandleRecoveryTimer();
 
-            isinteracting = enemyAnimatorManager.anim.GetBool("isInteracting");
+            isinteracting = enemyAnimatorManager.anim.GetBool("isinteracting");
         }
 
         private void FixedUpdate()

@@ -39,7 +39,7 @@ namespace AoM
         [SerializeField]
         float rotationSpeed = 10;
         [SerializeField]
-        float fallingSpeed = 25;
+        float fallingSpeed = 18;
         
 
         void Start()
@@ -88,7 +88,7 @@ namespace AoM
             if (inputHandler.rollFlag)
              return;
 
-            if (playerManager.isInteracting)
+            if (playerManager.isinteracting)
                 return;
 
             moveDirection = cameraObject.forward * inputHandler.vertical;
@@ -135,7 +135,7 @@ namespace AoM
 
         public void HandleRollingAndSprinting(float delta)
         {
-            if (animatorHandler.anim.GetBool("isInteracting"))
+            if (animatorHandler.anim.GetBool("isinteracting"))
             return;
             
            if (inputHandler.rollFlag)
@@ -219,7 +219,7 @@ namespace AoM
 
                 if(playerManager.isInAir == false)
                 {
-                    if(playerManager.isInteracting == false)
+                    if(playerManager.isinteracting == false)
                     {
                         animatorHandler.PlayTargetAnimation("Falling", true);
                     }
@@ -231,32 +231,13 @@ namespace AoM
                 }
             }
 
-            if (playerManager.isInteracting || inputHandler.moveAmount > 0)
+            if (playerManager.isinteracting || inputHandler.moveAmount > 0)
             {
                 myTransform.position = Vector3.Lerp (myTransform.position, targetPosition, Time.deltaTime / 0.1f);
             }
             else
             {
                 myTransform.position = targetPosition;
-            }
-        }
-
-        public void HandleJumping()
-        {
-            if (playerManager.isInteracting)
-                return;
-
-            if (inputHandler.jump_Input)
-            {
-                if (inputHandler.moveAmount > 0)
-                {
-                    moveDirection = cameraObject.forward * inputHandler.vertical;
-                    moveDirection += cameraObject.right * inputHandler.horizontal;
-                    animatorHandler.PlayTargetAnimation("Jump", true);
-                    moveDirection.y = 0;
-                    Quaternion jumpRotation = Quaternion.LookRotation(moveDirection);
-                    myTransform.rotation = jumpRotation;
-                }
             }
         }
 

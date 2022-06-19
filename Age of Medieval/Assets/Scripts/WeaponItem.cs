@@ -12,7 +12,6 @@ namespace AoM
 
         [Header("One Handed Attack Animations")]
         public string infantry_04_attack_A;
-        public string infantry_04_attack_B;
         public string meleeAttack_TwoHanded;
     }
 }

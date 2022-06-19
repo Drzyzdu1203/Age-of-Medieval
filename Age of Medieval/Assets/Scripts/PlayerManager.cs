@@ -11,16 +11,14 @@ namespace AoM
         CameraHandler cameraHandler;
         PlayerLocomotion playerLocomotion;
 
-        public bool isInteracting;
-
+        public bool isinteracting;
         [Header("Player Flags")]
         public bool isSprinting;
         public bool isInAir;
         public bool isGrounded;
-        public bool canDoCombo;
         private void Awake()
         {
-            cameraHandler = FindObjectOfType<CameraHandler>();
+            cameraHandler = CameraHandler.singleton;
         }
         void Start()
         {
@@ -32,15 +30,13 @@ namespace AoM
         void Update()
         {
             float delta = Time.deltaTime;
-            isInteracting = anim.GetBool("isInteracting");
-            canDoCombo = anim.GetBool("canDoCombo");
-            anim.SetBool("isInAir", isInAir);
+            isinteracting = anim.GetBool("isinteracting");
 
             inputHandler.TickInput(delta);
             playerLocomotion.HandleMovement(delta);
             playerLocomotion.HandleRollingAndSprinting(delta);
             playerLocomotion.HandleFalling(delta, playerLocomotion.moveDirection);
-            playerLocomotion.HandleJumping();
+            
         }
         private void FixedUpdate()
         {
@@ -52,16 +48,14 @@ namespace AoM
                 cameraHandler.HandleCameraRotation(delta, inputHandler.mouseX, inputHandler.mouseY);
             }
         }
-
         private void LateUpdate()
         {
             inputHandler.rollFlag = false;
             inputHandler.sprintFlag = false;
-            inputHandler.rb_Input = false;
-            inputHandler.rt_Input = false;
-            inputHandler.jump_Input = false;
+            inputHandler.lightAttack_Input = false;
+            inputHandler.heavyAttack_Input = false;
 
-            if (isInAir)
+            if(isInAir)
             {
                 playerLocomotion.inAirTimer = playerLocomotion.inAirTimer + Time.deltaTime;
             }
