@@ -15,12 +15,19 @@ namespace AoM
         public bool lightAttack_Input;
         public bool heavyAttack_Input;
 
+        public bool d_Pad_Up;
+        public bool d_Pad_Down;
+        public bool d_Pad_Left;
+        public bool d_Pad_Right;
+
         public bool b_Input;
         public bool jump_input;//
         public bool sprint_input;//
+
         public bool rollFlag;
         public bool sprintFlag;
         public bool comboFlag;
+
         public float rollInputTimer;
         
         PlayerControls inputActions;
@@ -59,6 +66,7 @@ namespace AoM
             MoveInput(delta);
             HandleRollInput(delta);
             HandleAttackInput(delta);
+            HandleQuickSlotsInput();
         }
 
         private void MoveInput(float delta)
@@ -132,6 +140,20 @@ namespace AoM
             if (heavyAttack_Input)
             {
                 playerAttacker.HandleHeavyAttack(playerInventory.rightWeapon);
+            }
+        }
+        private void HandleQuickSlotsInput()
+        {
+            inputActions.PlayerQuickSlots.DPadRight.performed += i => d_Pad_Right = true;
+            inputActions.PlayerQuickSlots.DPadLeft.performed += i => d_Pad_Left = true;
+
+            if (d_Pad_Right)
+            {
+                playerInventory.ChangeRightWeapon();
+            }
+            else if (d_Pad_Left)
+            {
+                playerInventory.ChangeLeftWeapon();
             }
         }
     }

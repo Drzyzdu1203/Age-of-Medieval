@@ -12,11 +12,13 @@ namespace AoM
         PlayerLocomotion playerLocomotion;
 
         public bool isinteracting;
+
         [Header("Player Flags")]
         public bool isSprinting;
         public bool isInAir;
         public bool isGrounded;
         public bool canDoCombo;
+
         private void Awake()
         {
             cameraHandler = FindObjectOfType<CameraHandler>();
@@ -37,9 +39,9 @@ namespace AoM
             inputHandler.TickInput(delta);
             playerLocomotion.HandleMovement(delta);
             playerLocomotion.HandleRollingAndSprinting(delta);
-            playerLocomotion.HandleFalling(delta, playerLocomotion.moveDirection);
-            
+            playerLocomotion.HandleFalling(delta, playerLocomotion.moveDirection);           
         }
+
         private void FixedUpdate()
         {
             float delta = Time.fixedDeltaTime;
@@ -56,8 +58,12 @@ namespace AoM
             inputHandler.sprintFlag = false;
             inputHandler.lightAttack_Input = false;
             inputHandler.heavyAttack_Input = false;
+            inputHandler.d_Pad_Up = false;
+            inputHandler.d_Pad_Down = false;
+            inputHandler.d_Pad_Left = false;
+            inputHandler.d_Pad_Right = false;
 
-            if(isInAir)
+            if (isInAir)
             {
                 playerLocomotion.inAirTimer = playerLocomotion.inAirTimer + Time.deltaTime;
             }
