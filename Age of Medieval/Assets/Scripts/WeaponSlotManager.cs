@@ -12,8 +12,15 @@ namespace AoM
         DamageCollider leftHandDamageCollider;
         DamageCollider rightHandDamageCollider;
 
+        Animator animator;
+
+        QuickSlotsUI quickSlotsUI;
+
         private void Awake()
         {
+            animator = GetComponent<Animator>();
+            quickSlotsUI = FindObjectOfType<QuickSlotsUI>();
+
             WeaponHolderSlot[] weaponHolderSlots = GetComponentsInChildren<WeaponHolderSlot>();
             foreach (WeaponHolderSlot weaponSlot in weaponHolderSlots)
             {
@@ -30,20 +37,23 @@ namespace AoM
 
         public void LoadWeaponOnSlot(WeaponItem weaponItem, bool isLeft)
         {
-            if(isLeft)
+            if (isLeft)
             {
                 leftHandSlot.LoadWeaponModel(weaponItem);
                 LoadLeftWeaponDamageCollider();
+                quickSlotsUI.UpdateWeaponQuickSlotsUI(true, weaponItem);
+
             }
             else
             {
                 rightHandSlot.LoadWeaponModel(weaponItem);
                 LoadRightWeaponDamageCollider();
+                quickSlotsUI.UpdateWeaponQuickSlotsUI(false, weaponItem);
+
             }
         }
 
-        //#region Handle Weapon's Damage Collider
-       
+        #region Handle Weapon's Damage Collider
 
         private void LoadLeftWeaponDamageCollider()
         {
@@ -65,16 +75,16 @@ namespace AoM
             leftHandDamageCollider.EnableDamageCollider();
         }
 
-        public void CloseRightDamageCollider()
+        public void CloseRightHandDamageCollider()
         {
             rightHandDamageCollider.DisaleDamageCollider();
         }
 
-        public void CloseLeftDamageCollider()
+        public void CloseLeftHandDamageCollider()
         {
             leftHandDamageCollider.DisaleDamageCollider();
         }
 
-        //#endregion
+        #endregion
     }
 }

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1e55ceb03871aa4bb6fc056d662433d, type: 3}
   m_Name: 2H_Axe_A
   m_EditorClassIdentifier: 
-  itemIcon: {fileID: 0}
+  itemIcon: {fileID: 21300000, guid: 29c839c845590434d96a96ca41bce4ca, type: 3}
   itemName: 2H_Axe_A
   modelPrefab: {fileID: 4953350797225055572, guid: 00c1398f64d2d6042806ba4f9a6826f9, type: 3}
   isUnarmed: 0
