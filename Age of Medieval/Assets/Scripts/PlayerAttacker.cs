@@ -8,11 +8,13 @@ namespace AoM
     {
         AnimatorHandler animatorHandler;
         InputHandler inputHandler;
+        WeaponSlotManager weaponSlotManager;
         public string lastAttack;
 
         private void Awake()
         {
             animatorHandler = GetComponentInChildren<AnimatorHandler>();
+            weaponSlotManager = GetComponentInChildren<WeaponSlotManager>();
             inputHandler = GetComponent<InputHandler>();
         }
         public void HandleWeaponCombo(WeaponItem weapon)
@@ -30,13 +32,15 @@ namespace AoM
         }
         public void HandleLightAttack(WeaponItem weapon)
         {
+            weaponSlotManager.attackingWeapon = weapon;
             animatorHandler.PlayTargetAnimation(weapon.infantry_04_attack_A, true);
             lastAttack = weapon.infantry_04_attack_A;
         }
         public void HandleHeavyAttack(WeaponItem weapon)
         {
+            weaponSlotManager.attackingWeapon = weapon;
             animatorHandler.PlayTargetAnimation(weapon.meleeAttack_TwoHanded, true);
-            lastAttack = weapon.infantry_04_attack_A;
+            lastAttack = weapon.meleeAttack_TwoHanded;
         }
     }
 }

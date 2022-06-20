@@ -14,5 +14,10 @@ namespace AoM
         public string infantry_04_attack_A;
         public string infantry_04_attack_B;
         public string meleeAttack_TwoHanded;
+
+        [Header("Stamina Costs")]
+        public int baseStamina;
+        public float lightAttackMultiplier;
+        public float heavyAttackMultiplier;
     }
 }
