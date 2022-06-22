@@ -21,9 +21,9 @@ namespace AoM
         public bool d_Pad_Right;
 
         public bool interaction_Input;
-        public bool b_Input;
-        public bool jump_input;//
-        public bool sprint_input;//
+        public bool roll_Input;
+        public bool jump_Input;
+       
 
         public bool rollFlag;
         public bool sprintFlag;
@@ -69,6 +69,7 @@ namespace AoM
             HandleAttackInput(delta);
             HandleQuickSlotsInput();
             HandleInteractingButtonInput();
+            HandleJumpInput();
         }
 
         private void MoveInput(float delta)
@@ -82,31 +83,18 @@ namespace AoM
 
         private void HandleRollInput(float delta)
         {
-            b_Input = inputActions.PlayerActions.Roll.phase == UnityEngine.InputSystem.InputActionPhase.Started;
-            b_Input = inputActions.PlayerActions.Roll.triggered;//
-            sprint_input = inputActions.PlayerActions.Sprint.phase == UnityEngine.InputSystem.InputActionPhase.Performed; //
+            roll_Input = inputActions.PlayerActions.Roll.phase == UnityEngine.InputSystem.InputActionPhase.Performed;
 
-
-            if (sprint_input)
+            if (roll_Input)
             {
+                rollInputTimer += delta;
                 sprintFlag = true;
-                Debug.Log("Wcisniety Shift");
-            }
-            else
-            {
-                sprintFlag = false;
-                
-            }
-
-            if (b_Input)
-            {
-                rollInputTimer += delta;             
             }
             else
             {
                 if (rollInputTimer > 0 && rollInputTimer < 0.5f)
                 {
-                    //sprintFlag = false;
+                    sprintFlag = false;
                     rollFlag = true;
                 }
 
@@ -161,6 +149,10 @@ namespace AoM
         private void HandleInteractingButtonInput()
         {
             inputActions.PlayerActions.Interaction.performed += i => interaction_Input = true;
+        }
+        private void HandleJumpInput()
+        {
+            inputActions.PlayerActions.Jump.performed += i => jump_Input = true;
         }
     }
 }

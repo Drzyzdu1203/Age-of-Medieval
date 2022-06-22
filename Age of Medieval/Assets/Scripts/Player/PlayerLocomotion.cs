@@ -39,14 +39,18 @@ namespace AoM
         [SerializeField]
         float rotationSpeed = 10;
         [SerializeField]
-        float fallingSpeed = 18;
+        float fallingSpeed = 45;
+        [SerializeField]
+        float jumpForce = 700;
+
         
+        public bool jumpForceApplied;
 
         void Start()
         {
-            playerManager = GetComponent<PlayerManager>();  
+            playerManager = GetComponent<PlayerManager>();
             rigidbody = GetComponent<Rigidbody>();
-            inputHandler = GetComponent<InputHandler>();    
+            inputHandler = GetComponent<InputHandler>();
             animatorHandler = GetComponentInChildren<AnimatorHandler>();
             cameraObject = Camera.main.transform;
             myTransform = transform;
@@ -54,8 +58,22 @@ namespace AoM
 
             playerManager.isGrounded = true;
             ignoreForGroundCheck = ~(1 << 8 | 1 << 11);
-        }
 
+        }
+        private void FixedUpdate()
+        {
+            if (jumpForceApplied)
+            {
+                StartCoroutine(JumpCo());
+                rigidbody.AddForce(transform.up * jumpForce);
+
+            }
+        }
+        private IEnumerator JumpCo()
+        {
+            yield return new WaitForSeconds(0.5f);
+            jumpForceApplied = false;
+        }
 
         #region Movement
         Vector3 normalVector;
@@ -74,7 +92,7 @@ namespace AoM
 
             if (targetDir == Vector3.zero)
                 targetDir = myTransform.forward;
-            
+
             float rs = rotationSpeed;
 
             Quaternion tr = Quaternion.LookRotation(targetDir);
@@ -86,7 +104,7 @@ namespace AoM
         public void HandleMovement(float delta)
         {
             if (inputHandler.rollFlag)
-             return;
+                return;
 
             if (playerManager.isinteracting)
                 return;
@@ -95,7 +113,7 @@ namespace AoM
             moveDirection += cameraObject.right * inputHandler.horizontal;
             moveDirection.Normalize();
             moveDirection.y = 0;
-            
+
             float speed = movementSpeed;
 
             if (inputHandler.sprintFlag && inputHandler.moveAmount > 0.5)
@@ -118,27 +136,23 @@ namespace AoM
                 }
             }
 
-
             Vector3 projectedVelocity = Vector3.ProjectOnPlane(moveDirection, normalVector);
             rigidbody.velocity = projectedVelocity;
 
             animatorHandler.UpdateAnimatorValues(inputHandler.moveAmount, 0, playerManager.isSprinting);
 
-
-
             if (animatorHandler.canRotate)
             {
                 HandleRotation(delta);
             }
-
         }
 
         public void HandleRollingAndSprinting(float delta)
         {
             if (animatorHandler.anim.GetBool("isinteracting"))
-            return;
-            
-           if (inputHandler.rollFlag)
+                return;
+
+            if (inputHandler.rollFlag)
             {
                 moveDirection = cameraObject.forward * inputHandler.vertical;
                 moveDirection += cameraObject.right * inputHandler.horizontal;
@@ -155,10 +169,6 @@ namespace AoM
                     animatorHandler.PlayTargetAnimation("Backstep", true);
                 }
             }
-            if (inputHandler.sprintFlag)
-            {   // samodzielna zmiana chuj wie czy tak maa byc isSprinting = true;
-                playerManager.isSprinting = true;
-            }
         }
 
         public void HandleFalling(float delta, Vector3 moveDirection)
@@ -168,12 +178,12 @@ namespace AoM
             Vector3 origin = myTransform.position;
             origin.y += groundDetectionRayStartPoint;
 
-            if(Physics.Raycast(origin, myTransform.forward, out hit, 0.4f))
+            if (Physics.Raycast(origin, myTransform.forward, out hit, 0.4f))
             {
                 moveDirection = Vector3.zero;
             }
 
-            if(playerManager.isInAir)
+            if (playerManager.isInAir)
             {
                 rigidbody.AddForce(-Vector3.up * fallingSpeed);
                 rigidbody.AddForce(moveDirection * fallingSpeed / 10f);
@@ -186,24 +196,24 @@ namespace AoM
             targetPosition = myTransform.position;
 
             Debug.DrawRay(origin, -Vector3.up * minimumDistanceNeededToBeginFall, Color.red, 0.1f, false);
-            if(Physics.Raycast(origin, -Vector3.up, out hit, minimumDistanceNeededToBeginFall, ignoreForGroundCheck))
+            if (Physics.Raycast(origin, -Vector3.up, out hit, minimumDistanceNeededToBeginFall, ignoreForGroundCheck))
             {
                 normalVector = hit.normal;
                 Vector3 tp = hit.point;
                 playerManager.isGrounded = true;
                 targetPosition.y = tp.y;
 
-                if(playerManager.isInAir)
+                if (playerManager.isInAir)
                 {
-                    if(inAirTimer > 0.5f)
+                    if (inAirTimer > 0.5f)
                     {
-                        Debug.Log("nakurwiam w powietrzu od " + inAirTimer);
+                        Debug.Log("You were in the air for " + inAirTimer);
                         animatorHandler.PlayTargetAnimation("Land", true);
                         inAirTimer = 0;
                     }
                     else
                     {
-                        animatorHandler.PlayTargetAnimation("Locomotion", false);
+                        animatorHandler.PlayTargetAnimation("Empty", false);
                         inAirTimer = 0;
                     }
 
@@ -212,14 +222,14 @@ namespace AoM
             }
             else
             {
-                if(playerManager.isGrounded)
+                if (playerManager.isGrounded)
                 {
                     playerManager.isGrounded = false;
                 }
 
-                if(playerManager.isInAir == false)
+                if (playerManager.isInAir == false)
                 {
-                    if(playerManager.isinteracting == false)
+                    if (playerManager.isinteracting == false)
                     {
                         animatorHandler.PlayTargetAnimation("Falling", true);
                     }
@@ -233,13 +243,35 @@ namespace AoM
 
             if (playerManager.isinteracting || inputHandler.moveAmount > 0)
             {
-                myTransform.position = Vector3.Lerp (myTransform.position, targetPosition, Time.deltaTime / 0.1f);
+                myTransform.position = Vector3.Lerp(myTransform.position, targetPosition, Time.deltaTime / 0.1f);
             }
             else
             {
                 myTransform.position = targetPosition;
             }
         }
+
+        public void HandleJumping()
+        {
+            if (playerManager.isinteracting)
+                return;
+
+            if (inputHandler.jump_Input)
+            {
+                if (inputHandler.moveAmount > 0)
+                {
+                    moveDirection = cameraObject.forward * inputHandler.vertical;
+                    moveDirection += cameraObject.right * inputHandler.horizontal;
+                    animatorHandler.PlayTargetAnimation("Jump", false);
+                    moveDirection.y = 0;
+                    Quaternion jumpRotation = Quaternion.LookRotation(moveDirection);
+                    myTransform.rotation = jumpRotation;
+                    jumpForceApplied = true;
+                }
+            }
+        }
+
+
 
         #endregion
     }

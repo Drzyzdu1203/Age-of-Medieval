@@ -173,15 +173,6 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Sprint",
-                    "type": "Button",
-                    "id": "6a101122-65c7-46ff-b01f-f2a8eb09b86a",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
                     "name": "Jump",
                     "type": "Button",
                     "id": "cec5a25c-8090-49c0-808d-e6c0dbb7f898",
@@ -238,28 +229,6 @@
                     "processors": "",
                     "groups": "",
                     "action": "Roll",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "8bb65c92-9210-40cf-ac76-3425e99c37bd",
-                    "path": "<Keyboard>/leftShift",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Sprint",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "635bccc0-8265-4a59-8011-6df87e1b846b",
-                    "path": "<Gamepad>/buttonEast",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Sprint",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
