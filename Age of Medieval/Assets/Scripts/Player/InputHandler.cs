@@ -23,11 +23,12 @@ namespace AoM
         public bool interaction_Input;
         public bool roll_Input;
         public bool jump_Input;
+        public bool inventory_Input;
        
-
         public bool rollFlag;
         public bool sprintFlag;
         public bool comboFlag;
+        public bool inventoryFlag;
 
         public float rollInputTimer;
         
@@ -35,6 +36,7 @@ namespace AoM
         PlayerAttacker playerAttacker;
         PlayerInventory playerInventory;
         PlayerManager playerManager;
+        UIManager uiManager;
 
         Vector2 movementInput;
         Vector2 cameraInput;
@@ -44,6 +46,11 @@ namespace AoM
             playerAttacker = GetComponent<PlayerAttacker>();
             playerInventory = GetComponent<PlayerInventory>();
             playerManager = GetComponent<PlayerManager>();
+            uiManager = FindObjectOfType<UIManager>();
+        }
+        private void Update()
+        {
+            uiManager.UpdateUI();
         }
         public void OnEnable()
         {
@@ -70,6 +77,7 @@ namespace AoM
             HandleQuickSlotsInput();
             HandleInteractingButtonInput();
             HandleJumpInput();
+            HandleInventoryInput();
         }
 
         private void MoveInput(float delta)
@@ -149,10 +157,36 @@ namespace AoM
         private void HandleInteractingButtonInput()
         {
             inputActions.PlayerActions.Interaction.performed += i => interaction_Input = true;
+
         }
         private void HandleJumpInput()
         {
             inputActions.PlayerActions.Jump.performed += i => jump_Input = true;
+        }
+        private void HandleInventoryInput()
+        {
+            inputActions.PlayerActions.Inventory.performed += i => inventory_Input = true;
+
+            if (inventory_Input)
+            {
+                
+                inventoryFlag = !inventoryFlag;
+
+                if (inventoryFlag)
+                {
+                    uiManager.OpenSelectWindow();
+                    uiManager.UpdateUI();
+                    uiManager.hudWindow.SetActive(false);
+                    uiManager.weaponInventoryWindow.SetActive(true);
+                }
+                else
+                {
+                    uiManager.CloseSelectWindow();
+                    uiManager.CloseAllInventoryWindows();
+                    uiManager.hudWindow.SetActive(true);
+                    uiManager.weaponInventoryWindow.SetActive(false);
+                }
+            }
         }
     }
 }
