@@ -175,7 +175,7 @@ namespace AoM
                 if (inventoryFlag)
                 {
                     uiManager.OpenSelectWindow();
-                    uiManager.UpdateUI();
+                    //uiManager.UpdateUI();         // zamist tego w Update
                     uiManager.hudWindow.SetActive(false);
                     uiManager.weaponInventoryWindow.SetActive(true);
                 }
