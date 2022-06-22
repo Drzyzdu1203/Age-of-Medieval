@@ -11,6 +11,10 @@ namespace AoM
         CameraHandler cameraHandler;
         PlayerLocomotion playerLocomotion;
 
+        InteractableUI interactableUI;
+        public GameObject interactableUIGameObject;
+        public GameObject itemInteractableGameObject;
+
         public bool isinteracting;
 
         [Header("Player Flags")]
@@ -28,6 +32,7 @@ namespace AoM
             inputHandler = GetComponent<InputHandler>();
             anim = GetComponentInChildren<Animator>();
             playerLocomotion = GetComponent<PlayerLocomotion>();
+            interactableUI = FindObjectOfType<InteractableUI>();
         }
 
         void Update()
@@ -85,14 +90,26 @@ namespace AoM
                     if (interactableObject != null)
                     {
                         string interactableText = interactableObject.interactbleText;
-                        //SET THE UI TEXT TO THE INTERACTABLE OBJECT'S TEXT
-                        //SET THE TEXT POP UP TO TRUE
+                        interactableUI.interactableText.text = interactableText;
+                        interactableUIGameObject.SetActive(true);
 
                         if (inputHandler.interaction_Input)
                         {
                             hit.collider.GetComponent<Interactable>().Interact(this);
                         }
                     }
+                }
+            }
+            else
+            {
+                if (interactableUIGameObject != null)
+                {
+                    interactableUIGameObject.SetActive(false);
+                }
+
+                if (itemInteractableGameObject != null && inputHandler.interaction_Input)
+                {
+                    itemInteractableGameObject.SetActive(false);
                 }
             }
         }
