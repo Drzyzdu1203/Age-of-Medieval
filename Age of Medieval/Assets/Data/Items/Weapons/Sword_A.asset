@@ -19,3 +19,6 @@ MonoBehaviour:
   infantry_04_attack_A: infantry_04_attack_A
   infantry_04_attack_B: infantry_04_attack_B
   meleeAttack_TwoHanded: meleeAttack_TwoHanded
+  baseStamina: 20
+  lightAttackMultiplier: 1
+  heavyAttackMultiplier: 2

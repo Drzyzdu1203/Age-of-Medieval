@@ -20,6 +20,7 @@ namespace AoM
         public bool d_Pad_Left;
         public bool d_Pad_Right;
 
+        public bool interaction_Input;
         public bool b_Input;
         public bool jump_input;//
         public bool sprint_input;//
@@ -67,6 +68,7 @@ namespace AoM
             HandleRollInput(delta);
             HandleAttackInput(delta);
             HandleQuickSlotsInput();
+            HandleInteractingButtonInput();
         }
 
         private void MoveInput(float delta)
@@ -155,6 +157,10 @@ namespace AoM
             {
                 playerInventory.ChangeLeftWeapon();
             }
+        }
+        private void HandleInteractingButtonInput()
+        {
+            inputActions.PlayerActions.Interaction.performed += i => interaction_Input = true;
         }
     }
 }
