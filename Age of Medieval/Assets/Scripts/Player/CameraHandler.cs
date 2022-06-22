@@ -48,8 +48,8 @@ namespace AoM
 
         public void HandleCameraRotation(float delta, float mouseXInput, float mouseYInput)
         {
-            lookAngle += (mouseXInput * lookSpeed) / delta;
-            pivotAngle -= (mouseYInput * pivotSpeed) / delta;
+            lookAngle += mouseXInput * lookSpeed / delta / 8;
+            pivotAngle -= mouseYInput * pivotSpeed / delta / 8;
             pivotAngle = Mathf.Clamp(pivotAngle, minimumPivot, maximumPivot);
 
             Vector3 rotation = Vector3.zero;

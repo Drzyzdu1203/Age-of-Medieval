@@ -16,6 +16,9 @@ MonoBehaviour:
   itemName: Unarmed
   modelPrefab: {fileID: 7944170461743167223, guid: 9f4f4ccfbc26e1846a53bd72fda52906, type: 3}
   isUnarmed: 1
-  infantry_04_attack_A: 
-  infantry_04_attack_B: 
-  meleeAttack_TwoHanded: 
+  infantry_04_attack_A: infantry_04_attack_A
+  infantry_04_attack_B: infantry_04_attack_B
+  meleeAttack_TwoHanded: meleeAttack_TwoHanded
+  baseStamina: 10
+  lightAttackMultiplier: 1
+  heavyAttackMultiplier: 2

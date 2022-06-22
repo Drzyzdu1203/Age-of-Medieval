@@ -43,9 +43,7 @@ namespace AoM
             anim.SetBool("isInAir", isInAir);
 
             inputHandler.TickInput(delta);
-            playerLocomotion.HandleMovement(delta);
             playerLocomotion.HandleRollingAndSprinting(delta);
-            playerLocomotion.HandleFalling(delta, playerLocomotion.moveDirection);
             playerLocomotion.HandleJumping();
 
             CheckForInteractableObject();
@@ -55,16 +53,12 @@ namespace AoM
         {
             float delta = Time.fixedDeltaTime;
 
-            if (cameraHandler != null)
-            {
-                cameraHandler.FollowTarget(delta);
-                cameraHandler.HandleCameraRotation(delta, inputHandler.mouseX, inputHandler.mouseY);
-            }
+            playerLocomotion.HandleFalling(delta, playerLocomotion.moveDirection);
+            playerLocomotion.HandleMovement(delta);
         }
         private void LateUpdate()
         {
             inputHandler.rollFlag = false;
-            inputHandler.sprintFlag = false;
             inputHandler.lightAttack_Input = false;
             inputHandler.heavyAttack_Input = false;
             inputHandler.d_Pad_Up = false;
@@ -74,6 +68,14 @@ namespace AoM
             inputHandler.interaction_Input = false;
             inputHandler.jump_Input = false;
             inputHandler.inventory_Input = false;
+
+            float delta = Time.deltaTime;
+
+            if (cameraHandler != null)
+            {
+                cameraHandler.FollowTarget(delta);
+                cameraHandler.HandleCameraRotation(delta, inputHandler.mouseX, inputHandler.mouseY);
+            }
 
             if (isInAir)
             {

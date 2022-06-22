@@ -59,6 +59,13 @@ namespace AoM
                 inputActions = new PlayerControls();
                 inputActions.PlayerMovement.Movement.performed += inputActions => movementInput = inputActions.ReadValue<Vector2>();
                 inputActions.PlayerMovement.Camera.performed += i => cameraInput = i.ReadValue<Vector2>();
+                inputActions.PlayerActions.LightAttack.performed += i => lightAttack_Input = true;
+                inputActions.PlayerActions.HeavyAttack.performed += i => heavyAttack_Input = true;
+                inputActions.PlayerQuickSlots.DPadRight.performed += i => d_Pad_Right = true;
+                inputActions.PlayerQuickSlots.DPadLeft.performed += i => d_Pad_Left = true;
+                inputActions.PlayerActions.Interaction.performed += i => interaction_Input = true;
+                inputActions.PlayerActions.Jump.performed += i => jump_Input = true;
+                inputActions.PlayerActions.Inventory.performed += i => inventory_Input = true;
             }
 
             inputActions.Enable();
@@ -75,8 +82,7 @@ namespace AoM
             HandleRollInput(delta);
             HandleAttackInput(delta);
             HandleQuickSlotsInput();
-            HandleInteractingButtonInput();
-            HandleJumpInput();
+ 
             HandleInventoryInput();
         }
 
@@ -92,11 +98,10 @@ namespace AoM
         private void HandleRollInput(float delta)
         {
             roll_Input = inputActions.PlayerActions.Roll.phase == UnityEngine.InputSystem.InputActionPhase.Performed;
-
+            sprintFlag = roll_Input;
             if (roll_Input)
             {
-                rollInputTimer += delta;
-                sprintFlag = true;
+                rollInputTimer += delta;              
             }
             else
             {
@@ -112,8 +117,7 @@ namespace AoM
 
         private void HandleAttackInput(float delta)
         {
-            inputActions.PlayerActions.LightAttack.performed += i => lightAttack_Input = true;
-            inputActions.PlayerActions.HeavyAttack.performed += i => heavyAttack_Input = true;
+            
 
             if(lightAttack_Input)
             {
@@ -142,8 +146,7 @@ namespace AoM
         }
         private void HandleQuickSlotsInput()
         {
-            inputActions.PlayerQuickSlots.DPadRight.performed += i => d_Pad_Right = true;
-            inputActions.PlayerQuickSlots.DPadLeft.performed += i => d_Pad_Left = true;
+
 
             if (d_Pad_Right)
             {
@@ -154,18 +157,11 @@ namespace AoM
                 playerInventory.ChangeLeftWeapon();
             }
         }
-        private void HandleInteractingButtonInput()
-        {
-            inputActions.PlayerActions.Interaction.performed += i => interaction_Input = true;
 
-        }
-        private void HandleJumpInput()
-        {
-            inputActions.PlayerActions.Jump.performed += i => jump_Input = true;
-        }
+
         private void HandleInventoryInput()
         {
-            inputActions.PlayerActions.Inventory.performed += i => inventory_Input = true;
+ 
 
             if (inventory_Input)
             {
