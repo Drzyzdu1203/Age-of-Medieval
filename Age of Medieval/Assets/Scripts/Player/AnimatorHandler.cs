@@ -5,8 +5,7 @@ using UnityEngine;
 namespace AoM
 {
     public class AnimatorHandler : AnimatorManager
-    {
-        
+    { 
         PlayerManager playerManager;
         InputHandler inputHandler;
         PlayerLocomotion playerLocomotion;
@@ -23,8 +22,6 @@ namespace AoM
             vertical = Animator.StringToHash("Vertical");
             horizontal = Animator.StringToHash("Horizontal");
             anim.fireEvents = false;
-
-
         }
         
         public void UpdateAnimatorValues(float verticalMovement, float horizontalMovement, bool isSprinting)
@@ -98,7 +95,15 @@ namespace AoM
         {
             canRotate = false;
         }
+        public void EnableCombo()
+        {
+            anim.SetBool("canDoCombo", true);
+        }
 
+        public void DisableCombo()
+        {
+            anim.SetBool("canDoCombo", false);
+        }
         private void OnAnimatorMove()
         {
             if (playerManager.isinteracting == false)

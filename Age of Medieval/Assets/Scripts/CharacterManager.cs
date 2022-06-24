@@ -6,6 +6,6 @@ namespace AoM
 {
     public class CharacterManager : MonoBehaviour
     {
-        
+        public Transform lockOnTransform;
     }
 }

@@ -7,14 +7,15 @@ namespace AoM
 {
     public class PlayerStats : CharacterStats
     {
-
-
-        public HealthBar healthbar;
+        public HealthBar healthBar;
+        StaminaBar staminaBar;
 
         AnimatorHandler animatorHandler;
 
         private void Awake()
         {
+            healthBar = FindObjectOfType<HealthBar>();
+            staminaBar = FindObjectOfType<StaminaBar>();
             animatorHandler = GetComponentInChildren<AnimatorHandler>();
         }
 
@@ -22,7 +23,13 @@ namespace AoM
         {
             maxHealth = SetMaxHealthFromHealthLevel();
             currentHealth = maxHealth;
-            healthbar.SetMaxHealth(maxHealth);
+            healthBar.SetMaxHealth(maxHealth);
+            healthBar.SetCurrentHealth(currentHealth);
+
+            maxStamina = SetMaxStaminaFromStaminaLevel();
+            currentStamina = maxStamina;
+            staminaBar.SetMaxStamina(maxStamina);
+            staminaBar.SetCurrentStamina(currentStamina);
         }
 
         private int SetMaxHealthFromHealthLevel()
@@ -30,20 +37,30 @@ namespace AoM
             maxHealth = healthLevel * 10;
             return maxHealth;
         }
+        private int SetMaxStaminaFromStaminaLevel()
+        {
+            maxStamina = staminaLevel * 10;
+            return maxStamina;
+        }
 
         public void TakeDamage (int damage)
         {
             currentHealth = currentHealth - damage;
 
-            healthbar.SetCurrentHealth(currentHealth);
+            healthBar.SetCurrentHealth(currentHealth);
 
             animatorHandler.PlayTargetAnimation("infantry_05_damage", true);
 
             if (currentHealth <= 0)
-            {currentHealth = 0;
+            {
+                currentHealth = 0;
                 animatorHandler.PlayTargetAnimation("twohanded_06_death_B", true);
-
             }
+        }
+        public void TakeStaminaDamage(int damage)
+        {
+            currentStamina = currentStamina - damage;
+            staminaBar.SetCurrentStamina(currentStamina);
         }
     }
 }

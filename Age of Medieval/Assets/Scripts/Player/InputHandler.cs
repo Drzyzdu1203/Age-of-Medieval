@@ -12,24 +12,52 @@ namespace AoM
         public float mouseX;
         public float mouseY;
 
-        public bool b_Input;
-        public bool jump_input;//
-        public bool sprint_input;//
+        public bool lightAttack_Input;
+        public bool heavyAttack_Input;
+
+        public bool d_Pad_Up;
+        public bool d_Pad_Down;
+        public bool d_Pad_Left;
+        public bool d_Pad_Right;
+
+        public bool interaction_Input;
+        public bool roll_Input;
+        public bool jump_Input;
+        public bool inventory_Input;
+        public bool lockOnInput;
+        public bool right_Stick_Right_Input;
+        public bool right_Stick_Left_Input;
+       
         public bool rollFlag;
         public bool sprintFlag;
+        public bool comboFlag;
+        public bool lockOnFlag;
+        public bool inventoryFlag;
+
         public float rollInputTimer;
         
-
-
         PlayerControls inputActions;
-
+        PlayerAttacker playerAttacker;
+        PlayerInventory playerInventory;
+        PlayerManager playerManager;
+        CameraHandler cameraHandler;
+        UIManager uiManager;
 
         Vector2 movementInput;
         Vector2 cameraInput;
 
-
-
-
+        private void Awake()
+        {
+            playerAttacker = GetComponent<PlayerAttacker>();
+            playerInventory = GetComponent<PlayerInventory>();
+            playerManager = GetComponent<PlayerManager>();
+            uiManager = FindObjectOfType<UIManager>();
+            cameraHandler = FindObjectOfType<CameraHandler>();
+        }
+        private void Update()
+        {
+            uiManager.UpdateUI();
+        }
         public void OnEnable()
         {
             if (inputActions == null)
@@ -37,6 +65,16 @@ namespace AoM
                 inputActions = new PlayerControls();
                 inputActions.PlayerMovement.Movement.performed += inputActions => movementInput = inputActions.ReadValue<Vector2>();
                 inputActions.PlayerMovement.Camera.performed += i => cameraInput = i.ReadValue<Vector2>();
+                inputActions.PlayerActions.LightAttack.performed += i => lightAttack_Input = true;
+                inputActions.PlayerActions.HeavyAttack.performed += i => heavyAttack_Input = true;
+                inputActions.PlayerQuickSlots.DPadRight.performed += i => d_Pad_Right = true;
+                inputActions.PlayerQuickSlots.DPadLeft.performed += i => d_Pad_Left = true;
+                inputActions.PlayerActions.Interaction.performed += i => interaction_Input = true;
+                inputActions.PlayerActions.Jump.performed += i => jump_Input = true;
+                inputActions.PlayerActions.Inventory.performed += i => inventory_Input = true;
+                inputActions.PlayerActions.LockOn.performed += i => lockOnInput = true;
+                inputActions.PlayerMovement.LockOnTargetRight.performed += i => right_Stick_Right_Input = true;
+                inputActions.PlayerMovement.LockOnTargetLeft.performed += i => right_Stick_Left_Input = true;
             }
 
             inputActions.Enable();
@@ -49,11 +87,15 @@ namespace AoM
 
         public void TickInput(float delta)
         {
-            MoveInput(delta);
+            HandleMoveInput(delta);
             HandleRollInput(delta);
+            HandleAttackInput(delta);
+            HandleQuickSlotsInput();
+            HandleInventoryInput();
+            HandleLockOnInput();
         }
 
-        private void MoveInput(float delta)
+        private void HandleMoveInput(float delta)
         {
             horizontal = movementInput.x;
             vertical = movementInput.y;
@@ -64,31 +106,17 @@ namespace AoM
 
         private void HandleRollInput(float delta)
         {
-            b_Input = inputActions.PlayerActions.Roll.phase == UnityEngine.InputSystem.InputActionPhase.Started;
-            b_Input = inputActions.PlayerActions.Roll.triggered;//
-            sprint_input = inputActions.PlayerActions.Sprint.phase == UnityEngine.InputSystem.InputActionPhase.Performed; //
-
-
-            if (sprint_input)
+            roll_Input = inputActions.PlayerActions.Roll.phase == UnityEngine.InputSystem.InputActionPhase.Performed;
+            sprintFlag = roll_Input;
+            if (roll_Input)
             {
-                sprintFlag = true;
-                Debug.Log("Wcisniety Shift");
-            }
-            else
-            {
-                sprintFlag = false;
-            }
-
-            if (b_Input)
-            {
-                rollInputTimer += delta;
-                sprintFlag = true;
+                rollInputTimer += delta;              
             }
             else
             {
                 if (rollInputTimer > 0 && rollInputTimer < 0.5f)
                 {
-                    //sprintFlag = false;
+                    sprintFlag = false;
                     rollFlag = true;
                 }
 
@@ -96,5 +124,118 @@ namespace AoM
             }
         }
 
+        private void HandleAttackInput(float delta)
+        {
+            
+
+            if(lightAttack_Input)
+            {
+                if (playerManager.canDoCombo)
+                {
+                    comboFlag = true;
+                    playerAttacker.HandleWeaponCombo(playerInventory.rightWeapon);
+                    comboFlag = false;
+                }
+                else
+                {
+                    if (playerManager.isinteracting)
+                        return;
+
+                    if (playerManager.canDoCombo)
+                        return;
+
+                    playerAttacker.HandleLightAttack(playerInventory.rightWeapon);
+                }
+            }
+
+            if (heavyAttack_Input)
+            {
+                playerAttacker.HandleHeavyAttack(playerInventory.rightWeapon);
+            }
+        }
+        private void HandleQuickSlotsInput()
+        {
+
+
+            if (d_Pad_Right)
+            {
+                playerInventory.ChangeRightWeapon();
+            }
+            else if (d_Pad_Left)
+            {
+                playerInventory.ChangeLeftWeapon();
+            }
+        }
+
+
+        private void HandleInventoryInput()
+        {
+ 
+
+            if (inventory_Input)
+            {
+                
+                inventoryFlag = !inventoryFlag;
+
+                if (inventoryFlag)
+                {
+                    uiManager.OpenSelectWindow();
+                    //uiManager.UpdateUI();         // zamist tego w Update
+                    uiManager.hudWindow.SetActive(false);
+                    uiManager.weaponInventoryWindow.SetActive(true);
+                }
+                else
+                {
+                    uiManager.CloseSelectWindow();
+                    uiManager.CloseAllInventoryWindows();
+                    uiManager.hudWindow.SetActive(true);
+                    uiManager.weaponInventoryWindow.SetActive(false);
+                }
+            }
+        }
+
+        private void HandleLockOnInput()
+        {
+            if (lockOnInput && lockOnFlag == false)
+            {
+                lockOnInput = false;
+                cameraHandler.HandleLockOn();
+                if(cameraHandler.nearestLockOnTarget != null)
+                {
+                    cameraHandler.currentLockOnTarget = cameraHandler.nearestLockOnTarget;
+                    lockOnFlag = true;
+                }
+
+            }
+            else if (lockOnInput && lockOnFlag)
+            {
+                lockOnInput = false;
+                lockOnFlag = false;
+                cameraHandler.ClearLockOnTargets();
+            }
+
+            if (lockOnFlag && right_Stick_Left_Input)
+            {
+                right_Stick_Left_Input = false;
+                cameraHandler.HandleLockOn();
+
+                if(cameraHandler.leftLockTarget != null)
+                {
+                    cameraHandler.currentLockOnTarget = cameraHandler.leftLockTarget;
+                }
+
+            }
+
+            if (lockOnFlag && right_Stick_Right_Input)
+            {
+                right_Stick_Right_Input = false;
+                cameraHandler.HandleLockOn();
+                if(cameraHandler.rightLockTarget != null)
+                {
+                    cameraHandler.currentLockOnTarget = cameraHandler.rightLockTarget;
+                }
+            }
+        }
     }
+
 }
