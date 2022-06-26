@@ -16,7 +16,6 @@ namespace AoM
             damageCollider.gameObject.SetActive(true);
             damageCollider.isTrigger = true;
             damageCollider.enabled = false;
-
         }
 
         public void EnableDamageCollider()
@@ -29,7 +28,7 @@ namespace AoM
         }
         private void OnTriggerEnter(Collider collision)
         {
-            if(collision.tag == "Hittable")
+            if(collision.tag == "Player")
             {
                 PlayerStats playerStats = collision.GetComponent<PlayerStats>();
                

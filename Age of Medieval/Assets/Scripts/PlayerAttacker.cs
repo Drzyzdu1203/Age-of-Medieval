@@ -25,7 +25,7 @@ namespace AoM
 
                 if (lastAttack == weapon.infantry_04_attack_A)
                 {
-                    animatorHandler.PlayTargetAnimation(weapon.infantry_04_attack_B, true);
+                    animatorHandler.PlayTargetAnimation(weapon.infantry_04_attack_C, true);
 
                 }
             }

@@ -11,8 +11,8 @@ namespace AoM
         WeaponHolderSlot leftHandSlot;
         WeaponHolderSlot rightHandSlot;
 
-        DamageCollider leftHandDamageCollider;
-        DamageCollider rightHandDamageCollider;
+        public DamageCollider leftHandDamageCollider;
+        public DamageCollider rightHandDamageCollider;
 
         Animator animator;
 
@@ -60,12 +60,13 @@ namespace AoM
 
         #region Handle Weapon's Damage Collider
 
-        private void LoadLeftWeaponDamageCollider()
+        public void LoadLeftWeaponDamageCollider()
         {
             leftHandDamageCollider = leftHandSlot.currentWeaponModel.GetComponentInChildren<DamageCollider>();
+
         }
 
-        private void LoadRightWeaponDamageCollider()
+        public void LoadRightWeaponDamageCollider()
         {
             rightHandDamageCollider = rightHandSlot.currentWeaponModel.GetComponentInChildren<DamageCollider>();
         }

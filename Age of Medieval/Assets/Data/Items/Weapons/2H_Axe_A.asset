@@ -18,6 +18,7 @@ MonoBehaviour:
   isUnarmed: 0
   infantry_04_attack_A: infantry_04_attack_A
   infantry_04_attack_B: infantry_04_attack_B
+  infantry_04_attack_C: infantry_04_attack_C
   meleeAttack_TwoHanded: meleeAttack_TwoHanded
   baseStamina: 30
   lightAttackMultiplier: 1

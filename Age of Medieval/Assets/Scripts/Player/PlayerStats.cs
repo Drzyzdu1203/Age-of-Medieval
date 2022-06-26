@@ -8,7 +8,7 @@ namespace AoM
     public class PlayerStats : CharacterStats
     {
         public HealthBar healthBar;
-        StaminaBar staminaBar;
+        public StaminaBar staminaBar;
 
         AnimatorHandler animatorHandler;
 

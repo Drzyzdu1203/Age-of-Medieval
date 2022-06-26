@@ -125,12 +125,14 @@ MonoBehaviour:
   d_Pad_Down: 0
   d_Pad_Left: 0
   d_Pad_Right: 0
-  b_Input: 0
-  jump_input: 0
-  sprint_input: 0
+  interaction_Input: 0
+  roll_Input: 0
+  jump_Input: 0
+  inventory_Input: 0
   rollFlag: 0
   sprintFlag: 0
   comboFlag: 0
+  inventoryFlag: 0
   rollInputTimer: 1
 --- !u!114 &8021886030338639846
 MonoBehaviour:
@@ -158,6 +160,8 @@ MonoBehaviour:
   sprintSpeed: 5.1
   rotationSpeed: 10
   fallingSpeed: 40
+  jumpForce: 700
+  jumpForceApplied: 0
 --- !u!114 &8021886030338639849
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -170,6 +174,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7df7aeb3b1a47e5468ed5ed55268a18a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  interactableUIGameObject: {fileID: 0}
+  itemInteractableGameObject: {fileID: 0}
   isinteracting: 0
   isSprinting: 0
   isInAir: 0
@@ -190,7 +196,10 @@ MonoBehaviour:
   healthLevel: 10
   maxHealth: 0
   currentHealth: 0
-  healthbar: {fileID: 0}
+  staminaLevel: 10
+  maxStamina: 0
+  currentStamina: 0
+  healthBar: {fileID: 0}
 --- !u!114 &8021886030338639843
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -214,6 +223,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: f1b8804afac6bae4da57269c012f62b2, type: 2}
   currentRightWeaponIndex: -1
   currentLeftWeaponIndex: -1
+  weaponsInventory: []
 --- !u!114 &8021886030338639858
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -504,6 +514,10 @@ PrefabInstance:
     - target: {fileID: 100166, guid: 02ded044b8e0963439276550f50be6f9, type: 3}
       propertyPath: m_Layer
       value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 100166, guid: 02ded044b8e0963439276550f50be6f9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 100168, guid: 02ded044b8e0963439276550f50be6f9, type: 3}
       propertyPath: m_Layer
@@ -2263,6 +2277,21 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 100166, guid: 02ded044b8e0963439276550f50be6f9, type: 3}
   m_PrefabInstance: {fileID: 8021886029718618612}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &5821740908306580401
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8021886029718718130}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6649a98f5b4b1f444b3e2ebccbd36a7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackingWeapon: {fileID: 0}
+  leftHandDamageCollider: {fileID: 0}
+  rightHandDamageCollider: {fileID: 0}
 --- !u!114 &8021886029641634265
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2277,18 +2306,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   anim: {fileID: 0}
   canRotate: 1
---- !u!114 &5821740908306580401
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8021886029718718130}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6649a98f5b4b1f444b3e2ebccbd36a7c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &8021886029718718262 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100034, guid: 02ded044b8e0963439276550f50be6f9, type: 3}
