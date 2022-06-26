@@ -173,14 +173,14 @@ namespace AoM
                     uiManager.OpenSelectWindow();
                     //uiManager.UpdateUI();         // zamist tego w Update
                     uiManager.hudWindow.SetActive(false);
-                    uiManager.weaponInventoryWindow.SetActive(true);
+                    //uiManager.weaponInventoryWindow.SetActive(true);
                 }
                 else
                 {
                     uiManager.CloseSelectWindow();
                     uiManager.CloseAllInventoryWindows();
                     uiManager.hudWindow.SetActive(true);
-                    uiManager.weaponInventoryWindow.SetActive(false);
+                   // uiManager.weaponInventoryWindow.SetActive(false);
                 }
             }
         }

@@ -11,8 +11,8 @@ namespace AoM
         WeaponHolderSlot leftHandSlot;
         WeaponHolderSlot rightHandSlot;
 
-        public DamageCollider leftHandDamageCollider;
-        public DamageCollider rightHandDamageCollider;
+        DamageCollider leftHandDamageCollider;
+        DamageCollider rightHandDamageCollider;
 
         Animator animator;
 
@@ -29,11 +29,11 @@ namespace AoM
             WeaponHolderSlot[] weaponHolderSlots = GetComponentsInChildren<WeaponHolderSlot>();
             foreach (WeaponHolderSlot weaponSlot in weaponHolderSlots)
             {
-                if(weaponSlot.isLeftHandSlot)
+                if (weaponSlot.isLeftHandSlot)
                 {
                     leftHandSlot = weaponSlot;
                 }
-                else if(weaponSlot.isRightHandSlot)
+                else if (weaponSlot.isRightHandSlot)
                 {
                     rightHandSlot = weaponSlot;
                 }
@@ -47,26 +47,24 @@ namespace AoM
                 leftHandSlot.LoadWeaponModel(weaponItem);
                 LoadLeftWeaponDamageCollider();
                 quickSlotsUI.UpdateWeaponQuickSlotsUI(true, weaponItem);
-
             }
             else
             {
                 rightHandSlot.LoadWeaponModel(weaponItem);
                 LoadRightWeaponDamageCollider();
                 quickSlotsUI.UpdateWeaponQuickSlotsUI(false, weaponItem);
-
+                
             }
         }
 
         #region Handle Weapon's Damage Collider
 
-        public void LoadLeftWeaponDamageCollider()
+        private void LoadLeftWeaponDamageCollider()
         {
             leftHandDamageCollider = leftHandSlot.currentWeaponModel.GetComponentInChildren<DamageCollider>();
-
         }
 
-        public void LoadRightWeaponDamageCollider()
+        private void LoadRightWeaponDamageCollider()
         {
             rightHandDamageCollider = rightHandSlot.currentWeaponModel.GetComponentInChildren<DamageCollider>();
         }

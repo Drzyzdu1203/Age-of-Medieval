@@ -4,7 +4,6 @@ using UnityEngine;
 
 namespace AoM
 {
-
     public class WeaponHolderSlot : MonoBehaviour
     {
         public Transform parentOverride;
@@ -23,7 +22,7 @@ namespace AoM
 
         public void UnloadWeaponAndDestroy()
         {
-            if(currentWeaponModel != null)
+            if (currentWeaponModel != null)
             {
                 Destroy(currentWeaponModel);
             }
@@ -33,16 +32,16 @@ namespace AoM
         {
             UnloadWeaponAndDestroy();
 
-            if(weaponItem ==null)
+            if (weaponItem == null)
             {
                 UnloadWeapon();
                 return;
             }
 
             GameObject model = Instantiate(weaponItem.modelPrefab) as GameObject;
-            if(model != null)
+            if (model != null)
             {
-                if(parentOverride != null)
+                if (parentOverride != null)
                 {
                     model.transform.parent = parentOverride;
                 }
@@ -60,4 +59,3 @@ namespace AoM
         }
     }
 }
-
