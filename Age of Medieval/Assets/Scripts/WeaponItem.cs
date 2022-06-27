@@ -10,11 +10,16 @@ namespace AoM
         public GameObject modelPrefab;
         public bool isUnarmed;
 
-        [Header("One Handed Attack Animations")]
+        [Header("Attack Animations")]
         public string infantry_04_attack_A;
         public string infantry_04_attack_B;
         public string infantry_04_attack_C;       
         public string meleeAttack_TwoHanded;
+        public string th_light_attack_01;
+        public string th_light_attack_02;
+
+        [Header("Idle Animations")]
+        public string th_idle;
 
         [Header("Stamina Costs")]
         public int baseStamina;

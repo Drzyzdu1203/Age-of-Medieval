@@ -10,6 +10,9 @@ namespace AoM
         EnemyManager enemyManager;
         EnemyAnimatorManager enemyAnimatorManager;
 
+        public CapsuleCollider characterCollider;
+        public CapsuleCollider characterCollisionBlockerCollider;
+
         public LayerMask detectionLayer;
 
         private void Awake()

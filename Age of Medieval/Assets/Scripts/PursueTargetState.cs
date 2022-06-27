@@ -10,13 +10,11 @@ namespace AoM
 
         public override State Tick(EnemyManager enemyManager, EnemyStats enemyStats, EnemyAnimatorManager enemyAnimatorManager)
         {
-            //szturmuje na nas wrog xd
             if (enemyManager.isPreformingAction)
             {
                 enemyAnimatorManager.anim.SetFloat("Vertical", 0, 0.1f, Time.deltaTime);
                 return this;
             }
-                
 
             Vector3 targetDirection = enemyManager.currentTarget.transform.position - enemyManager.transform.position;
             float distanceFromTarget = Vector3.Distance(enemyManager.currentTarget.transform.position, enemyManager.transform.position);
@@ -27,12 +25,11 @@ namespace AoM
                 enemyAnimatorManager.anim.SetFloat("Vertical", 1, 0.1f, Time.deltaTime);
             }
 
-
             HandleRotateTowardsTarget(enemyManager);
             enemyManager.navMeshAgent.transform.localPosition = Vector3.zero;
             enemyManager.navMeshAgent.transform.localRotation = Quaternion.identity;
 
-            if(distanceFromTarget <= enemyManager.maximumAttackRange)
+            if (distanceFromTarget <= enemyManager.maximumAttackRange)
             {
                 return combatStanceState;
             }
@@ -40,12 +37,11 @@ namespace AoM
             {
                 return this;
             }
-            
         }
 
         private void HandleRotateTowardsTarget(EnemyManager enemyManager)
         {
-            // ROTACJA MANUALNA
+            //Rotate manually
             if (enemyManager.isPreformingAction)
             {
                 Vector3 direction = enemyManager.currentTarget.transform.position - transform.position;
@@ -60,7 +56,7 @@ namespace AoM
                 Quaternion targetRotation = Quaternion.LookRotation(direction);
                 enemyManager.transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, enemyManager.rotationSpeed / Time.deltaTime);
             }
-            //ROTACJA Z PATHFINDING (NAVMESH)
+            //Rotate with pathfinding (navmesh)
             else
             {
                 Vector3 relativeDirection = transform.InverseTransformDirection(enemyManager.navMeshAgent.desiredVelocity);
@@ -72,6 +68,5 @@ namespace AoM
                 enemyManager.transform.rotation = Quaternion.Slerp(enemyManager.transform.rotation, enemyManager.navMeshAgent.transform.rotation, enemyManager.rotationSpeed / Time.deltaTime);
             }
         }
-
     }
 }

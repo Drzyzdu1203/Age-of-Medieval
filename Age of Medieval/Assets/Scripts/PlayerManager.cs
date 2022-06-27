@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace AoM
 {
-    public class PlayerManager : MonoBehaviour
+    public class PlayerManager : CharacterManager
     {
         InputHandler inputHandler;
         Animator anim;
@@ -22,6 +22,8 @@ namespace AoM
         public bool isInAir;
         public bool isGrounded;
         public bool canDoCombo;
+        public bool isUsingRightHand;
+        public bool isUsingLeftHand;
 
         private void Awake()
         {
@@ -40,6 +42,8 @@ namespace AoM
             float delta = Time.deltaTime;
             isinteracting = anim.GetBool("isinteracting");
             canDoCombo = anim.GetBool("canDoCombo");
+            isUsingRightHand = anim.GetBool("isUsingRightHand");
+            isUsingLeftHand = anim.GetBool("isUsingLeftHand");
             anim.SetBool("isInAir", isInAir);
 
             inputHandler.TickInput(delta);

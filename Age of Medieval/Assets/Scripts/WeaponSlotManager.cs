@@ -6,6 +6,8 @@ namespace AoM
 {
     public class WeaponSlotManager : MonoBehaviour
     {
+        PlayerManager playerManager;
+
         public WeaponItem attackingWeapon;
 
         WeaponHolderSlot leftHandSlot;
@@ -13,18 +15,22 @@ namespace AoM
 
         DamageCollider leftHandDamageCollider;
         DamageCollider rightHandDamageCollider;
+        WeaponHolderSlot backSlot;
 
         Animator animator;
 
         QuickSlotsUI quickSlotsUI;
 
         PlayerStats playerStats;
+        InputHandler inputHandler;
 
         private void Awake()
         {
+            playerManager = GetComponentInParent<PlayerManager>();
             animator = GetComponent<Animator>();
             quickSlotsUI = FindObjectOfType<QuickSlotsUI>();
             playerStats = GetComponentInParent<PlayerStats>();
+            inputHandler = GetComponentInParent<InputHandler>();
 
             WeaponHolderSlot[] weaponHolderSlots = GetComponentsInChildren<WeaponHolderSlot>();
             foreach (WeaponHolderSlot weaponSlot in weaponHolderSlots)
@@ -44,12 +50,21 @@ namespace AoM
         {
             if (isLeft)
             {
+                leftHandSlot.currentWeapon = weaponItem;
                 leftHandSlot.LoadWeaponModel(weaponItem);
                 LoadLeftWeaponDamageCollider();
                 quickSlotsUI.UpdateWeaponQuickSlotsUI(true, weaponItem);
             }
             else
             {
+                if (inputHandler.twoHandFlag)
+                {
+                    backSlot.LoadWeaponModel(leftHandSlot.currentWeapon);
+                    leftHandSlot.UnloadWeaponAndDestroy();
+                    animator.CrossFade(weaponItem.th_idle, 0.2f);
+                }
+
+                rightHandSlot.currentWeapon = weaponItem;
                 rightHandSlot.LoadWeaponModel(weaponItem);
                 LoadRightWeaponDamageCollider();
                 quickSlotsUI.UpdateWeaponQuickSlotsUI(false, weaponItem);

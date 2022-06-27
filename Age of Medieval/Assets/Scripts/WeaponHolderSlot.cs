@@ -7,9 +7,12 @@ namespace AoM
     public class WeaponHolderSlot : MonoBehaviour
     {
         public Transform parentOverride;
+        public WeaponItem currentWeapon;
         public bool isLeftHandSlot;
         public bool isRightHandSlot;
+        public bool isBackSlot;
 
+        public Transform Bip001_R_Hand;
         public GameObject currentWeaponModel;
 
         public void UnloadWeapon()
@@ -57,5 +60,6 @@ namespace AoM
 
             currentWeaponModel = model;
         }
+
     }
 }

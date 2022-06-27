@@ -6,17 +6,18 @@ namespace AoM
 {
     public class DamageCollider : MonoBehaviour
     {
-        Collider damageCollider;
+        public BoxCollider damageCollider;
 
-        public int currentWeaponDamage = 25;
+        public int currentWeaponDamage;
 
         private void Awake()
         {
-            damageCollider = GetComponent<Collider>();
+            damageCollider = GetComponent<BoxCollider>();
             damageCollider.gameObject.SetActive(true);
             damageCollider.isTrigger = true;
             damageCollider.enabled = false;
         }
+
 
         public void EnableDamageCollider()
         {
@@ -26,28 +27,33 @@ namespace AoM
         {
             damageCollider.enabled = false;
         }
-        private void OnTriggerEnter(Collider collision)
+       /* private void OnTriggerEnter(Collider collision)
         {
-            if(collision.tag == "Player")
+            if (collision.tag == "Player")
             {
                 PlayerStats playerStats = collision.GetComponent<PlayerStats>();
-               
 
-                if(playerStats != null)
+
+
+                if (playerStats != null)
                 {
                     playerStats.TakeDamage(currentWeaponDamage);
                 }
+
             }
 
-            if(collision.tag == "Enemy")
+            if (collision.tag == "Enemy")
             {
                 EnemyStats enemyStats = collision.GetComponent<EnemyStats>();
 
-                if(enemyStats != null)
+
+
+                if (enemyStats != null)
                 {
                     enemyStats.TakeDamage(currentWeaponDamage);
                 }
             }
-        }
+        }*/
     }
+
 }
