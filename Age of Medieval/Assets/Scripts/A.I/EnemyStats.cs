@@ -41,5 +41,6 @@ namespace AoM
                 isDead = true;
             }
         }
+
     }
 }

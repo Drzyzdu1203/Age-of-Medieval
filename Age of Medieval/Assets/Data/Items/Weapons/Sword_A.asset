@@ -24,6 +24,6 @@ MonoBehaviour:
   th_light_attack_02: 
   TestAttack: TestAttack
   th_idle: 
-  baseStamina: 20
+  baseStamina: 10
   lightAttackMultiplier: 1
   heavyAttackMultiplier: 2

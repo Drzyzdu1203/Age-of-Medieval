@@ -56,7 +56,10 @@ namespace AoM
 
         private void HandleStateMachine()
         {
-            if(currentState !=null)
+            if (enemyStats.isDead)
+                return;
+
+            else if (currentState !=null)
             {
                 State nextState = currentState.Tick(this, enemyStats, enemyAnimatorManager);
 
