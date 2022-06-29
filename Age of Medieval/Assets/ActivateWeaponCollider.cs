@@ -14,20 +14,21 @@ namespace AoM
         private void Start()
         {
             anim = GetComponentInParent<Animator>();
-            boxCollider.enabled = false;
+            //boxCollider.enabled = false;
         }
         private void Update()
         {
+
             if (anim.GetCurrentAnimatorStateInfo(1).IsName("infantry_04_attack_A") ||
                 anim.GetCurrentAnimatorStateInfo(1).IsName("infantry_04_attack_B") ||
                 anim.GetCurrentAnimatorStateInfo(1).IsName("infantry_04_attack_C")) 
             {
-                boxCollider.enabled = true;
+               // boxCollider.enabled = true;
             }
 
             else if (anim.GetCurrentAnimatorStateInfo(1).IsName("Empty"))
             {
-                boxCollider.enabled = false;
+               // boxCollider.enabled = false;
             }
         }
         private void OnTriggerEnter(Collider collision)

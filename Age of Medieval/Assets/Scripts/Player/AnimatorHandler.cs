@@ -21,7 +21,7 @@ namespace AoM
             playerLocomotion = GetComponentInParent<PlayerLocomotion>();
             vertical = Animator.StringToHash("Vertical");
             horizontal = Animator.StringToHash("Horizontal");
-            anim.fireEvents = false;
+            anim.fireEvents = true;
         }
         
         public void UpdateAnimatorValues(float verticalMovement, float horizontalMovement, bool isSprinting)
@@ -103,6 +103,15 @@ namespace AoM
         public void DisableCombo()
         {
             anim.SetBool("canDoCombo", false);
+        }
+        public void EnableIsInvulnerable()
+        {
+            anim.SetBool("isInvulnerable", true);
+        }
+
+        public void DisableIsInvulnerable()
+        {
+            anim.SetBool("isInvulnerable", false);
         }
         private void OnAnimatorMove()
         {

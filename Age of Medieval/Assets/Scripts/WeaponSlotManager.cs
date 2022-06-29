@@ -84,24 +84,22 @@ namespace AoM
             rightHandDamageCollider = rightHandSlot.currentWeaponModel.GetComponentInChildren<DamageCollider>();
         }
 
-        public void OpenRightDamageCollider()
+        public void OpenDamageCollider()
         {
-            rightHandDamageCollider.EnableDamageCollider();
+            if (playerManager.isUsingRightHand)
+            {
+                rightHandDamageCollider.EnableDamageCollider();
+            }
+            else if(playerManager.isUsingLeftHand)
+            {
+                leftHandDamageCollider.EnableDamageCollider();
+            }
         }
 
-        public void OpenLeftDamageCollider()
-        {
-            leftHandDamageCollider.EnableDamageCollider();
-        }
-
-        public void CloseRightHandDamageCollider()
+        public void CloseDamageCollider()
         {
             rightHandDamageCollider.DisaleDamageCollider();
-        }
-
-        public void CloseLeftHandDamageCollider()
-        {
-            leftHandDamageCollider.DisaleDamageCollider();
+            leftHandDamageCollider.EnableDamageCollider();
         }
 
         #endregion
@@ -110,6 +108,7 @@ namespace AoM
         public void DrainStaminaLightAttack()
         {
             playerStats.TakeStaminaDamage(Mathf.RoundToInt(attackingWeapon.baseStamina * attackingWeapon.lightAttackMultiplier));
+            Debug.Log("DrainStaminaLightAttack");
         }
 
         public void DrainStaminaHeavyAttack()

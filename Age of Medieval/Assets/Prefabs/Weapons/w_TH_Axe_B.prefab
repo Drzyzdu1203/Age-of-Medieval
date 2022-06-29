@@ -161,7 +161,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20d5dc0754cfe5943b1439ecba715b69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentWeaponDamage: 100
+  currentWeaponDamage: 50
 --- !u!65 &5479446289581636171
 BoxCollider:
   m_ObjectHideFlags: 0

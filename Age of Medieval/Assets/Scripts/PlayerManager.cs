@@ -9,6 +9,7 @@ namespace AoM
         InputHandler inputHandler;
         Animator anim;
         CameraHandler cameraHandler;
+        PlayerStats playerStats;
         PlayerLocomotion playerLocomotion;
 
         InteractableUI interactableUI;
@@ -24,6 +25,7 @@ namespace AoM
         public bool canDoCombo;
         public bool isUsingRightHand;
         public bool isUsingLeftHand;
+        public bool isInvulerable;
 
         private void Awake()
         {
@@ -33,6 +35,7 @@ namespace AoM
         {
             inputHandler = GetComponent<InputHandler>();
             anim = GetComponentInChildren<Animator>();
+            playerStats = GetComponent<PlayerStats>();
             playerLocomotion = GetComponent<PlayerLocomotion>();
             interactableUI = FindObjectOfType<InteractableUI>();
         }
@@ -44,12 +47,14 @@ namespace AoM
             canDoCombo = anim.GetBool("canDoCombo");
             isUsingRightHand = anim.GetBool("isUsingRightHand");
             isUsingLeftHand = anim.GetBool("isUsingLeftHand");
+            isInvulerable = anim.GetBool("isInvulnerable");
             anim.SetBool("isInAir", isInAir);
 
             inputHandler.TickInput(delta);
             playerLocomotion.HandleRollingAndSprinting(delta);
             playerLocomotion.HandleJumping();
-
+            playerStats.RegenerateStamina();
+            
             CheckForInteractableObject();
         }
 

@@ -17,6 +17,7 @@ namespace AoM
         public string meleeAttack_TwoHanded;
         public string th_light_attack_01;
         public string th_light_attack_02;
+        public string TestAttack;
 
         [Header("Idle Animations")]
         public string th_idle;

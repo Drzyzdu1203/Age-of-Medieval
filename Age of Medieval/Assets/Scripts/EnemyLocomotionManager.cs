@@ -19,6 +19,10 @@ namespace AoM
         {
             enemyManager = GetComponent<EnemyManager>();
             enemyAnimatorManager = GetComponentInChildren<EnemyAnimatorManager>();
-        }     
+        }
+        private void Start()
+        {
+            Physics.IgnoreCollision(characterCollider, characterCollisionBlockerCollider, true);
+        }
     }
 }
