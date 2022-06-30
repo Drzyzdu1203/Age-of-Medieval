@@ -20,6 +20,14 @@ MonoBehaviour:
   infantry_04_attack_B: infantry_04_attack_B
   infantry_04_attack_C: infantry_04_attack_C
   meleeAttack_TwoHanded: meleeAttack_TwoHanded
+  th_light_attack_01: 
+  th_light_attack_02: 
+  TestAttack: 
+  th_idle: 
   baseStamina: 30
   lightAttackMultiplier: 1
   heavyAttackMultiplier: 2
+  isSpellCaster: 0
+  isFaithCaster: 0
+  isPyroCaster: 0
+  isMeleeWeapon: 1

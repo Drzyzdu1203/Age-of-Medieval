@@ -64,6 +64,7 @@ namespace AoM
 
             playerLocomotion.HandleFalling(delta, playerLocomotion.moveDirection);
             playerLocomotion.HandleMovement(delta);
+            playerLocomotion.HandleRotation(delta);
         }
         private void LateUpdate()
         {
