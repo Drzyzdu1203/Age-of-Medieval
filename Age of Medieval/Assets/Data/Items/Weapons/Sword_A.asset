@@ -22,7 +22,7 @@ MonoBehaviour:
   meleeAttack_TwoHanded: meleeAttack_TwoHanded
   th_light_attack_01: 
   th_light_attack_02: 
-  TestAttack: TestAttack
+  TestAttack: 
   th_idle: 
   baseStamina: 10
   lightAttackMultiplier: 1

@@ -8,6 +8,7 @@ namespace AoM
     {
         AnimatorHandler animatorHandler;
         PlayerManager playerManager;
+        PlayerStats playerStats;
         PlayerInventory playerInventory;
         InputHandler inputHandler;
         WeaponSlotManager weaponSlotManager;
@@ -17,6 +18,7 @@ namespace AoM
         {
             animatorHandler = GetComponent<AnimatorHandler>();
             playerManager = GetComponentInParent<PlayerManager>();
+            playerStats = GetComponentInParent<PlayerStats>();
             playerInventory = GetComponentInParent<PlayerInventory>();
             weaponSlotManager = GetComponent<WeaponSlotManager>();
             inputHandler = GetComponentInParent<InputHandler>();
@@ -89,9 +91,13 @@ namespace AoM
                 if (playerInventory.currentSpell != null && playerInventory.currentSpell.isFaithSpell)
                 {
                     //CHECK FOR FP
-                    //ATTEMPT TO CAST SPELL
+                    playerInventory.currentSpell.AttemptToCastSpell(animatorHandler, playerStats);
                 }
             }
+        }
+        private void SuccessfullyCastSpell()
+        {
+            playerInventory.currentSpell.SuccessfullyCastSpell(animatorHandler, playerStats);
         }
 
         #endregion
