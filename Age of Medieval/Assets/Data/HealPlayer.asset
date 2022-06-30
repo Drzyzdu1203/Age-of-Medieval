@@ -16,7 +16,8 @@ MonoBehaviour:
   itemName: Heal Player
   spellWarmUpFX: {fileID: 127166, guid: 4cc2bcf001dff1841ab60befad39294b, type: 3}
   spellCastFX: {fileID: 127166, guid: 4cc2bcf001dff1841ab60befad39294b, type: 3}
-  spellAnimation: Casting
+  spellAnimation: Standing_2H_Cast_Spell_01
+  manaCost: 50
   isFaithSpell: 1
   isMagicSpell: 0
   isPyroSpell: 0

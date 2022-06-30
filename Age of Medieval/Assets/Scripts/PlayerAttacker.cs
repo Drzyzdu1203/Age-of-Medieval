@@ -86,20 +86,30 @@ namespace AoM
 
         private void PerformLightAttackMagicAction(WeaponItem weapon)
         {
+            if (playerManager.isinteracting)
+                return;
+
             if (weapon.isFaithCaster)
             {
                 if (playerInventory.currentSpell != null && playerInventory.currentSpell.isFaithSpell)
                 {
-                    //CHECK FOR FP
-                    playerInventory.currentSpell.AttemptToCastSpell(animatorHandler, playerStats);
+                    if (playerStats.currentMana >= playerInventory.currentSpell.manaCost)
+                    {
+                        playerInventory.currentSpell.AttemptToCastSpell(animatorHandler, playerStats);
+                    }
+                    else
+                    {
+                        animatorHandler.PlayTargetAnimation("male_idle_pant", true);
+                    }
                 }
-            }
+            }      
         }
+        
         private void SuccessfullyCastSpell()
         {
             playerInventory.currentSpell.SuccessfullyCastSpell(animatorHandler, playerStats);
         }
-
         #endregion
     }
 }
+

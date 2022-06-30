@@ -11,6 +11,7 @@ namespace AoM
 
         HealthBar healthBar;
         StaminaBar staminaBar;
+        ManaBar manaBar;
         AnimatorHandler animatorHandler;
 
         public float staminaRegenerationAmount = 1;
@@ -21,6 +22,7 @@ namespace AoM
 
             healthBar = FindObjectOfType<HealthBar>();
             staminaBar = FindObjectOfType<StaminaBar>();
+            manaBar = FindObjectOfType<ManaBar>();
             animatorHandler = GetComponentInChildren<AnimatorHandler>();
         }
 
@@ -35,6 +37,11 @@ namespace AoM
             currentStamina = maxStamina;
             staminaBar.SetMaxStamina(maxStamina);
             staminaBar.SetCurrentStamina(currentStamina);
+
+            maxMana = SetMaxManaFromManaLevel();
+            currentMana = maxMana;
+            manaBar.SetMaxMana(maxMana);
+            manaBar.SetCurrentMana(currentMana);
         }
 
         private int SetMaxHealthFromHealthLevel()
@@ -47,7 +54,11 @@ namespace AoM
             maxStamina = staminaLevel * 10;
             return maxStamina;
         }
-
+        private float SetMaxManaFromManaLevel()
+        {
+            maxMana = manaLevel * 10;
+            return maxMana;
+        }
         public void TakeDamage (int damage)
         {
             if (playerManager.isInvulerable)
@@ -99,6 +110,16 @@ namespace AoM
             }
 
             healthBar.SetCurrentHealth(currentHealth);
+        }
+        public void DeductMana(int mana)
+        {
+            currentMana = currentMana - mana;
+
+            if(currentMana <0)
+            {
+                currentMana = 0;
+            }
+            manaBar.SetCurrentMana(currentMana);
         }
     }
 }   
