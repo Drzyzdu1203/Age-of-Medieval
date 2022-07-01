@@ -18,10 +18,17 @@ namespace AoM
         public void AwardSoulsOnDeath()
         {
             PlayerStats playerStats = FindObjectOfType<PlayerStats>();
+            SoulCountBar soulCountBar = FindObjectOfType<SoulCountBar>();
 
             if (playerStats != null)
             {
                 playerStats.AddSouls(enemyStats.soulsAwardedOnDeath);
+            }
+
+            if(soulCountBar != null)
+            {
+                soulCountBar.SetSoulCountText(playerStats.soulCount);
+
             }
         }
 
