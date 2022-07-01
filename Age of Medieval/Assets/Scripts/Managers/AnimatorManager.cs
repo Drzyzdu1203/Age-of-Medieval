@@ -13,6 +13,9 @@ namespace AoM
             anim.SetBool("isinteracting", isinteracting);
             anim.CrossFade(targetAnim, 0.2f);
         }
+        public virtual void TakeCriticalDamageAnimationEvent()
+        {
 
+        }
     }
 }
