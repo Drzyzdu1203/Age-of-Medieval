@@ -7,14 +7,22 @@ namespace AoM
 {
     public class PlayerStats : CharacterStats
     {
+        PlayerManager playerManager;
 
-
-        public HealthBar healthbar;
-
+        HealthBar healthBar;
+        StaminaBar staminaBar;
+        ManaBar manaBar;
         AnimatorHandler animatorHandler;
 
+        public float staminaRegenerationAmount = 1;
+        public float staminaRegenTimer = 0;
         private void Awake()
         {
+            playerManager = GetComponent<PlayerManager>();
+
+            healthBar = FindObjectOfType<HealthBar>();
+            staminaBar = FindObjectOfType<StaminaBar>();
+            manaBar = FindObjectOfType<ManaBar>();
             animatorHandler = GetComponentInChildren<AnimatorHandler>();
         }
 
@@ -22,7 +30,18 @@ namespace AoM
         {
             maxHealth = SetMaxHealthFromHealthLevel();
             currentHealth = maxHealth;
-            healthbar.SetMaxHealth(maxHealth);
+            healthBar.SetMaxHealth(maxHealth);
+            healthBar.SetCurrentHealth(currentHealth);
+
+            maxStamina = SetMaxStaminaFromStaminaLevel();
+            currentStamina = maxStamina;
+            staminaBar.SetMaxStamina(maxStamina);
+            staminaBar.SetCurrentStamina(currentStamina);
+
+            maxMana = SetMaxManaFromManaLevel();
+            currentMana = maxMana;
+            manaBar.SetMaxMana(maxMana);
+            manaBar.SetCurrentMana(currentMana);
         }
 
         private int SetMaxHealthFromHealthLevel()
@@ -30,20 +49,82 @@ namespace AoM
             maxHealth = healthLevel * 10;
             return maxHealth;
         }
-
+        private float SetMaxStaminaFromStaminaLevel()
+        {
+            maxStamina = staminaLevel * 10;
+            return maxStamina;
+        }
+        private float SetMaxManaFromManaLevel()
+        {
+            maxMana = manaLevel * 10;
+            return maxMana;
+        }
         public void TakeDamage (int damage)
         {
-            currentHealth = currentHealth - damage;
+            if (playerManager.isInvulerable)
+                return;
 
-            healthbar.SetCurrentHealth(currentHealth);
+            if (isDead)
+                return;
+
+            currentHealth = currentHealth - damage;
+            healthBar.SetCurrentHealth(currentHealth);
 
             animatorHandler.PlayTargetAnimation("infantry_05_damage", true);
 
             if (currentHealth <= 0)
-            {currentHealth = 0;
+            {
+                currentHealth = 0;
                 animatorHandler.PlayTargetAnimation("twohanded_06_death_B", true);
-
+                isDead = true;
             }
         }
+        public void TakeStaminaDamage(int damage)
+        {
+            currentStamina = currentStamina - damage;
+            staminaBar.SetCurrentStamina(currentStamina);
+        }
+        public void RegenerateStamina()
+        {
+            if (playerManager.isinteracting)
+            {
+                staminaRegenTimer = 0;
+            }
+            else
+            {
+                staminaRegenTimer += Time.deltaTime;
+
+                if (currentStamina < maxStamina && staminaRegenTimer > 1f)
+                {
+                    currentStamina += staminaRegenerationAmount * Time.deltaTime;
+                    staminaBar.SetCurrentStamina(Mathf.RoundToInt(currentStamina));
+                }
+            }
+        }
+        public void HealPlayer(int healAmount)
+        {
+            currentHealth = currentHealth + healAmount; 
+            if(currentHealth > maxHealth)
+            {
+                currentHealth = maxHealth;
+            }
+
+            healthBar.SetCurrentHealth(currentHealth);
+        }
+        public void DeductMana(int mana)
+        {
+            currentMana = currentMana - mana;
+
+            if(currentMana <0)
+            {
+                currentMana = 0;
+            }
+            manaBar.SetCurrentMana(currentMana);
+        }
+
+        public void AddSouls(int souls)
+        {
+            soulCount = soulCount + souls;
+        }
     }
-}
+}   

@@ -9,11 +9,13 @@ namespace AoM
     {
 
 
-        Animator animator;
+        EnemyAnimatorManager enemyAnimatorManager;
+
+        public int soulsAwardedOnDeath = 50;
 
         private void Awake()
         {
-            animator = GetComponentInChildren<Animator>();
+            enemyAnimatorManager = GetComponentInChildren<EnemyAnimatorManager>();
         }
         void Start()
         {
@@ -28,15 +30,26 @@ namespace AoM
         }
        public void TakeDamage(int damage)
         {
+            if (isDead)
+                return;
             currentHealth = currentHealth - damage;
 
-            animator.Play("infantry_05_damage");
+            enemyAnimatorManager.PlayTargetAnimation("infantry_05_damage", true);
 
-            if (currentHealth <= 0 )
+            if (currentHealth <= 0)
             {
-                currentHealth = 0;
-                animator.Play("infantry_06_death_A");
+                HandleDeath();
             }
         }
+
+        private void HandleDeath()
+        {
+            currentHealth = 0;
+            enemyAnimatorManager.PlayTargetAnimation("twohanded_06_death_B", true);
+            isDead = true;
+
+
+        }
+
     }
 }

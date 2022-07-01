@@ -4,30 +4,37 @@ using UnityEngine;
 
 namespace AoM
 {
-    public class EnemyAnimatorManager : MonoBehaviour
+    public class EnemyAnimatorManager : AnimatorManager
     {
-        EnemyLocomotionManager enemyLocomotionManager;
+        EnemyManager enemyManager;
+        EnemyStats enemyStats;
+
         private void Awake()
         {
             anim = GetComponent<Animator>();
-            enemyLocomotionManager = GetComponentInParent<EnemyLocomotionManager>();
+            enemyManager = GetComponentInParent<EnemyManager>();
+            enemyStats = GetComponentInParent<EnemyStats>();        }
+
+        public void AwardSoulsOnDeath()
+        {
+            PlayerStats playerStats = FindObjectOfType<PlayerStats>();
+
+            if (playerStats != null)
+            {
+                playerStats.AddSouls(enemyStats.soulsAwardedOnDeath);
+            }
         }
 
         private void OnAnimatorMove()
         {
             float delta = Time.deltaTime;
-            enemyLocomotionManager.enemyRigidBody.drag = 0;
+            enemyManager.enemyRigidBody.drag = 0;
             Vector3 deltaPosition = anim.deltaPosition;
             deltaPosition.y = 0;
             Vector3 velocity = deltaPosition / delta;
-            enemyLocomotionManager.enemyRigidBody.velocity = velocity;
+            enemyManager.enemyRigidBody.velocity = velocity;
         }
-        public Animator anim;
-        public void PlayTargetAnimation(string targetAnim, bool isinteracting)
-        {
-            anim.applyRootMotion = isinteracting;
-            anim.SetBool("isinteracting", isinteracting);
-            anim.CrossFade(targetAnim, 0.2f);
-        }
+
+        
     }
 }
