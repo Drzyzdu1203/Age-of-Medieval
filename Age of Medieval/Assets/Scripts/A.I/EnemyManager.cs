@@ -23,9 +23,10 @@ namespace AoM
 
         [Header("A.I Settings")]
         public float detectionRadius = 20;
+        //The higher, and lower, respectively these angles are, the greater detection FIELD OF VIEW (basically like eye sight)
         public float maximumDetectionAngle = 50;
         public float minimumDetectionAngle = -50;
-        
+
         public float currentRecoveryTime = 0;
         private void Awake()
         {
@@ -33,6 +34,7 @@ namespace AoM
             enemyAnimatorManager = GetComponentInChildren<EnemyAnimatorManager>();
             enemyStats = GetComponent<EnemyStats>();
             enemyRigidBody = GetComponent<Rigidbody>();
+            backStabCollider = GetComponentInChildren<BackStabCollider>();
             navMeshAgent = GetComponentInChildren<NavMeshAgent>();
             navMeshAgent.enabled = false;
         }

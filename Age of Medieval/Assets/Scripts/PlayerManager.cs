@@ -30,6 +30,7 @@ namespace AoM
         private void Awake()
         {
             cameraHandler = FindObjectOfType<CameraHandler>();
+            backStabCollider = GetComponentInChildren<BackStabCollider>();
         }
         void Start()
         {
@@ -64,7 +65,6 @@ namespace AoM
 
             playerLocomotion.HandleFalling(delta, playerLocomotion.moveDirection);
             playerLocomotion.HandleMovement(delta);
-            playerLocomotion.HandleRotation(delta);
         }
         private void LateUpdate()
         {
