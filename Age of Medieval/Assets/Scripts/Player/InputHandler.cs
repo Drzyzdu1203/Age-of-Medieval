@@ -46,6 +46,7 @@ namespace AoM
         PlayerAttacker playerAttacker;
         PlayerInventory playerInventory;
         PlayerManager playerManager;
+        PlayerStats playerStats;
         WeaponSlotManager weaponSlotManager;
         CameraHandler cameraHandler;
         PlayerAnimatorManager animatorHandler;
@@ -59,6 +60,7 @@ namespace AoM
             playerAttacker = GetComponentInChildren<PlayerAttacker>();
             playerInventory = GetComponent<PlayerInventory>();
             playerManager = GetComponent<PlayerManager>();
+            playerStats = GetComponent<PlayerStats>();
             weaponSlotManager = GetComponentInChildren<WeaponSlotManager>();
             uiManager = FindObjectOfType<UIManager>();
             cameraHandler = FindObjectOfType<CameraHandler>();
@@ -117,16 +119,30 @@ namespace AoM
         private void HandleRollInput(float delta)
         {
             roll_Input = inputActions.PlayerActions.Roll.phase == UnityEngine.InputSystem.InputActionPhase.Performed;
-            sprintFlag = roll_Input;
+             sprintFlag = roll_Input;
             if (roll_Input)
             {
-                rollInputTimer += delta;              
+                rollInputTimer += delta;
+
+                if (playerStats.currentStamina <= 0)
+                {
+                    roll_Input = false;
+                    sprintFlag = false;
+                }
+
+                if (moveAmount > 0.5 && playerStats.currentStamina > 0)
+                {
+                    sprintFlag = true;
+                }
             }
+
             else
             {
+                sprintFlag = false;
+
                 if (rollInputTimer > 0 && rollInputTimer < 0.5f)
                 {
-                    sprintFlag = false;
+                    
                     rollFlag = true;
                 }
 

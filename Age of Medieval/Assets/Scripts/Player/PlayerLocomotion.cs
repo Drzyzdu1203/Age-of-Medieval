@@ -8,6 +8,7 @@ namespace AoM
     {
         CameraHandler cameraHandler;
         PlayerManager playerManager;
+        PlayerStats playerStats;
         Transform cameraObject;
         InputHandler inputHandler;
         public Vector3 moveDirection;
@@ -41,10 +42,16 @@ namespace AoM
         float rotationSpeed = 15;
         [SerializeField]
         float fallingSpeed = 45;
-        [SerializeField]
-       // float jumpForce = 700;
-
         
+        // float jumpForce = 700;
+
+        [Header("Stamina Costs")]
+        [SerializeField]
+        int rollStaminaCost = 15;     
+        int backstepStaminaCost = 12;      
+        int sprintStaminaCost = 1;
+
+
         public bool jumpForceApplied;
         public CapsuleCollider characterCollider;
         public CapsuleCollider characterCollisionBlockerCollider;
@@ -52,13 +59,14 @@ namespace AoM
         private void Awake()
         {
             cameraHandler = FindObjectOfType<CameraHandler>();
-        }
-        void Start()
-        {
             playerManager = GetComponent<PlayerManager>();
+            playerStats = GetComponent<PlayerStats>();
             rigidbody = GetComponent<Rigidbody>();
             inputHandler = GetComponent<InputHandler>();
             animatorHandler = GetComponentInChildren<PlayerAnimatorManager>();
+        }
+        void Start()
+        {
             cameraObject = Camera.main.transform;
             myTransform = transform;
             animatorHandler.Initialize();
@@ -166,6 +174,7 @@ namespace AoM
                 speed = sprintSpeed;
                 playerManager.isSprinting = true;
                 moveDirection *= speed;
+                playerStats.TakeStaminaDamage(sprintStaminaCost);
             }
             else
             {

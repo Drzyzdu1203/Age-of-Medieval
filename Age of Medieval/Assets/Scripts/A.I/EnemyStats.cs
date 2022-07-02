@@ -40,6 +40,7 @@ namespace AoM
         {
             if (isDead)
                 return;
+
             currentHealth = currentHealth - damage;
 
             animator.Play("infantry_05_damage");

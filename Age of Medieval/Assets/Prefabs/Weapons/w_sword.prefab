@@ -174,5 +174,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20d5dc0754cfe5943b1439ecba715b69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageCollider: {fileID: 5561869545945228583}
   currentWeaponDamage: 25

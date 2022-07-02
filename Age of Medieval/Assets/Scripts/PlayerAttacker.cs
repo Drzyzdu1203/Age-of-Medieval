@@ -28,6 +28,9 @@ namespace AoM
 
         public void HandleWeaponCombo(WeaponItem weapon)
         {
+            if (playerStats.currentStamina <= 0)
+                return;
+
             if (inputHandler.comboFlag)
             {
                 animatorHandler.anim.SetBool("canDoCombo", false);
@@ -77,6 +80,9 @@ namespace AoM
         }
         public void HandleLightAttack(WeaponItem weapon)
         {
+            if (playerStats.currentStamina <= 0)
+                return;
+
             weaponSlotManager.attackingWeapon = weapon;
             if (inputHandler.twoHandFlag)
             {
@@ -91,6 +97,9 @@ namespace AoM
         }
         public void HandleHeavyAttack(WeaponItem weapon)
         {
+            if (playerStats.currentStamina <= 0)
+                return;
+
             weaponSlotManager.attackingWeapon = weapon;
             if(inputHandler.twoHandFlag)
             {
@@ -168,12 +177,16 @@ namespace AoM
         #endregion
         public void AttemptBackStabOrRiposte()
         {
+            if (playerStats.currentStamina <= 0)
+                return;
+
             RaycastHit hit;
 
             if (Physics.Raycast(inputHandler.criticalAttackRayCastStartPoint.position,
                 transform.TransformDirection(Vector3.forward), out hit, 0.5f, backStabLayer))
             {
                 CharacterManager enemyCharacterManager = hit.transform.gameObject.GetComponentInParent<CharacterManager>();
+                DamageCollider rightWeapon = weaponSlotManager.rightHandDamageCollider;
 
                 if (enemyCharacterManager != null)
                 {
@@ -188,6 +201,8 @@ namespace AoM
                     Quaternion targetRotation = Quaternion.Slerp(playerManager.transform.rotation, tr, 500 * Time.deltaTime);
                     playerManager.transform.rotation = targetRotation;
 
+                    int criticalDamage = playerInventory.rightWeapon.criticalDamageMuiltiplier * rightWeapon.currentWeaponDamage;
+                    enemyCharacterManager.pendingCriticalDamage = criticalDamage;
 
                     animatorHandler.PlayTargetAnimation("Back Stab", true);
                     enemyCharacterManager.GetComponentInChildren<AnimatorManager>().PlayTargetAnimation("Back Stabbed", true);

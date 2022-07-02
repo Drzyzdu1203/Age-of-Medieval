@@ -104,7 +104,7 @@ namespace AoM
             {
                 staminaRegenTimer += Time.deltaTime;
 
-                if (currentStamina < maxStamina && staminaRegenTimer > 1f)
+                if (currentStamina < maxStamina && staminaRegenTimer > 0.5f)
                 {
                     currentStamina += staminaRegenerationAmount * Time.deltaTime;
                     staminaBar.SetCurrentStamina(Mathf.RoundToInt(currentStamina));

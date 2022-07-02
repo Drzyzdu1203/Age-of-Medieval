@@ -68,6 +68,10 @@ namespace AoM
                     SwitchToNextState(nextState);
                 }
             }
+            if(enemyStats.isDead)
+            {
+                currentState = null;
+            }
         }
 
         private void SwitchToNextState(State state)
