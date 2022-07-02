@@ -11,6 +11,8 @@ namespace AoM
 
         Animator animator;
 
+        public UIEnemyHealthBar enemyHealthBar;
+
         private void Awake()
         {
             animator = GetComponentInChildren<Animator>();
@@ -19,6 +21,7 @@ namespace AoM
         {
             maxHealth = SetMaxHealthFromHealthLevel();
             currentHealth = maxHealth;
+            enemyHealthBar.SetMaxHealth(maxHealth);
         }
 
         private int SetMaxHealthFromHealthLevel()
@@ -29,6 +32,7 @@ namespace AoM
         public void TakeDamageNoAnimation(int damage)
         {
             currentHealth = currentHealth - damage;
+            enemyHealthBar.SetHealth(currentHealth);
 
             if (currentHealth <= 0)
             {
@@ -42,6 +46,7 @@ namespace AoM
                 return;
 
             currentHealth = currentHealth - damage;
+            enemyHealthBar.SetHealth(currentHealth);
 
             animator.Play("infantry_05_damage");
 
