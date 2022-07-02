@@ -12,17 +12,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1e55ceb03871aa4bb6fc056d662433d, type: 3}
   m_Name: Unarmed
   m_EditorClassIdentifier: 
-  itemIcon: {fileID: 0}
+  itemIcon: {fileID: 21300000, guid: 53aac9f7fc103244d9fa0b37eea18b4c, type: 3}
   itemName: Unarmed
   modelPrefab: {fileID: 7944170461743167223, guid: 9f4f4ccfbc26e1846a53bd72fda52906, type: 3}
   isUnarmed: 1
-  infantry_04_attack_A: infantry_04_attack_A
-  infantry_04_attack_B: infantry_04_attack_B
-  infantry_04_attack_C: infantry_04_attack_C
-  meleeAttack_TwoHanded: meleeAttack_TwoHanded
-  th_light_attack_01: 
-  th_light_attack_02: 
-  TestAttack: 
+  baseDamage: 25
+  criticalDamageMuiltiplier: 4
+  OH_Light_Attack_1: OH_Light_Attack_1
+  OH_Light_Attack_2: OH_Light_Attack_2
+  OH_Light_Attack_3: OH_Light_Attack_3
+  OH_Heavy_Attack_1: OH_Heavy_Attack_1
+  OH_Heavy_Attack_2: OH_Heavy_Attack_2
+  TH_Light_Attack_1: 
+  TH_Light_Attack_2: 
+  TH_Light_Attack_3: 
+  TH_Heavy_Attack_1: 
+  TH_Heavy_Attack_2: 
   th_idle: 
   baseStamina: 10
   lightAttackMultiplier: 1

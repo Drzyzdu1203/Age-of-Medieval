@@ -17,9 +17,9 @@ MonoBehaviour:
   spellWarmUpFX: {fileID: 127166, guid: 4cc2bcf001dff1841ab60befad39294b, type: 3}
   spellCastFX: {fileID: 127166, guid: 4cc2bcf001dff1841ab60befad39294b, type: 3}
   spellAnimation: Standing_2H_Cast_Spell_01
-  manaCost: 50
+  manaCost: 30
   isFaithSpell: 1
   isMagicSpell: 0
   isPyroSpell: 0
   spellDescription: 
-  healAmount: 50
+  healAmount: 100
