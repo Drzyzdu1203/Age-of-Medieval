@@ -105,7 +105,7 @@ namespace AoM
         public void CloseDamageCollider()
         {
             rightHandDamageCollider.DisaleDamageCollider();
-            leftHandDamageCollider.EnableDamageCollider();
+            //leftHandDamageCollider.DisaleDamageCollider();
         }
 
         #endregion

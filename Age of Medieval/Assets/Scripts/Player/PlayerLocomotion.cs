@@ -38,11 +38,11 @@ namespace AoM
         [SerializeField]
         float sprintSpeed = 7;
         [SerializeField]
-        float rotationSpeed = 10;
+        float rotationSpeed = 15;
         [SerializeField]
         float fallingSpeed = 45;
         [SerializeField]
-        float jumpForce = 700;
+       // float jumpForce = 700;
 
         
         public bool jumpForceApplied;
@@ -64,10 +64,10 @@ namespace AoM
             animatorHandler.Initialize();
 
             playerManager.isGrounded = true;
-            ignoreForGroundCheck = ~(1 << 8 | 1 << 11);
+            ignoreForGroundCheck = ~(1 << 3 | 1 << 7);
             Physics.IgnoreCollision(characterCollider, characterCollisionBlockerCollider, true);
         }
-        private void FixedUpdate()
+       /* private void FixedUpdate()
         {
             if (jumpForceApplied)
             {
@@ -81,7 +81,7 @@ namespace AoM
             yield return new WaitForSeconds(0.5f);
             jumpForceApplied = false;
         }
-
+       */
         #region Movement
         Vector3 normalVector;
         Vector3 targetPosition;
@@ -311,17 +311,14 @@ namespace AoM
                 {
                     moveDirection = cameraObject.forward * inputHandler.vertical;
                     moveDirection += cameraObject.right * inputHandler.horizontal;
-                    animatorHandler.PlayTargetAnimation("Jump", false);
+                    animatorHandler.PlayTargetAnimation("Jump", true);
                     moveDirection.y = 0;
                     Quaternion jumpRotation = Quaternion.LookRotation(moveDirection);
                     myTransform.rotation = jumpRotation;
-                    jumpForceApplied = true;
+                   // jumpForceApplied = true;
                 }
             }
         }
-
-
-
         #endregion
     }
 }

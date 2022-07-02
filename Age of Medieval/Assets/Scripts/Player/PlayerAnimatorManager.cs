@@ -12,11 +12,11 @@ namespace AoM
         PlayerLocomotion playerLocomotion;
         int vertical;
         int horizontal;
-        public bool canRotate;
 
         public void Initialize()
         {
             playerManager = GetComponentInParent<PlayerManager>();
+            playerStats = GetComponentInParent<PlayerStats>();
             anim = GetComponent<Animator>();
             inputHandler = GetComponentInParent<InputHandler>();
             playerLocomotion = GetComponentInParent<PlayerLocomotion>();
@@ -89,18 +89,17 @@ namespace AoM
 
         public void CanRotate()
         {
-            canRotate = true;
+            anim.SetBool("canRotate", true);
         }
 
         public void StopRotation()
         {
-            canRotate = false;
+            anim.SetBool("canRotate", false);
         }
         public void EnableCombo()
         {
             anim.SetBool("canDoCombo", true);
         }
-
         public void DisableCombo()
         {
             anim.SetBool("canDoCombo", false);
@@ -130,8 +129,6 @@ namespace AoM
             deltaPosition.y = 0;
             Vector3 velocity = deltaPosition / delta;
             playerLocomotion.rigidbody.velocity = velocity;
-        }
-        
-       
+        } 
     }
 }

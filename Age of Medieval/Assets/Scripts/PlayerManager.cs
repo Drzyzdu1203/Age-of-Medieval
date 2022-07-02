@@ -10,6 +10,7 @@ namespace AoM
         Animator anim;
         CameraHandler cameraHandler;
         PlayerStats playerStats;
+        PlayerAnimatorManager playerAnimatorManager;
         PlayerLocomotion playerLocomotion;
 
         InteractableUI interactableUI;
@@ -31,10 +32,8 @@ namespace AoM
         {
             cameraHandler = FindObjectOfType<CameraHandler>();
             backStabCollider = GetComponentInChildren<BackStabCollider>();
-        }
-        void Start()
-        {
             inputHandler = GetComponent<InputHandler>();
+            playerAnimatorManager = GetComponentInChildren<PlayerAnimatorManager>();
             anim = GetComponentInChildren<Animator>();
             playerStats = GetComponent<PlayerStats>();
             playerLocomotion = GetComponent<PlayerLocomotion>();
@@ -44,6 +43,7 @@ namespace AoM
         void Update()
         {
             float delta = Time.deltaTime;
+
             isinteracting = anim.GetBool("isinteracting");
             canDoCombo = anim.GetBool("canDoCombo");
             isUsingRightHand = anim.GetBool("isUsingRightHand");
@@ -53,6 +53,7 @@ namespace AoM
             anim.SetBool("isDead", playerStats.isDead);
 
             inputHandler.TickInput(delta);
+            playerAnimatorManager.canRotate = anim.GetBool("canRotate");
             playerLocomotion.HandleRollingAndSprinting(delta);
             playerLocomotion.HandleJumping();
             playerStats.RegenerateStamina();
@@ -66,6 +67,7 @@ namespace AoM
 
             playerLocomotion.HandleFalling(delta, playerLocomotion.moveDirection);
             playerLocomotion.HandleMovement(delta);
+            playerLocomotion.HandleRotation(delta);
         }
         private void LateUpdate()
         {
