@@ -16,14 +16,19 @@ MonoBehaviour:
   itemName: Sword_A
   modelPrefab: {fileID: 254104694888737250, guid: f0b6568be42bcf844ac82dffa43ddca2, type: 3}
   isUnarmed: 0
-  infantry_04_attack_A: infantry_04_attack_A
-  infantry_04_attack_B: infantry_04_attack_B
-  infantry_04_attack_C: infantry_04_attack_C
-  meleeAttack_TwoHanded: meleeAttack_TwoHanded
-  th_light_attack_01: 
-  th_light_attack_02: 
-  TestAttack: 
-  th_idle: 
+  baseDamage: 25
+  criticalDamageMuiltiplier: 4
+  OH_Light_Attack_1: OH_Light_Attack_1
+  OH_Light_Attack_2: OH_Light_Attack_2
+  OH_Light_Attack_3: OH_Light_Attack_3
+  OH_Heavy_Attack_1: OH_Heavy_Attack_1
+  OH_Heavy_Attack_2: OH_Heavy_Attack_2
+  TH_Light_Attack_1: TH_Light_Attack_1
+  TH_Light_Attack_2: TH_Light_Attack_2
+  TH_Light_Attack_3: TH_Light_Attack_3
+  TH_Heavy_Attack_1: TH_Heavy_Attack_1
+  TH_Heavy_Attack_2: TH_Heavy_Attack_2
+  th_idle: TH_Idle
   baseStamina: 10
   lightAttackMultiplier: 1
   heavyAttackMultiplier: 2

@@ -25,30 +25,84 @@ namespace AoM
             weaponSlotManager = GetComponent<WeaponSlotManager>();
             inputHandler = GetComponentInParent<InputHandler>();
         }
+
         public void HandleWeaponCombo(WeaponItem weapon)
         {
             if (inputHandler.comboFlag)
             {
                 animatorHandler.anim.SetBool("canDoCombo", false);
 
-                if (lastAttack == weapon.infantry_04_attack_A)
+                if (lastAttack == weapon.OH_Heavy_Attack_1)
                 {
-                    animatorHandler.PlayTargetAnimation(weapon.infantry_04_attack_C, true);
+                    animatorHandler.PlayTargetAnimation(weapon.OH_Heavy_Attack_2, true);
+
+                    lastAttack = weapon.OH_Heavy_Attack_2;
+                }
+                if (lastAttack == weapon.OH_Light_Attack_1)
+                {
+                    animatorHandler.PlayTargetAnimation(weapon.OH_Light_Attack_2, true);
+
+                    lastAttack = weapon.OH_Light_Attack_2;
 
                 }
+
+                else if (lastAttack == weapon.OH_Light_Attack_2)
+                {
+                    animatorHandler.PlayTargetAnimation(weapon.OH_Light_Attack_3, true);
+
+                }
+                //
+                if (lastAttack == weapon.TH_Heavy_Attack_1)
+                {
+                    animatorHandler.PlayTargetAnimation(weapon.OH_Heavy_Attack_2, true);
+
+                    lastAttack = weapon.TH_Heavy_Attack_2;
+                }
+                if (lastAttack == weapon.TH_Light_Attack_1)
+                {
+                    animatorHandler.PlayTargetAnimation(weapon.TH_Light_Attack_2, true);
+
+                    lastAttack = weapon.TH_Light_Attack_2;
+
+                }
+
+                else if (lastAttack == weapon.TH_Light_Attack_2)
+                {
+                    animatorHandler.PlayTargetAnimation(weapon.TH_Light_Attack_3, true);
+
+                }
+
+
             }
         }
         public void HandleLightAttack(WeaponItem weapon)
         {
             weaponSlotManager.attackingWeapon = weapon;
-            animatorHandler.PlayTargetAnimation(weapon.infantry_04_attack_A, true);
-            lastAttack = weapon.infantry_04_attack_A;
+            if (inputHandler.twoHandFlag)
+            {
+                animatorHandler.PlayTargetAnimation(weapon.TH_Light_Attack_1, true);
+                lastAttack = weapon.TH_Light_Attack_1;
+            }
+            else
+            {
+                animatorHandler.PlayTargetAnimation(weapon.OH_Light_Attack_1, true);
+                lastAttack = weapon.OH_Light_Attack_1;
+            }
         }
         public void HandleHeavyAttack(WeaponItem weapon)
         {
             weaponSlotManager.attackingWeapon = weapon;
-            animatorHandler.PlayTargetAnimation(weapon.meleeAttack_TwoHanded, true);
-            lastAttack = weapon.meleeAttack_TwoHanded;
+            if(inputHandler.twoHandFlag)
+            {
+                animatorHandler.PlayTargetAnimation(weapon.TH_Heavy_Attack_1, true);
+                lastAttack = weapon.TH_Heavy_Attack_1;
+            }
+            else
+            {
+                animatorHandler.PlayTargetAnimation(weapon.OH_Heavy_Attack_1, true);
+                lastAttack = weapon.OH_Heavy_Attack_1;
+            } 
+
         }
         #region Input Actions
         public void HandleLightAttackAction()

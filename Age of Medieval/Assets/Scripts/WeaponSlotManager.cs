@@ -65,9 +65,19 @@ namespace AoM
             {
                 if (inputHandler.twoHandFlag)
                 {
+                    
+                    animator.Play("Get Shield");
+                        
+                    
                     backSlot.LoadWeaponModel(leftHandSlot.currentWeapon);
                     leftHandSlot.UnloadWeaponAndDestroy();
                     animator.CrossFade(weaponItem.th_idle, 0.2f);
+                }
+                else
+                {
+                    animator.Play("Get Shield");
+                    animator.CrossFade("Both Arms Empty", 0.1f);
+                    backSlot.UnloadWeaponAndDestroy();
                 }
 
                 rightHandSlot.currentWeapon = weaponItem;

@@ -22,7 +22,7 @@ namespace AoM
         public void EnableDamageCollider()
         {
             damageCollider.enabled = true;
-            Debug.Log("EnableDamageCollider");
+            
         }
         public void DisaleDamageCollider()
         {

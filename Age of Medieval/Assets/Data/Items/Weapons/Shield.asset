@@ -10,24 +10,29 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e1e55ceb03871aa4bb6fc056d662433d, type: 3}
-  m_Name: Sword_B
+  m_Name: Shield
   m_EditorClassIdentifier: 
   itemIcon: {fileID: 0}
-  itemName: Sword_B
-  modelPrefab: {fileID: 1875860456482591163, guid: 3e4284a01f1881d459fd26a1aed4f96e, type: 3}
+  itemName: 
+  modelPrefab: {fileID: 0}
   isUnarmed: 0
-  infantry_04_attack_A: infantry_04_attack_A
-  infantry_04_attack_B: infantry_04_attack_B
-  infantry_04_attack_C: infantry_04_attack_C
-  meleeAttack_TwoHanded: meleeAttack_TwoHanded
-  th_light_attack_01: 
-  th_light_attack_02: 
-  TestAttack: 
+  baseDamage: 25
+  criticalDamageMuiltiplier: 4
+  OH_Light_Attack_1: 
+  OH_Light_Attack_2: 
+  OH_Light_Attack_3: 
+  OH_Heavy_Attack_1: 
+  OH_Heavy_Attack_2: 
+  TH_Light_Attack_1: 
+  TH_Light_Attack_2: 
+  TH_Light_Attack_3: 
+  TH_Heavy_Attack_1: 
+  TH_Heavy_Attack_2: 
   th_idle: 
-  baseStamina: 20
-  lightAttackMultiplier: 1
-  heavyAttackMultiplier: 2
+  baseStamina: 0
+  lightAttackMultiplier: 0
+  heavyAttackMultiplier: 0
   isSpellCaster: 0
   isFaithCaster: 0
   isPyroCaster: 0
-  isMeleeWeapon: 1
+  isMeleeWeapon: 0

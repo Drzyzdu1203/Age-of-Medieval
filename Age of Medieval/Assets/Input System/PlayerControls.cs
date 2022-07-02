@@ -475,6 +475,17 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""4058d852-437e-488b-bdbd-7070d4430a11"",
+                    ""path"": ""<Keyboard>/y"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Y"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""fed48c18-f9ec-45dd-9770-e025efb95e77"",
                     ""path"": ""<Mouse>/rightButton"",
                     ""interactions"": ""Hold(duration=0.4)"",

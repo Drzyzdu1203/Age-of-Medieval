@@ -13,16 +13,21 @@ MonoBehaviour:
   m_Name: w_Staff_A
   m_EditorClassIdentifier: 
   itemIcon: {fileID: 0}
-  itemName: 
+  itemName: w_staff_A
   modelPrefab: {fileID: 1412457234762940363, guid: 6e5317cdf53c1b8469b55bd93e24c734, type: 3}
   isUnarmed: 0
-  infantry_04_attack_A: infantry_04_attack_A
-  infantry_04_attack_B: infantry_04_attack_B
-  infantry_04_attack_C: infantry_04_attack_C
-  meleeAttack_TwoHanded: meleeAttack_TwoHanded
-  th_light_attack_01: 
-  th_light_attack_02: 
-  TestAttack: 
+  baseDamage: 25
+  criticalDamageMuiltiplier: 4
+  OH_Light_Attack_1: 
+  OH_Light_Attack_2: 
+  OH_Light_Attack_3: 
+  OH_Heavy_Attack_1: 
+  OH_Heavy_Attack_2: 
+  TH_Light_Attack_1: 
+  TH_Light_Attack_2: 
+  TH_Light_Attack_3: 
+  TH_Heavy_Attack_1: 
+  TH_Heavy_Attack_2: 
   th_idle: 
   baseStamina: 0
   lightAttackMultiplier: 0

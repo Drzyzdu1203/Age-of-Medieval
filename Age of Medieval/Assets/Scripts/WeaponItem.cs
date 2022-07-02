@@ -15,12 +15,19 @@ namespace AoM
         public int criticalDamageMuiltiplier = 4;
 
         [Header("Attack Animations")]
-        public string infantry_04_attack_A;
-        public string infantry_04_attack_B;
-        public string infantry_04_attack_C;       
-        public string meleeAttack_TwoHanded;
-        public string th_light_attack_01;
-        public string th_light_attack_02;
+        public string OH_Light_Attack_1;
+        public string OH_Light_Attack_2;
+        public string OH_Light_Attack_3;
+
+        public string OH_Heavy_Attack_1;
+        public string OH_Heavy_Attack_2;
+
+        public string TH_Light_Attack_1;
+        public string TH_Light_Attack_2;
+        public string TH_Light_Attack_3;
+
+        public string TH_Heavy_Attack_1;
+        public string TH_Heavy_Attack_2;
 
         [Header("Idle Animations")]
         public string th_idle;
