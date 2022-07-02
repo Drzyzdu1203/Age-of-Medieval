@@ -10,6 +10,10 @@ namespace AoM
         public GameObject modelPrefab;
         public bool isUnarmed;
 
+        [Header("Damage")]
+        public int baseDamage = 25;
+        public int criticalDamageMuiltiplier = 4;
+
         [Header("Attack Animations")]
         public string infantry_04_attack_A;
         public string infantry_04_attack_B;
@@ -17,7 +21,6 @@ namespace AoM
         public string meleeAttack_TwoHanded;
         public string th_light_attack_01;
         public string th_light_attack_02;
-        public string TestAttack;
 
         [Header("Idle Animations")]
         public string th_idle;

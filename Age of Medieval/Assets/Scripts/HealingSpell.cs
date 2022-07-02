@@ -9,7 +9,7 @@ namespace AoM
     {
         public int healAmount;
 
-        public override void AttemptToCastSpell(AnimatorHandler animatorHandler, PlayerStats playerStats)
+        public override void AttemptToCastSpell(PlayerAnimatorManager animatorHandler, PlayerStats playerStats)
         {
             base.AttemptToCastSpell(animatorHandler, playerStats);
             GameObject instantiatedWarmUpSpellFX = Instantiate(spellWarmUpFX, animatorHandler.transform);
@@ -17,7 +17,7 @@ namespace AoM
             Debug.Log("Attempting to cast spell...");
         }
 
-        public override void SuccessfullyCastSpell(AnimatorHandler animatorHandler, PlayerStats playerStats)
+        public override void SuccessfullyCastSpell(PlayerAnimatorManager animatorHandler, PlayerStats playerStats)
         {
             base.SuccessfullyCastSpell(animatorHandler, playerStats);
             GameObject instantiatedSpellFX = Instantiate(spellCastFX, animatorHandler.transform);

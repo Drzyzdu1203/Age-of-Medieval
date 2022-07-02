@@ -48,7 +48,7 @@ namespace AoM
         PlayerManager playerManager;
         WeaponSlotManager weaponSlotManager;
         CameraHandler cameraHandler;
-        AnimatorHandler animatorHandler;
+        PlayerAnimatorManager animatorHandler;
         UIManager uiManager;
 
         Vector2 movementInput;
@@ -62,7 +62,7 @@ namespace AoM
             weaponSlotManager = GetComponentInChildren<WeaponSlotManager>();
             uiManager = FindObjectOfType<UIManager>();
             cameraHandler = FindObjectOfType<CameraHandler>();
-            animatorHandler = GetComponentInChildren<AnimatorHandler>();
+            animatorHandler = GetComponentInChildren<PlayerAnimatorManager>();
         }
         public void OnEnable()
         {

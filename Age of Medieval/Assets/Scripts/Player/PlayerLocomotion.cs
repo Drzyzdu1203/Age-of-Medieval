@@ -15,7 +15,7 @@ namespace AoM
         [HideInInspector]
         public Transform myTransform;
         [HideInInspector]
-        public AnimatorHandler animatorHandler;
+        public PlayerAnimatorManager animatorHandler;
 
         public new Rigidbody rigidbody;
         public GameObject normalCamera;
@@ -58,7 +58,7 @@ namespace AoM
             playerManager = GetComponent<PlayerManager>();
             rigidbody = GetComponent<Rigidbody>();
             inputHandler = GetComponent<InputHandler>();
-            animatorHandler = GetComponentInChildren<AnimatorHandler>();
+            animatorHandler = GetComponentInChildren<PlayerAnimatorManager>();
             cameraObject = Camera.main.transform;
             myTransform = transform;
             animatorHandler.Initialize();

@@ -49,6 +49,7 @@ namespace AoM
             HandleRecoveryTimer();
 
             isinteracting = enemyAnimatorManager.anim.GetBool("isinteracting");
+            enemyAnimatorManager.anim.SetBool("isDead", enemyStats.isDead);
         }
 
         private void FixedUpdate()
@@ -58,10 +59,7 @@ namespace AoM
 
         private void HandleStateMachine()
         {
-            if (enemyStats.isDead)
-                return;
-
-            else if (currentState !=null)
+            if (currentState !=null)
             {
                 State nextState = currentState.Tick(this, enemyStats, enemyAnimatorManager);
 

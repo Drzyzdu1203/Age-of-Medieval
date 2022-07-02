@@ -6,7 +6,7 @@ namespace AoM
 {
     public class PlayerAttacker : MonoBehaviour
     {
-        AnimatorHandler animatorHandler;
+        PlayerAnimatorManager animatorHandler;
         PlayerManager playerManager;
         PlayerStats playerStats;
         PlayerInventory playerInventory;
@@ -18,7 +18,7 @@ namespace AoM
 
         private void Awake()
         {
-            animatorHandler = GetComponent<AnimatorHandler>();
+            animatorHandler = GetComponent<PlayerAnimatorManager>();
             playerManager = GetComponentInParent<PlayerManager>();
             playerStats = GetComponentInParent<PlayerStats>();
             playerInventory = GetComponentInParent<PlayerInventory>();

@@ -7,15 +7,16 @@ namespace AoM
     public class WeaponSlotManager : MonoBehaviour
     {
         PlayerManager playerManager;
+        PlayerInventory playerInventory;
 
         public WeaponItem attackingWeapon;
 
         WeaponHolderSlot leftHandSlot;
         WeaponHolderSlot rightHandSlot;
-
-        DamageCollider leftHandDamageCollider;
-        DamageCollider rightHandDamageCollider;
         WeaponHolderSlot backSlot;
+
+        public DamageCollider leftHandDamageCollider;
+        public DamageCollider rightHandDamageCollider;
 
         Animator animator;
 
@@ -27,6 +28,7 @@ namespace AoM
         private void Awake()
         {
             playerManager = GetComponentInParent<PlayerManager>();
+            playerInventory = GetComponentInParent<PlayerInventory>();
             animator = GetComponent<Animator>();
             quickSlotsUI = FindObjectOfType<QuickSlotsUI>();
             playerStats = GetComponentInParent<PlayerStats>();
@@ -42,6 +44,10 @@ namespace AoM
                 else if (weaponSlot.isRightHandSlot)
                 {
                     rightHandSlot = weaponSlot;
+                }
+                else if (weaponSlot.isBackSlot)
+                {
+                    backSlot = weaponSlot;
                 }
             }
         }
@@ -99,7 +105,7 @@ namespace AoM
         public void CloseDamageCollider()
         {
             rightHandDamageCollider.DisaleDamageCollider();
-            //leftHandDamageCollider.EnableDamageCollider();
+            leftHandDamageCollider.EnableDamageCollider();
         }
 
         #endregion

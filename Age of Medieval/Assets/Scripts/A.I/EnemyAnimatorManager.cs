@@ -18,7 +18,7 @@ namespace AoM
 
         public override void TakeCriticalDamageAnimationEvent()
         {
-            //enemyStats.TakeDamageNoAnimation(enemyManager.pendingCriticalDamage);
+            enemyStats.TakeDamageNoAnimation(enemyManager.pendingCriticalDamage);
             enemyManager.pendingCriticalDamage = 0;
         }
 

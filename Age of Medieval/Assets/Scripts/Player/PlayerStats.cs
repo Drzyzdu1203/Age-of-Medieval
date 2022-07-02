@@ -12,7 +12,7 @@ namespace AoM
         HealthBar healthBar;
         StaminaBar staminaBar;
         ManaBar manaBar;
-        AnimatorHandler animatorHandler;
+        PlayerAnimatorManager animatorHandler;
 
         public float staminaRegenerationAmount = 1;
         public float staminaRegenTimer = 0;
@@ -23,7 +23,7 @@ namespace AoM
             healthBar = FindObjectOfType<HealthBar>();
             staminaBar = FindObjectOfType<StaminaBar>();
             manaBar = FindObjectOfType<ManaBar>();
-            animatorHandler = GetComponentInChildren<AnimatorHandler>();
+            animatorHandler = GetComponentInChildren<PlayerAnimatorManager>();
         }
 
         void Start()
@@ -76,6 +76,16 @@ namespace AoM
             {
                 currentHealth = 0;
                 animatorHandler.PlayTargetAnimation("twohanded_06_death_B", true);
+                isDead = true;
+            }
+        }
+        public void TakeDamageNoAnimation(int damage)
+        {
+            currentHealth = currentHealth - damage;
+
+            if (currentHealth <= 0)
+            {
+                currentHealth = 0;
                 isDead = true;
             }
         }
