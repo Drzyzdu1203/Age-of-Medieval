@@ -8,6 +8,7 @@ namespace AoM
     {
         public PursueTargetState pursueTargetState;
         public LayerMask detectionLayer;
+        
 
         public override State Tick(EnemyManager enemyManager, EnemyStats enemyStats, EnemyAnimatorManager enemyAnimatorManager)
         {
@@ -38,6 +39,7 @@ namespace AoM
             if (enemyManager.currentTarget != null)
             {
                 return pursueTargetState;
+                
             }
             else
             {

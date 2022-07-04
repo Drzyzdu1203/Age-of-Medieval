@@ -7,6 +7,8 @@ namespace AoM
     public class PursueTargetState : State
     {
         public CombatStanceState combatStanceState;
+        public AudioClip pursueClip;
+
 
         public override State Tick(EnemyManager enemyManager, EnemyStats enemyStats, EnemyAnimatorManager enemyAnimatorManager)
         {
@@ -32,6 +34,7 @@ namespace AoM
             if (distanceFromTarget <= enemyManager.maximumAttackRange)
             {
                 return combatStanceState;
+                AudioSource.PlayClipAtPoint(pursueClip, transform.position);
             }
             else
             {

@@ -16,8 +16,8 @@ MonoBehaviour:
   itemName: Sztylet
   modelPrefab: {fileID: 7905235633952499638, guid: 6696bdea6589ee142966d6d384953b02, type: 3}
   isUnarmed: 0
-  baseDamage: 20
-  criticalDamageMuiltiplier: 4
+  baseDamage: 25
+  criticalDamageMuiltiplier: 5
   OH_Light_Attack_1: OH_Light_Attack_1
   OH_Light_Attack_2: OH_Light_Attack_2
   OH_Light_Attack_3: OH_Light_Attack_3

@@ -12,9 +12,10 @@ GameObject:
   - component: {fileID: 3355878768102339849}
   - component: {fileID: 7807341699834712102}
   - component: {fileID: 1143521047592602906}
+  - component: {fileID: 2036580367}
   m_Layer: 0
   m_Name: Item
-  m_TagString: Untagged
+  m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4826,3 +4827,18 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!114 &2036580367
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2925220200452566034}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83679f3226f3f3043a1153bad1e07e11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  radius: 0.6
+  interactbleText: "R\xF3\u017Cczka"
+  weapon: {fileID: 11400000, guid: de761aa3ea9354e4c825401fbf8a182a, type: 2}
