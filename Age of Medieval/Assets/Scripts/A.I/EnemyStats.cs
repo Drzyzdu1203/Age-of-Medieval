@@ -9,13 +9,15 @@ namespace AoM
     {
 
 
-        Animator animator;
+        EnemyAnimatorManager enemyAnimatorManager;
+
+        public int soulsAwardedOnDeath = 50;
 
         public UIEnemyHealthBar enemyHealthBar;
 
         private void Awake()
         {
-            animator = GetComponentInChildren<Animator>();
+            enemyAnimatorManager = GetComponentInChildren<EnemyAnimatorManager>();
         }
         void Start()
         {
@@ -48,14 +50,20 @@ namespace AoM
             currentHealth = currentHealth - damage;
             enemyHealthBar.SetHealth(currentHealth);
 
-            animator.Play("infantry_05_damage");
+            enemyAnimatorManager.PlayTargetAnimation("infantry_05_damage", true);
 
             if (currentHealth <= 0)
             {
-                currentHealth = 0;
-                animator.Play("twohanded_06_death_B");
-                isDead = true;
+                HandleDeath();
             }
+        }
+
+        private void HandleDeath()
+        {
+            currentHealth = 0;
+            enemyAnimatorManager.PlayTargetAnimation("twohanded_06_death_B", true);
+            isDead = true;
+            
         }
 
     }

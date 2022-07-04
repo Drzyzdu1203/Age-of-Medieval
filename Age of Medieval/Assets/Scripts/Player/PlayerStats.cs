@@ -131,5 +131,10 @@ namespace AoM
             }
             manaBar.SetCurrentMana(currentMana);
         }
+
+        public void AddSouls(int souls)
+        {
+            soulCount = soulCount + souls;
+        }
     }
 }   
