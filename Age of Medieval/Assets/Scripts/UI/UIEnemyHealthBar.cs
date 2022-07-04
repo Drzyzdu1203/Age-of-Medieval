@@ -54,6 +54,10 @@ namespace AoM
             }
 
         }
+        private void LateUpdate()
+        {
+            transform.LookAt(Camera.main.transform);
+        }
     }
 }
 
