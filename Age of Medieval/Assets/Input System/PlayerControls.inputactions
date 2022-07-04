@@ -276,6 +276,15 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "X",
+                    "type": "Button",
+                    "id": "f93c5871-12d1-480b-a793-6e8ba3e823e3",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "LockOn",
                     "type": "Button",
                     "id": "d8c3ec28-cc89-4bfb-9d8e-e40950c4547b",
@@ -481,6 +490,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "Critical Attack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4a2c4595-c297-4a21-a78d-9acabf0fb49d",
+                    "path": "<Gamepad>/buttonWest",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "X",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d1d6f209-48a3-4763-9d0b-642fc9f102ef",
+                    "path": "<Keyboard>/x",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "X",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

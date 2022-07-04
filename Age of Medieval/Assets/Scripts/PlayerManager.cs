@@ -96,6 +96,8 @@ namespace AoM
             }
         }
 
+        #region Player Interactions
+
         public void CheckForInteractableObject()
         {
             RaycastHit hit;
@@ -133,6 +135,13 @@ namespace AoM
             }
         }
 
+        public void OpenChestInteraction(Transform playerStandsHereWhenOpeningChest)
+        {
+            playerLocomotion.rigidbody.velocity = Vector3.zero;
+            transform.position = playerStandsHereWhenOpeningChest.transform.position;
+            playerAnimatorManager.PlayTargetAnimation("Gathering", true);
+        }
 
+        #endregion
     }
 }

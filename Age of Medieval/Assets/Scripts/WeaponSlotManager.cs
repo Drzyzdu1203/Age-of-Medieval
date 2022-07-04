@@ -11,9 +11,9 @@ namespace AoM
 
         public WeaponItem attackingWeapon;
 
-        WeaponHolderSlot leftHandSlot;
-        WeaponHolderSlot rightHandSlot;
-        WeaponHolderSlot backSlot;
+        public WeaponHolderSlot leftHandSlot;
+        public WeaponHolderSlot rightHandSlot;
+        public WeaponHolderSlot backSlot;
 
         public DamageCollider leftHandDamageCollider;
         public DamageCollider rightHandDamageCollider;
@@ -50,6 +50,12 @@ namespace AoM
                     backSlot = weaponSlot;
                 }
             }
+        }
+
+        public void LoadBothWeaponsOnSlots()
+        {
+            LoadWeaponOnSlot(playerInventory.rightWeapon, false);
+            LoadWeaponOnSlot(playerInventory.leftWeapon, true);
         }
 
         public void LoadWeaponOnSlot(WeaponItem weaponItem, bool isLeft)

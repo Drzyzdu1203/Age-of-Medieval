@@ -22,6 +22,7 @@ namespace AoM
         public bool d_Pad_Right;
 
         public bool y_Input;
+        public bool x_Input;
         public bool interaction_Input;
         public bool roll_Input;
         public bool jump_Input;
@@ -46,6 +47,8 @@ namespace AoM
         PlayerAttacker playerAttacker;
         PlayerInventory playerInventory;
         PlayerManager playerManager;
+        PlayerAnimatorManager playerAnimatorManager;
+        PlayerEffectsManager playerEffectsManager;
         PlayerStats playerStats;
         WeaponSlotManager weaponSlotManager;
         CameraHandler cameraHandler;
@@ -61,6 +64,8 @@ namespace AoM
             playerInventory = GetComponent<PlayerInventory>();
             playerManager = GetComponent<PlayerManager>();
             playerStats = GetComponent<PlayerStats>();
+            playerEffectsManager = GetComponentInChildren<PlayerEffectsManager>();
+            playerAnimatorManager = GetComponentInChildren<PlayerAnimatorManager>();
             weaponSlotManager = GetComponentInChildren<WeaponSlotManager>();
             uiManager = FindObjectOfType<UIManager>();
             cameraHandler = FindObjectOfType<CameraHandler>();
@@ -80,6 +85,7 @@ namespace AoM
                 inputActions.PlayerActions.Interaction.performed += i => interaction_Input = true;
                 inputActions.PlayerActions.Jump.performed += i => jump_Input = true;
                 inputActions.PlayerActions.Inventory.performed += i => inventory_Input = true;
+                inputActions.PlayerActions.X.performed += i => x_Input = true;
                 inputActions.PlayerActions.LockOn.performed += i => lockOnInput = true;
                 inputActions.PlayerMovement.LockOnTargetRight.performed += i => right_Stick_Right_Input = true;
                 inputActions.PlayerMovement.LockOnTargetLeft.performed += i => right_Stick_Left_Input = true;
@@ -105,6 +111,7 @@ namespace AoM
             HandleInventoryInput();
             HandleTwoHandInput();
             HandleCriticalAttackInput();
+            HandleUseConsumableInput();
         }
 
         private void HandleMoveInput(float delta)
@@ -270,6 +277,16 @@ namespace AoM
             {
                 critical_Attack_Input = false;
                 playerAttacker.AttemptBackStabOrRiposte();
+            }
+        }
+
+        private void HandleUseConsumableInput()
+        {
+            if (x_Input)
+            {
+                x_Input = false;
+                playerInventory.currentConsumable.AttemptToConsumeItem(playerAnimatorManager, weaponSlotManager, playerEffectsManager);
+
             }
         }
     }
