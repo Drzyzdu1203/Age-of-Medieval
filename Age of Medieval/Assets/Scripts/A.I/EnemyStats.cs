@@ -11,7 +11,7 @@ namespace AoM
 
         EnemyAnimatorManager enemyAnimatorManager;
 
-        public int soulsAwardedOnDeath = 50;
+        public int soulsAwardedOnDeath = 100;
 
         public UIEnemyHealthBar enemyHealthBar;
 
