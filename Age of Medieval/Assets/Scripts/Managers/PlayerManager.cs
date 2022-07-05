@@ -12,6 +12,7 @@ namespace AoM
         PlayerStats playerStats;
         PlayerAnimatorManager playerAnimatorManager;
         PlayerLocomotion playerLocomotion;
+        
 
         InteractableUI interactableUI;
         public GameObject interactableUIGameObject;
@@ -38,6 +39,7 @@ namespace AoM
             playerStats = GetComponent<PlayerStats>();
             playerLocomotion = GetComponent<PlayerLocomotion>();
             interactableUI = FindObjectOfType<InteractableUI>();
+            
         }
 
         void Update()

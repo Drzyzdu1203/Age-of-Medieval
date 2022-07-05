@@ -10,6 +10,7 @@ namespace AoM
         EnemyLocomotionManager enemyLocomotionManager;
         EnemyAnimatorManager enemyAnimatorManager;
         EnemyStats enemyStats;
+        
 
         public State currentState;
         public CharacterStats currentTarget;

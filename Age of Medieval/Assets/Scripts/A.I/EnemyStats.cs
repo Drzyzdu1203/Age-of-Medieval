@@ -7,10 +7,8 @@ namespace AoM
 {
     public class EnemyStats : CharacterStats
     {
-
-
         EnemyAnimatorManager enemyAnimatorManager;
-
+        CharacterManager character;
         public int soulsAwardedOnDeath = 100;
 
         public UIEnemyHealthBar enemyHealthBar;
@@ -56,6 +54,7 @@ namespace AoM
             {
                 HandleDeath();
             }
+            
         }
 
         private void HandleDeath()

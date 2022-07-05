@@ -78,6 +78,7 @@ namespace AoM
                 animatorHandler.PlayTargetAnimation("twohanded_06_death_B", true);
                 isDead = true;
             }
+            
         }
         public void TakeDamageNoAnimation(int damage)
         {

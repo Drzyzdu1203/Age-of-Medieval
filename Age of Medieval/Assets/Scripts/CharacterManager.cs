@@ -6,6 +6,8 @@ namespace AoM
 {
     public class CharacterManager : MonoBehaviour
     {
+        
+
         [Header("Lock On Transform")]
         public Transform lockOnTransform;
 
@@ -16,5 +18,7 @@ namespace AoM
         //Damage will be inflicted during an animation event
         //Used in backstab or riposte animations
         public int pendingCriticalDamage;
+
+
     }
 }
