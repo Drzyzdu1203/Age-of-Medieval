@@ -54,6 +54,7 @@ namespace AoM
         CameraHandler cameraHandler;
         PlayerAnimatorManager animatorHandler;
         UIManager uiManager;
+        
 
         Vector2 movementInput;
         Vector2 cameraInput;
@@ -70,6 +71,8 @@ namespace AoM
             uiManager = FindObjectOfType<UIManager>();
             cameraHandler = FindObjectOfType<CameraHandler>();
             animatorHandler = GetComponentInChildren<PlayerAnimatorManager>();
+            
+
         }
         public void OnEnable()
         {
@@ -161,12 +164,12 @@ namespace AoM
         {
             
 
-            if(lightAttack_Input)
+            if(lightAttack_Input && !inventoryFlag)
             {
                 playerAttacker.HandleLightAttackAction();
             }
 
-            if (heavyAttack_Input)
+            if (heavyAttack_Input && !inventoryFlag)
             {
                 playerAttacker.HandleHeavyAttack(playerInventory.rightWeapon);
             }
@@ -199,7 +202,7 @@ namespace AoM
                 {
                     uiManager.OpenSelectWindow();
                     uiManager.UpdateUI();         
-                    uiManager.hudWindow.SetActive(false);                  
+                    uiManager.hudWindow.SetActive(false);
                 }
                 else
                 {
@@ -228,6 +231,7 @@ namespace AoM
                 lockOnFlag = false;
                 cameraHandler.ClearLockOnTargets();
             }
+
 
             if (lockOnFlag && right_Stick_Left_Input)
             {

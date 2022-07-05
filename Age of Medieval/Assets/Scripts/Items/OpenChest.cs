@@ -31,7 +31,7 @@ namespace AoM
             playerManager.transform.rotation = targetRotation;
 
             playerManager.OpenChestInteraction(playerStandingPosition);
-            animator.Play("Gathering");
+            //animator.Play("Gathering");
             animator.Play("Chest Open");
             StartCoroutine(SpawnItemInChest());
 

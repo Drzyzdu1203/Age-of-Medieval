@@ -34,7 +34,6 @@ namespace AoM
             if (distanceFromTarget <= enemyManager.maximumAttackRange)
             {
                 return combatStanceState;
-                AudioSource.PlayClipAtPoint(pursueClip, transform.position);
             }
             else
             {

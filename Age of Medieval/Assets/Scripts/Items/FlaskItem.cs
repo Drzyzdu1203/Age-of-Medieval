@@ -17,14 +17,14 @@ namespace AoM
         public int focusPointsRecoverAmount;
 
         [Header("Recovery FX")]
-        public GameObject recoveryFX;
+        public GameObject FX_Blood;
 
 
         public override void AttemptToConsumeItem(PlayerAnimatorManager playerAnimatorManager, WeaponSlotManager weaponSlotManager, PlayerEffectsManager playerEffectsManager)
         {
             base.AttemptToConsumeItem(playerAnimatorManager, weaponSlotManager, playerEffectsManager);
             GameObject flask = Instantiate(itemModel, weaponSlotManager.rightHandSlot.transform);
-            playerEffectsManager.currentParticleFX = recoveryFX;
+            playerEffectsManager.currentParticleFX = FX_Blood;
             playerEffectsManager.amountToBeHealed = healthRecoverAmount;
             playerEffectsManager.instantiatedFXModel = flask;
             weaponSlotManager.rightHandSlot.UnloadWeapon();

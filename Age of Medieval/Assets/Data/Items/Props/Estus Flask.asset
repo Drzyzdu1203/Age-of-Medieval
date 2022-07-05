@@ -14,13 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemIcon: {fileID: 0}
   itemName: Estus Flask
-  maxItemAmount: 10
-  currentItemAmount: 10
+  maxItemAmount: 3
+  currentItemAmount: 3
   itemModel: {fileID: 1854215813588696589, guid: 01a7816810140b747a34590ee609a614, type: 3}
   consumeAnimation: Potion_Drink
   isInteracting: 0
   estusFlask: 1
   ashenFlask: 0
-  healthRecoverAmount: 100
+  healthRecoverAmount: 50
   focusPointsRecoverAmount: 0
-  recoveryFX: {fileID: -927199367670048503, guid: 4a1595411f307c9489acbe2f0826ec72, type: 3}
+  FX_Blood: {fileID: 6837061768053742933, guid: c041548ad5f52014d8ae27de23cf2764, type: 3}
