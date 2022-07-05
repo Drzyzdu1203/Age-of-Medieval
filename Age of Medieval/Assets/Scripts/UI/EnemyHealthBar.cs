@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 namespace AoM
 {
-    public class HealthBar : MonoBehaviour
+    public class EnemyHealthBar : MonoBehaviour
     {
         public Slider slider;
 

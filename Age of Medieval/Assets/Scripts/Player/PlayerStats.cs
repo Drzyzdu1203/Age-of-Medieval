@@ -59,7 +59,7 @@ namespace AoM
             maxMana = manaLevel * 10;
             return maxMana;
         }
-        public void TakeDamage (int damage)
+        public void TakeDamage (int damage) //zmiana z int
         {
             if (playerManager.isInvulerable)
                 return;

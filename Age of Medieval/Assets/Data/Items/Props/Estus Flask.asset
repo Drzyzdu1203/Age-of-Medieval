@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4e103e047c3b7f46a44664e0a640ec5, type: 3}
   m_Name: Estus Flask
   m_EditorClassIdentifier: 
-  itemIcon: {fileID: 0}
+  itemIcon: {fileID: 21300000, guid: ada6f71793dc8cc4eb09688ccb9ad84a, type: 3}
   itemName: Estus Flask
   maxItemAmount: 3
   currentItemAmount: 3
