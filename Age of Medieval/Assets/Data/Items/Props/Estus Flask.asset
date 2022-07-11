@@ -23,4 +23,4 @@ MonoBehaviour:
   ashenFlask: 0
   healthRecoverAmount: 50
   focusPointsRecoverAmount: 0
-  FX_Blood: {fileID: 6837061768053742933, guid: c041548ad5f52014d8ae27de23cf2764, type: 3}
+  FX_Blood: {fileID: 127166, guid: 4cc2bcf001dff1841ab60befad39294b, type: 3}

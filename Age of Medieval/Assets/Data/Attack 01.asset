@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   actionAnimation: OH_Light_Attack_1
   attackScore: 3
-  recoveryTime: 1.5
+  recoveryTime: 2
   maximumAttackAngle: 50
   minimumAttackAngle: -50
   minimumDistanceNeededToAttack: 0.1

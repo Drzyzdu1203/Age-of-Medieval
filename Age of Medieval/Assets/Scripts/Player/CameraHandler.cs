@@ -8,6 +8,7 @@ namespace AoM
     {
         InputHandler inputHandler;
         PlayerManager playerManager;
+        
 
         public Transform targetTransform;
         public Transform cameraTransform;
@@ -17,6 +18,7 @@ namespace AoM
         public LayerMask ignoreLayers;
         public LayerMask enviromentLayer;
         private Vector3 cameraFollowVelocity = Vector3.zero;
+
 
         public float lookSpeed = 0.1f;
         public float followSpeed = 0.1f;
@@ -41,7 +43,7 @@ namespace AoM
         public Transform nearestLockOnTarget;
         public Transform leftLockTarget;
         public Transform rightLockTarget;
-        public float maximumLockOnDistance = 30;
+        public float maximumLockOnDistance = 6;
 
 
         private void Awake()
@@ -52,6 +54,7 @@ namespace AoM
             targetTransform = FindObjectOfType<PlayerManager>().transform;
             inputHandler = FindObjectOfType<InputHandler>();
             playerManager = FindObjectOfType<PlayerManager>();
+            
         }
         private void Start()
         {
@@ -182,8 +185,8 @@ namespace AoM
                 if (inputHandler.lockOnFlag)
                 {
                     Vector3 relativeEnemyPosition = currentLockOnTarget.InverseTransformPoint(availableTargets[k].transform.position);
-                    var distanceFromLeftTarget = currentLockOnTarget.transform.position.x - availableTargets[k].transform.position.x;
-                    var distanceFromRightTarget = currentLockOnTarget.transform.position.x + availableTargets[k].transform.position.x;
+                    var distanceFromLeftTarget = currentLockOnTarget.transform.position.x + availableTargets[k].transform.position.x;
+                    var distanceFromRightTarget = currentLockOnTarget.transform.position.x - availableTargets[k].transform.position.x;
 
                     if (relativeEnemyPosition.x > 0.00 && distanceFromLeftTarget < shortestDistanceOfLeftTarget)
                     {

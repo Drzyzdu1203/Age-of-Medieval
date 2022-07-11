@@ -164,7 +164,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: {fileID: 8300000, guid: 1122c4ffe9ad7164989f7bbb0f118fdf, type: 3}
   whoosh: {fileID: 8300000, guid: 1ef191cb6ac3ab94ab94615a48a02683, type: 3}
-  currentWeaponDamage: 50
+  currentWeaponDamage: 35
 --- !u!65 &1478178696522254773
 BoxCollider:
   m_ObjectHideFlags: 0

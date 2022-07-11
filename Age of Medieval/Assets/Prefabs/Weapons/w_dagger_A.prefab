@@ -145,7 +145,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: {fileID: 8300000, guid: 5dd027187a1f86543ba4a009fd50271a, type: 3}
   whoosh: {fileID: 8300000, guid: 1ef191cb6ac3ab94ab94615a48a02683, type: 3}
-  currentWeaponDamage: 10
+  currentWeaponDamage: 15
 --- !u!82 &7716983422043337078
 AudioSource:
   m_ObjectHideFlags: 0

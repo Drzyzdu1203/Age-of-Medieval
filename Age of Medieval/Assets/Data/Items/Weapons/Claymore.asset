@@ -16,7 +16,7 @@ MonoBehaviour:
   itemName: Claymore
   modelPrefab: {fileID: 3645379412710308620, guid: 26c7590d147ac5e4798cef0b1dc6ca9a, type: 3}
   isUnarmed: 0
-  baseDamage: 50
+  baseDamage: 35
   criticalDamageMuiltiplier: 4
   OH_Light_Attack_1: OH_Light_Attack_1
   OH_Light_Attack_2: OH_Light_Attack_2

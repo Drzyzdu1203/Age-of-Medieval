@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   actionAnimation: TH_Light_Attack_2
   attackScore: 3
-  recoveryTime: 1
+  recoveryTime: 1.5
   maximumAttackAngle: 60
   minimumAttackAngle: -60
   minimumDistanceNeededToAttack: 0.1

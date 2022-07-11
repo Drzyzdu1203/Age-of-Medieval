@@ -6,7 +6,7 @@ namespace AoM
 {
     public class DamagePlayer : MonoBehaviour
     {
-        private int damage = 25;
+        private int damage = 75;
 
         private void OnTriggerEnter(Collider other)
         {
