@@ -6,12 +6,13 @@ namespace AoM
 {
     public class DamageCollider : MonoBehaviour
     {
+        public CharacterManager characterManager;
         Collider damageCollider;
         AudioSource audioSource;
 
         public AudioClip damage;
         public AudioClip whoosh;
-
+  
 
         public int currentWeaponDamage;
 
@@ -22,6 +23,7 @@ namespace AoM
             damageCollider.isTrigger = true;
             damageCollider.enabled = false;
             audioSource = GetComponent<AudioSource>();
+           
         }
 
 
@@ -39,13 +41,24 @@ namespace AoM
             if (collision.tag == "Player")
             {
                 PlayerStats playerStats = collision.GetComponent<PlayerStats>();
+                CharacterManager enemyCharacterManager = collision.GetComponent<CharacterManager>();
 
-
+                if(enemyCharacterManager != null)
+                {
+                    if(enemyCharacterManager.isParrying)
+                    {
+                        characterManager.GetComponentInChildren<AnimatorManager>().PlayTargetAnimation("Parried", true);
+                        return;
+                    }
+                }
 
                 if (playerStats != null)
                 {
-                    playerStats.TakeDamage(currentWeaponDamage);
-                    audioSource.PlayOneShot(damage);
+                    
+                    
+                        playerStats.TakeDamage(currentWeaponDamage);
+                        audioSource.PlayOneShot(damage);
+                    
 
                 }
 
@@ -54,8 +67,16 @@ namespace AoM
             if (collision.tag == "Enemy")
             {
                 EnemyStats enemyStats = collision.GetComponent<EnemyStats>();
+                CharacterManager enemyCharacterManager = collision.GetComponent<CharacterManager>();
 
-
+                if (enemyCharacterManager != null)
+                {
+                    if (enemyCharacterManager.isParrying)
+                    {
+                        characterManager.GetComponentInChildren<AnimatorManager>().PlayTargetAnimation("Parried", true);
+                        return;
+                    }
+                }
 
                 if (enemyStats != null)
                 {

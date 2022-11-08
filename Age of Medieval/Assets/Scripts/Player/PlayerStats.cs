@@ -8,18 +8,19 @@ namespace AoM
     public class PlayerStats : CharacterStats
     {
         PlayerManager playerManager;
-
+        
         HealthBar healthBar;
         StaminaBar staminaBar;
         ManaBar manaBar;
         PlayerAnimatorManager animatorHandler;
+        EnemyManager enemyManager;
 
         public float staminaRegenerationAmount = 1;
         public float staminaRegenTimer = 0;
         private void Awake()
         {
             playerManager = GetComponent<PlayerManager>();
-
+            enemyManager = GetComponent<EnemyManager>();
             healthBar = FindObjectOfType<HealthBar>();
             staminaBar = FindObjectOfType<StaminaBar>();
             manaBar = FindObjectOfType<ManaBar>();
@@ -77,7 +78,13 @@ namespace AoM
                 currentHealth = 0;
                 animatorHandler.PlayTargetAnimation("twohanded_06_death_B", true);
                 isDead = true;
+                
             }
+            if (isDead)
+            {
+                playerManager.enabled = false;
+            }
+
             
         }
         public void TakeDamageNoAnimation(int damage)
@@ -88,6 +95,7 @@ namespace AoM
             {
                 currentHealth = 0;
                 isDead = true;
+                
             }
         }
         public void TakeStaminaDamage(int damage)
@@ -95,6 +103,7 @@ namespace AoM
             currentStamina = currentStamina - damage;
             staminaBar.SetCurrentStamina(currentStamina);
         }
+
         public void RegenerateStamina()
         {
             if (playerManager.isinteracting)

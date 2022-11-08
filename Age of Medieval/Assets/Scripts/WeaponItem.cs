@@ -29,7 +29,13 @@ namespace AoM
         public string TH_Heavy_Attack_1;
         public string TH_Heavy_Attack_2;
 
+        [Header("Weapon Art")]
+        public string weapon_art;
+
+
         [Header("Idle Animations")]
+        public string right_hand_idle;
+        public string left_hand_idle;
         public string th_idle;
 
         [Header("Stamina Costs")]
@@ -42,5 +48,6 @@ namespace AoM
         public bool isFaithCaster;
         public bool isPyroCaster;
         public bool isMeleeWeapon;
+        public bool isShieldWeapon;
     }
 }

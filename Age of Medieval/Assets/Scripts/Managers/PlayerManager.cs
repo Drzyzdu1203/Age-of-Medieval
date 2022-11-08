@@ -32,7 +32,7 @@ namespace AoM
         private void Awake()
         {
             cameraHandler = FindObjectOfType<CameraHandler>();
-            backStabCollider = GetComponentInChildren<BackStabCollider>();
+            backStabCollider = GetComponentInChildren<CriticalDamageCollider>();
             inputHandler = GetComponent<InputHandler>();
             playerAnimatorManager = GetComponentInChildren<PlayerAnimatorManager>();
             anim = GetComponentInChildren<Animator>();
@@ -76,6 +76,7 @@ namespace AoM
             inputHandler.rollFlag = false;
             inputHandler.lightAttack_Input = false;
             inputHandler.heavyAttack_Input = false;
+            inputHandler.blocking_Input = false;
             inputHandler.d_Pad_Up = false;
             inputHandler.d_Pad_Down = false;
             inputHandler.d_Pad_Left = false;

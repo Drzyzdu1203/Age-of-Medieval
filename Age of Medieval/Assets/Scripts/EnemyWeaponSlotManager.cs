@@ -12,8 +12,8 @@ namespace AoM
         WeaponHolderSlot rightHandSlot;
         WeaponHolderSlot leftHandSlot;
 
-        DamageCollider leftHandDamageCollider;
-        DamageCollider rightHandDamageCollider;
+        public DamageCollider leftHandDamageCollider;
+        public DamageCollider rightHandDamageCollider;
 
         private void Awake()
         {
@@ -69,10 +69,12 @@ namespace AoM
             if (isLeft)
             {
                 leftHandDamageCollider = leftHandSlot.currentWeaponModel.GetComponentInChildren<DamageCollider>();
+                leftHandDamageCollider.characterManager = GetComponentInParent<CharacterManager>();
             }
             else
             {
                 rightHandDamageCollider = rightHandSlot.currentWeaponModel.GetComponentInChildren<DamageCollider>();
+                rightHandDamageCollider.characterManager = GetComponentInParent<CharacterManager>();
             }
         }
 

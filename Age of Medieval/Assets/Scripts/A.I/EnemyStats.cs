@@ -10,11 +10,16 @@ namespace AoM
         EnemyAnimatorManager enemyAnimatorManager;
         CharacterManager character;
         public int soulsAwardedOnDeath = 100;
+        Collider enemyCollider;
+        Rigidbody enemyRigidbody;
+
 
         public UIEnemyHealthBar enemyHealthBar;
 
         private void Awake()
         {
+            enemyCollider = GetComponent<Collider>();
+            enemyRigidbody = GetComponent<Rigidbody>();
             enemyAnimatorManager = GetComponentInChildren<EnemyAnimatorManager>();
         }
         void Start()
@@ -53,6 +58,7 @@ namespace AoM
             if (currentHealth <= 0)
             {
                 HandleDeath();
+                
             }
             
         }
@@ -62,7 +68,8 @@ namespace AoM
             currentHealth = 0;
             enemyAnimatorManager.PlayTargetAnimation("twohanded_06_death_B", true);
             isDead = true;
-            
+            enemyCollider.enabled = false;
+            enemyRigidbody.useGravity = false;
         }
 
     }

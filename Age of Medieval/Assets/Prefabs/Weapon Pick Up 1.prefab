@@ -617,6 +617,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     randomizeRotationDirection: 0
+    gravitySource: 0
     maxNumParticles: 1000
     customEmitterVelocity: {x: 0, y: 0, z: 0}
     size3D: 0
@@ -4001,6 +4002,7 @@ ParticleSystem:
         m_RotationOrder: 4
     minVertexDistance: 0.2
     textureMode: 0
+    textureScale: {x: 1, y: 1}
     ribbonCount: 1
     shadowBias: 0.5
     worldSpace: 0
@@ -4840,14 +4842,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83679f3226f3f3043a1153bad1e07e11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 0.6
-  interactbleText: "Podnie\u015B przedmiot"
+  radius: 3
+  interactbleText: "[E] Podnie\u015B przedmiot"
   weapon: {fileID: 11400000, guid: de761aa3ea9354e4c825401fbf8a182a, type: 2}
 --- !u!1001 &5181466321780377415
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 2
     m_TransformParent: {fileID: 4652042587576574612}
     m_Modifications:
     - target: {fileID: 1412457234762940363, guid: 6e5317cdf53c1b8469b55bd93e24c734, type: 3}
@@ -4899,6 +4902,7 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 6e5317cdf53c1b8469b55bd93e24c734, type: 3}
 --- !u!4 &7253579659485550652 stripped
 Transform:

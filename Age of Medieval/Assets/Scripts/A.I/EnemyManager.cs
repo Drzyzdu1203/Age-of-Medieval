@@ -10,7 +10,6 @@ namespace AoM
         EnemyLocomotionManager enemyLocomotionManager;
         EnemyAnimatorManager enemyAnimatorManager;
         EnemyStats enemyStats;
-        
 
         public State currentState;
         public CharacterStats currentTarget;
@@ -20,7 +19,10 @@ namespace AoM
         public bool isPreformingAction;
         public bool isinteracting;
         public float rotationSpeed = 150;
-        public float maximumAttackRange = 1.5f;
+        public float maximumAttackRange = 2f;
+
+        [Header("Combat Flags")]
+        public bool canDoCombo;
 
         [Header("A.I Settings")]
         public float detectionRadius = 5;
@@ -34,8 +36,7 @@ namespace AoM
             enemyLocomotionManager = GetComponent<EnemyLocomotionManager>();
             enemyAnimatorManager = GetComponentInChildren<EnemyAnimatorManager>();
             enemyStats = GetComponent<EnemyStats>();
-            enemyRigidBody = GetComponent<Rigidbody>();
-            backStabCollider = GetComponentInChildren<BackStabCollider>();
+            enemyRigidBody = GetComponent<Rigidbody>();          
             navMeshAgent = GetComponentInChildren<NavMeshAgent>();
             navMeshAgent.enabled = false;
         }
@@ -43,21 +44,22 @@ namespace AoM
         private void Start()
         {
             enemyRigidBody.isKinematic = false;
+            
         }
 
         private void Update()
         {
             HandleRecoveryTimer();
-
+            HandleStateMachine();
             isinteracting = enemyAnimatorManager.anim.GetBool("isinteracting");
             enemyAnimatorManager.anim.SetBool("isDead", enemyStats.isDead);
         }
-
-        private void FixedUpdate()
+        private void LateUpdate()
         {
-            HandleStateMachine();
+            navMeshAgent.transform.localPosition = Vector3.zero;
+            navMeshAgent.transform.localRotation = Quaternion.identity;
         }
-
+ 
         private void HandleStateMachine()
         {
             if (currentState !=null)
@@ -71,9 +73,20 @@ namespace AoM
             }
             if(enemyStats.isDead)
             {
-                currentState = null;
+                currentState = null; 
+                StartCoroutine(ExecuteAfterTime(5));
+                
+                IEnumerator ExecuteAfterTime(float time)
+                {
+                    yield return new WaitForSeconds(time);
+
+                    enemyRigidBody.useGravity = true;
+                    
+                }
             }
+
         }
+
 
         private void SwitchToNextState(State state)
         {
@@ -82,12 +95,12 @@ namespace AoM
 
         private void HandleRecoveryTimer()
         {
-            if(currentRecoveryTime > 0)
+            if (currentRecoveryTime > 0)
             {
                 currentRecoveryTime -= Time.deltaTime;
             }
 
-            if(isPreformingAction)
+            if (isPreformingAction)
             {
                 if (currentRecoveryTime <= 0)
                 {
@@ -95,5 +108,6 @@ namespace AoM
                 }
             }
         }
+
     }
 }

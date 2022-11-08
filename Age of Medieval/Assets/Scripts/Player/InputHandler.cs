@@ -14,6 +14,7 @@ namespace AoM
 
         public bool lightAttack_Input;
         public bool heavyAttack_Input;
+        public bool blocking_Input;
         public bool critical_Attack_Input;
 
         public bool d_Pad_Up;
@@ -54,7 +55,7 @@ namespace AoM
         CameraHandler cameraHandler;
         PlayerAnimatorManager animatorHandler;
         UIManager uiManager;
-        
+        EnemyStats enemyStats;
 
         Vector2 movementInput;
         Vector2 cameraInput;
@@ -83,6 +84,7 @@ namespace AoM
                 inputActions.PlayerMovement.Camera.performed += i => cameraInput = i.ReadValue<Vector2>();
                 inputActions.PlayerActions.LightAttack.performed += i => lightAttack_Input = true;
                 inputActions.PlayerActions.HeavyAttack.performed += i => heavyAttack_Input = true;
+                inputActions.PlayerActions.Blocking.performed += i => blocking_Input = true;
                 inputActions.PlayerQuickSlots.DPadRight.performed += i => d_Pad_Right = true;
                 inputActions.PlayerQuickSlots.DPadLeft.performed += i => d_Pad_Left = true;
                 inputActions.PlayerActions.Interaction.performed += i => interaction_Input = true;
@@ -173,6 +175,18 @@ namespace AoM
             {
                 playerAttacker.HandleHeavyAttack(playerInventory.rightWeapon);
             }
+            
+            if(blocking_Input)
+            {
+                if (twoHandFlag)
+                {
+                    //if two handing handle weapon art
+                }
+                else
+                {
+                    playerAttacker.HandleBlockingAction();
+                }
+            }
         }
         private void HandleQuickSlotsInput()
         {
@@ -231,7 +245,6 @@ namespace AoM
                 lockOnFlag = false;
                 cameraHandler.ClearLockOnTargets();
             }
-
 
             if (lockOnFlag && right_Stick_Left_Input)
             {
