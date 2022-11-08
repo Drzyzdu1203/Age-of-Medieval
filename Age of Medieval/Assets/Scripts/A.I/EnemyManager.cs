@@ -80,7 +80,7 @@ namespace AoM
                 {
                     yield return new WaitForSeconds(time);
 
-                    enemyRigidBody.useGravity = true;
+                    Destroy(GetComponent<Collider>());
                     
                 }
             }
