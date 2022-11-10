@@ -14,7 +14,8 @@ namespace AoM
 
         public bool lightAttack_Input;
         public bool heavyAttack_Input;
-        public bool blocking_Input;
+        public bool parry_Input;
+        public bool lb_Input;
         public bool critical_Attack_Input;
 
         public bool d_Pad_Up;
@@ -84,7 +85,9 @@ namespace AoM
                 inputActions.PlayerMovement.Camera.performed += i => cameraInput = i.ReadValue<Vector2>();
                 inputActions.PlayerActions.LightAttack.performed += i => lightAttack_Input = true;
                 inputActions.PlayerActions.HeavyAttack.performed += i => heavyAttack_Input = true;
-                inputActions.PlayerActions.Blocking.performed += i => blocking_Input = true;
+                inputActions.PlayerActions.Parry.performed += i => parry_Input = true;
+                inputActions.PlayerActions.LB.performed += i => lb_Input = true;
+                inputActions.PlayerActions.LB.canceled += i => lb_Input = false;
                 inputActions.PlayerQuickSlots.DPadRight.performed += i => d_Pad_Right = true;
                 inputActions.PlayerQuickSlots.DPadLeft.performed += i => d_Pad_Left = true;
                 inputActions.PlayerActions.Interaction.performed += i => interaction_Input = true;
@@ -110,7 +113,7 @@ namespace AoM
         {
             HandleMoveInput(delta);
             HandleRollInput(delta);
-            HandleAttackInput(delta);
+            HandleCombatInput(delta);
             HandleQuickSlotsInput();
             HandleLockOnInput();
             HandleInventoryInput();
@@ -162,7 +165,7 @@ namespace AoM
             }
         }
 
-        private void HandleAttackInput(float delta)
+        private void HandleCombatInput(float delta)
         {
             
 
@@ -176,7 +179,7 @@ namespace AoM
                 playerAttacker.HandleHeavyAttack(playerInventory.rightWeapon);
             }
             
-            if(blocking_Input)
+            if(parry_Input)
             {
                 if (twoHandFlag)
                 {
@@ -184,9 +187,19 @@ namespace AoM
                 }
                 else
                 {
-                    playerAttacker.HandleBlockingAction();
+                    playerAttacker.HandleParryAction();
                 }
             }
+            if (lb_Input)
+            {
+                
+                playerAttacker.HandleLBAction();
+            }
+            else
+            {
+                playerManager.isBlocking = false;
+            }
+
         }
         private void HandleQuickSlotsInput()
         {

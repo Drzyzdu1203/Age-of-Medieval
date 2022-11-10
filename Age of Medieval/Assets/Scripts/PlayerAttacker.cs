@@ -55,7 +55,7 @@ namespace AoM
                     animatorHandler.PlayTargetAnimation(weapon.OH_Light_Attack_3, true);
 
                 }
-                //
+                
                 if (lastAttack == weapon.TH_Heavy_Attack_1)
                 {
                     animatorHandler.PlayTargetAnimation(weapon.OH_Heavy_Attack_2, true);
@@ -124,10 +124,13 @@ namespace AoM
             else if (playerInventory.rightWeapon.isSpellCaster || playerInventory.rightWeapon.isFaithCaster || playerInventory.rightWeapon.isPyroCaster)
             {
                 PerformLightAttackMagicAction(playerInventory.rightWeapon);
-            }
-        
+            }       
         }
-        public void HandleBlockingAction()
+        public void HandleLBAction()
+        {
+            PerformLBBlockingAction();
+        }
+        public void HandleParryAction()
         {
             if (playerInventory.leftWeapon.isShieldWeapon)
             {
@@ -137,7 +140,9 @@ namespace AoM
             {
                 //do a light attack
             }
+
         }
+
         #endregion
 
         #region Attack Actions
@@ -200,6 +205,19 @@ namespace AoM
         private void SuccessfullyCastSpell()
         {
             playerInventory.currentSpell.SuccessfullyCastSpell(animatorHandler, playerStats);
+        }
+        #endregion
+
+        #region Defense Actions
+        private void PerformLBBlockingAction()
+        {
+            if (playerManager.isinteracting)
+                return;
+            if (playerManager.isBlocking)
+                return;
+
+            animatorHandler.PlayTargetAnimation("Block Loop", false, true);
+            playerManager.isBlocking = true;
         }
         #endregion
         public void AttemptBackStabOrRiposte()

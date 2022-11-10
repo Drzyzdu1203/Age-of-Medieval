@@ -34,8 +34,6 @@ namespace AoM
 
 
         [Header("Idle Animations")]
-        public string right_hand_idle;
-        public string left_hand_idle;
         public string th_idle;
 
         [Header("Stamina Costs")]

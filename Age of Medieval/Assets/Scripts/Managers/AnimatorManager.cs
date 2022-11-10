@@ -8,10 +8,10 @@ namespace AoM
     {
         public Animator anim;
         public bool canRotate;
-        public void PlayTargetAnimation(string targetAnim, bool isinteracting)
+        public void PlayTargetAnimation(string targetAnim, bool isinteracting, bool canRotate = false)
         {
             anim.applyRootMotion = isinteracting;
-            anim.SetBool("canRotate", false);
+            anim.SetBool("canRotate", canRotate);
             anim.SetBool("isinteracting", isinteracting);
             anim.CrossFade(targetAnim, 0.2f);
         }
