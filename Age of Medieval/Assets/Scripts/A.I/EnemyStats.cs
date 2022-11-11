@@ -45,7 +45,7 @@ namespace AoM
                 isDead = true;
             }
         }
-        public void TakeDamage(int damage)
+        public void TakeDamage(int damage, string damageAnimation = "infantry_05_damage")
         {
             if (isDead)
                 return;
@@ -53,7 +53,7 @@ namespace AoM
             currentHealth = currentHealth - damage;
             enemyHealthBar.SetHealth(currentHealth);
 
-            enemyAnimatorManager.PlayTargetAnimation("infantry_05_damage", true);
+            enemyAnimatorManager.PlayTargetAnimation(damageAnimation, true);
 
             if (currentHealth <= 0)
             {

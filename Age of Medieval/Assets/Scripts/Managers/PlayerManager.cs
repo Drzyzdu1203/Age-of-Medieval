@@ -28,7 +28,7 @@ namespace AoM
         public bool isUsingRightHand;
         public bool isUsingLeftHand;
         public bool isInvulerable;
-        public bool isBlocking;
+
 
         private void Awake()
         {

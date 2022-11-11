@@ -7,6 +7,7 @@ namespace AoM
     public class PlayerAttacker : MonoBehaviour
     {
         PlayerAnimatorManager animatorHandler;
+        PlayerEquipmentManager playerEquipmentManager;
         PlayerManager playerManager;
         PlayerStats playerStats;
         PlayerInventory playerInventory;
@@ -20,6 +21,7 @@ namespace AoM
         private void Awake()
         {
             animatorHandler = GetComponent<PlayerAnimatorManager>();
+            playerEquipmentManager = GetComponent<PlayerEquipmentManager>();
             playerManager = GetComponentInParent<PlayerManager>();
             playerStats = GetComponentInParent<PlayerStats>();
             playerInventory = GetComponentInParent<PlayerInventory>();
@@ -217,6 +219,7 @@ namespace AoM
                 return;
 
             animatorHandler.PlayTargetAnimation("Block Loop", false, true);
+            playerEquipmentManager.OpenBlockingCollider();
             playerManager.isBlocking = true;
         }
         #endregion

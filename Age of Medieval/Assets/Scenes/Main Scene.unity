@@ -2960,6 +2960,66 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: 682bef71ca092ef49bfed7f1cef5b893, type: 3}
+--- !u!1 &449779147
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 449779148}
+  - component: {fileID: 449779150}
+  - component: {fileID: 449779149}
+  m_Layer: 7
+  m_Name: Blocking Collider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &449779148
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 449779147}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7014136036764325618}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &449779149
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 449779147}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 868a70c4175c63543a9091d4c772f089, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  blockingCollider: {fileID: 0}
+  blockingPhysicalDamageAbsorption: 0
+--- !u!65 &449779150
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 449779147}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 0.9995017, z: 0.16622543}
+  m_Center: {x: 0, y: 0.5271535, z: 0.41688728}
 --- !u!1 &456251589
 GameObject:
   m_ObjectHideFlags: 0
@@ -7159,6 +7219,8 @@ MonoBehaviour:
   rollSound: {fileID: 8300000, guid: a098bbd3ec1cec54daa1de257dee2420, type: 3}
   spellSound: {fileID: 8300000, guid: 9ba37feb45f0ce9418c7410ec5cd8d73, type: 3}
   specialSound: {fileID: 8300000, guid: d2117dc5178e6784ebfc255f5ec3fab0, type: 3}
+  blockSound: {fileID: 8300000, guid: 49e369b5b5475bc49be301c8c05cb06d, type: 3}
+  wooshSound: {fileID: 8300000, guid: 1ef191cb6ac3ab94ab94615a48a02683, type: 3}
 --- !u!114 &991230824
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7174,6 +7236,19 @@ MonoBehaviour:
   currentParticleFX: {fileID: 6837061768053742933, guid: c041548ad5f52014d8ae27de23cf2764, type: 3}
   instantiatedFXModel: {fileID: 1854215813588696589, guid: 01a7816810140b747a34590ee609a614, type: 3}
   amountToBeHealed: 50
+--- !u!114 &991230825
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 991230809}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6eb4148262b09a4b9cffa133ce489e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  blockingCollider: {fileID: 449779149}
 --- !u!1 &997177048 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1187590036259114, guid: e1154cf6ac27b2f45b4ae35582e7e363, type: 3}
@@ -13170,6 +13245,8 @@ MonoBehaviour:
   rollSound: {fileID: 8300000, guid: a098bbd3ec1cec54daa1de257dee2420, type: 3}
   spellSound: {fileID: 0}
   specialSound: {fileID: 0}
+  blockSound: {fileID: 0}
+  wooshSound: {fileID: 0}
 --- !u!82 &2070668672
 AudioSource:
   m_ObjectHideFlags: 0
@@ -14451,11 +14528,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1010003993456352367, guid: b82461a3648120241822e3f358ba9b8d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 77.124
+      value: 76.658
       objectReference: {fileID: 0}
     - target: {fileID: 1010003993456352367, guid: b82461a3648120241822e3f358ba9b8d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.93
+      value: 2.16
       objectReference: {fileID: 0}
     - target: {fileID: 1010003993456352367, guid: b82461a3648120241822e3f358ba9b8d, type: 3}
       propertyPath: m_LocalPosition.z
@@ -14549,6 +14626,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1010003993153686739, guid: b82461a3648120241822e3f358ba9b8d, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1329868661}
+    - targetCorrespondingSourceObject: {fileID: 1010003993153686739, guid: b82461a3648120241822e3f358ba9b8d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 449779148}
     - targetCorrespondingSourceObject: {fileID: 512860251, guid: b82461a3648120241822e3f358ba9b8d, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1297509202}

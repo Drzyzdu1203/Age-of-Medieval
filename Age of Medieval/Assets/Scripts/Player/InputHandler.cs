@@ -52,6 +52,7 @@ namespace AoM
         PlayerAnimatorManager playerAnimatorManager;
         PlayerEffectsManager playerEffectsManager;
         PlayerStats playerStats;
+        BlockingCollider blockingCollider;
         WeaponSlotManager weaponSlotManager;
         CameraHandler cameraHandler;
         PlayerAnimatorManager animatorHandler;
@@ -70,6 +71,7 @@ namespace AoM
             playerEffectsManager = GetComponentInChildren<PlayerEffectsManager>();
             playerAnimatorManager = GetComponentInChildren<PlayerAnimatorManager>();
             weaponSlotManager = GetComponentInChildren<WeaponSlotManager>();
+            blockingCollider = GetComponentInChildren<BlockingCollider>();
             uiManager = FindObjectOfType<UIManager>();
             cameraHandler = FindObjectOfType<CameraHandler>();
             animatorHandler = GetComponentInChildren<PlayerAnimatorManager>();
@@ -198,6 +200,11 @@ namespace AoM
             else
             {
                 playerManager.isBlocking = false;
+
+                if(blockingCollider.blockingCollider.enabled)
+                {
+                    blockingCollider.DisableBlockingCollider();
+                }
             }
 
         }

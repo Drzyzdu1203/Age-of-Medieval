@@ -9,6 +9,8 @@ public class PlaySounds : MonoBehaviour
     public AudioClip rollSound;
     public AudioClip spellSound;
     public AudioClip specialSound;
+    public AudioClip blockSound;
+    public AudioClip wooshSound;
     private AudioSource audioSource;
 
     private void Awake()
@@ -26,6 +28,14 @@ public class PlaySounds : MonoBehaviour
     private void RollSound()
     {
         audioSource.PlayOneShot(rollSound);
+    }
+    private void WooshSound()
+    {
+        audioSource.PlayOneShot(wooshSound);
+    }
+    private void BlockSound()
+    {
+        audioSource.PlayOneShot(blockSound);
     }
     private void SpellSound()
     {
