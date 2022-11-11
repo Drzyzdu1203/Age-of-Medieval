@@ -13,7 +13,11 @@ namespace AoM
         PlayerInventory playerInventory;
         InputHandler inputHandler;
         WeaponSlotManager weaponSlotManager;
+
+
+
         public string lastAttack;
+
 
         LayerMask backStabLayer = 1 << 9;
         LayerMask riposteLayer = 1 << 11;
@@ -26,7 +30,8 @@ namespace AoM
             playerStats = GetComponentInParent<PlayerStats>();
             playerInventory = GetComponentInParent<PlayerInventory>();
             weaponSlotManager = GetComponent<WeaponSlotManager>();
-            inputHandler = GetComponentInParent<InputHandler>();
+            inputHandler = GetComponentInParent<InputHandler>();    
+
         }
 
         public void HandleWeaponCombo(WeaponItem weapon)
@@ -61,13 +66,13 @@ namespace AoM
                 if (lastAttack == weapon.TH_Heavy_Attack_1)
                 {
                     animatorHandler.PlayTargetAnimation(weapon.OH_Heavy_Attack_2, true);
-
+                    
                     lastAttack = weapon.TH_Heavy_Attack_2;
                 }
                 if (lastAttack == weapon.TH_Light_Attack_1)
                 {
                     animatorHandler.PlayTargetAnimation(weapon.TH_Light_Attack_2, true);
-
+                   
                     lastAttack = weapon.TH_Light_Attack_2;
 
                 }
@@ -75,7 +80,7 @@ namespace AoM
                 else if (lastAttack == weapon.TH_Light_Attack_2)
                 {
                     animatorHandler.PlayTargetAnimation(weapon.TH_Light_Attack_3, true);
-
+                    
                 }
 
 
@@ -91,11 +96,13 @@ namespace AoM
             {
                 animatorHandler.PlayTargetAnimation(weapon.TH_Light_Attack_1, true);
                 lastAttack = weapon.TH_Light_Attack_1;
+
             }
             else
             {
                 animatorHandler.PlayTargetAnimation(weapon.OH_Light_Attack_1, true);
                 lastAttack = weapon.OH_Light_Attack_1;
+
             }
         }
         public void HandleHeavyAttack(WeaponItem weapon)
@@ -108,11 +115,13 @@ namespace AoM
             {
                 animatorHandler.PlayTargetAnimation(weapon.TH_Heavy_Attack_1, true);
                 lastAttack = weapon.TH_Heavy_Attack_1;
+                
             }
             else
             {
                 animatorHandler.PlayTargetAnimation(weapon.OH_Heavy_Attack_1, true);
                 lastAttack = weapon.OH_Heavy_Attack_1;
+
             } 
 
         }

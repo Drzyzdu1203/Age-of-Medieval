@@ -41,6 +41,9 @@ namespace AoM
         public bool lockOnFlag;
         public bool inventoryFlag;
 
+
+       
+
         public float rollInputTimer;
 
         public Transform criticalAttackRayCastStartPoint;
@@ -75,8 +78,7 @@ namespace AoM
             uiManager = FindObjectOfType<UIManager>();
             cameraHandler = FindObjectOfType<CameraHandler>();
             animatorHandler = GetComponentInChildren<PlayerAnimatorManager>();
-            
-
+   
         }
         public void OnEnable()
         {
@@ -179,7 +181,9 @@ namespace AoM
             if (heavyAttack_Input && !inventoryFlag)
             {
                 playerAttacker.HandleHeavyAttack(playerInventory.rightWeapon);
+ 
             }
+            
             
             if(parry_Input)
             {

@@ -8,8 +8,10 @@ namespace AoM
     {
         public CharacterManager characterManager;
         Collider damageCollider;
-
-
+        private AudioSource audioSource;
+        public AudioClip parrySound;
+        public AudioClip damage;
+        public AudioClip woosh;
         public int currentWeaponDamage;
 
         private void Awake()
@@ -18,15 +20,14 @@ namespace AoM
             damageCollider.gameObject.SetActive(true);
             damageCollider.isTrigger = true;
             damageCollider.enabled = false;
-            
-           
+            audioSource = GetComponent<AudioSource>();
         }
 
 
         public void EnableDamageCollider()
         {
             damageCollider.enabled = true;
-            
+            audioSource.PlayOneShot(woosh);
         }
         public void DisaleDamageCollider()
         {
@@ -45,7 +46,9 @@ namespace AoM
                     if (enemyCharacterManager.isParrying)
                     {
                         characterManager.GetComponentInChildren<AnimatorManager>().PlayTargetAnimation("Parried", true);
+                        audioSource.PlayOneShot(parrySound);
                         return;
+                        
                     }
                     else if (shield != null && enemyCharacterManager.isBlocking)
                     {
@@ -64,12 +67,9 @@ namespace AoM
                 if (playerStats != null)
                 {
                     playerStats.TakeDamage(currentWeaponDamage);
-                    
+                    audioSource.PlayOneShot(damage);
                 }
-                if(shield != null && enemyCharacterManager.isBlocking)
-                {
-                    
-                }
+
             }
 
             if (collision.tag == "Enemy")
@@ -103,11 +103,7 @@ namespace AoM
                 if (enemyStats != null)
                 {
                     enemyStats.TakeDamage(currentWeaponDamage);
-                    
-                }
-                if (shield != null && enemyCharacterManager.isBlocking)
-                {
-                    
+                    audioSource.PlayOneShot(damage);
                 }
             }
         }
