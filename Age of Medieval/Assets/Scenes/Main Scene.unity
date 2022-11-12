@@ -13688,6 +13688,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2075354582906358495, guid: 7982ad8c5c9f6984d890664eb2bec26f, type: 3}
+      propertyPath: comboLikelyHood
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 2075354582906358495, guid: 7982ad8c5c9f6984d890664eb2bec26f, type: 3}
       propertyPath: detectionRadius
       value: 5
       objectReference: {fileID: 0}
@@ -13714,6 +13718,10 @@ PrefabInstance:
     - target: {fileID: 2075354582906358495, guid: 7982ad8c5c9f6984d890664eb2bec26f, type: 3}
       propertyPath: minimumDetectionAngle
       value: -120
+      objectReference: {fileID: 0}
+    - target: {fileID: 2075354582906358495, guid: 7982ad8c5c9f6984d890664eb2bec26f, type: 3}
+      propertyPath: allowAIToPerformCombos
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2075354583068136346, guid: 7982ad8c5c9f6984d890664eb2bec26f, type: 3}
       propertyPath: pursueClip

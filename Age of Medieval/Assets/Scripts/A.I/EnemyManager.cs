@@ -29,8 +29,12 @@ namespace AoM
         //The higher, and lower, respectively these angles are, the greater detection FIELD OF VIEW (basically like eye sight)
         public float maximumDetectionAngle = 120;
         public float minimumDetectionAngle = -120;
-
         public float currentRecoveryTime = 0;
+
+        [Header("A.I Combat Settings")]
+        public bool allowAIToPerformCombos;
+        public float comboLikelyHood;
+
         private void Awake()
         {
             enemyLocomotionManager = GetComponent<EnemyLocomotionManager>();
