@@ -60,7 +60,7 @@ namespace AoM
             maxMana = manaLevel * 10;
             return maxMana;
         }
-        public void TakeDamage (int damage) //zmiana z int
+        public void TakeDamage (int damage, string damageAnimation = "infantry_05_damage") 
         {
             if (playerManager.isInvulerable)
                 return;
@@ -71,7 +71,7 @@ namespace AoM
             currentHealth = currentHealth - damage;
             healthBar.SetCurrentHealth(currentHealth);
 
-            animatorHandler.PlayTargetAnimation("infantry_05_damage", true);
+            animatorHandler.PlayTargetAnimation(damageAnimation, true);
 
             if (currentHealth <= 0)
             {

@@ -7,12 +7,17 @@ namespace AoM
     public class PlayerAttacker : MonoBehaviour
     {
         PlayerAnimatorManager animatorHandler;
+        PlayerEquipmentManager playerEquipmentManager;
         PlayerManager playerManager;
         PlayerStats playerStats;
         PlayerInventory playerInventory;
         InputHandler inputHandler;
         WeaponSlotManager weaponSlotManager;
+
+
+
         public string lastAttack;
+
 
         LayerMask backStabLayer = 1 << 9;
         LayerMask riposteLayer = 1 << 11;
@@ -20,11 +25,13 @@ namespace AoM
         private void Awake()
         {
             animatorHandler = GetComponent<PlayerAnimatorManager>();
+            playerEquipmentManager = GetComponent<PlayerEquipmentManager>();
             playerManager = GetComponentInParent<PlayerManager>();
             playerStats = GetComponentInParent<PlayerStats>();
             playerInventory = GetComponentInParent<PlayerInventory>();
             weaponSlotManager = GetComponent<WeaponSlotManager>();
-            inputHandler = GetComponentInParent<InputHandler>();
+            inputHandler = GetComponentInParent<InputHandler>();    
+
         }
 
         public void HandleWeaponCombo(WeaponItem weapon)
@@ -55,17 +62,17 @@ namespace AoM
                     animatorHandler.PlayTargetAnimation(weapon.OH_Light_Attack_3, true);
 
                 }
-                //
+                
                 if (lastAttack == weapon.TH_Heavy_Attack_1)
                 {
                     animatorHandler.PlayTargetAnimation(weapon.OH_Heavy_Attack_2, true);
-
+                    
                     lastAttack = weapon.TH_Heavy_Attack_2;
                 }
                 if (lastAttack == weapon.TH_Light_Attack_1)
                 {
                     animatorHandler.PlayTargetAnimation(weapon.TH_Light_Attack_2, true);
-
+                   
                     lastAttack = weapon.TH_Light_Attack_2;
 
                 }
@@ -73,7 +80,7 @@ namespace AoM
                 else if (lastAttack == weapon.TH_Light_Attack_2)
                 {
                     animatorHandler.PlayTargetAnimation(weapon.TH_Light_Attack_3, true);
-
+                    
                 }
 
 
@@ -89,11 +96,13 @@ namespace AoM
             {
                 animatorHandler.PlayTargetAnimation(weapon.TH_Light_Attack_1, true);
                 lastAttack = weapon.TH_Light_Attack_1;
+
             }
             else
             {
                 animatorHandler.PlayTargetAnimation(weapon.OH_Light_Attack_1, true);
                 lastAttack = weapon.OH_Light_Attack_1;
+
             }
         }
         public void HandleHeavyAttack(WeaponItem weapon)
@@ -106,11 +115,13 @@ namespace AoM
             {
                 animatorHandler.PlayTargetAnimation(weapon.TH_Heavy_Attack_1, true);
                 lastAttack = weapon.TH_Heavy_Attack_1;
+                
             }
             else
             {
                 animatorHandler.PlayTargetAnimation(weapon.OH_Heavy_Attack_1, true);
                 lastAttack = weapon.OH_Heavy_Attack_1;
+
             } 
 
         }
@@ -124,10 +135,13 @@ namespace AoM
             else if (playerInventory.rightWeapon.isSpellCaster || playerInventory.rightWeapon.isFaithCaster || playerInventory.rightWeapon.isPyroCaster)
             {
                 PerformLightAttackMagicAction(playerInventory.rightWeapon);
-            }
-        
+            }       
         }
-        public void HandleBlockingAction()
+        public void HandleLBAction()
+        {
+            PerformLBBlockingAction();
+        }
+        public void HandleParryAction()
         {
             if (playerInventory.leftWeapon.isShieldWeapon)
             {
@@ -137,7 +151,9 @@ namespace AoM
             {
                 //do a light attack
             }
+
         }
+
         #endregion
 
         #region Attack Actions
@@ -200,6 +216,20 @@ namespace AoM
         private void SuccessfullyCastSpell()
         {
             playerInventory.currentSpell.SuccessfullyCastSpell(animatorHandler, playerStats);
+        }
+        #endregion
+
+        #region Defense Actions
+        private void PerformLBBlockingAction()
+        {
+            if (playerManager.isinteracting)
+                return;
+            if (playerManager.isBlocking)
+                return;
+
+            animatorHandler.PlayTargetAnimation("Block Loop", false, true);
+            playerEquipmentManager.OpenBlockingCollider();
+            playerManager.isBlocking = true;
         }
         #endregion
         public void AttemptBackStabOrRiposte()

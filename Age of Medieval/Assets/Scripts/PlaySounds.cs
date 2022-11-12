@@ -9,11 +9,27 @@ public class PlaySounds : MonoBehaviour
     public AudioClip rollSound;
     public AudioClip spellSound;
     public AudioClip specialSound;
-    private AudioSource audioSource;
+    public AudioClip blockSound;
+    public AudioClip wooshSound;
+    public AudioClip damageSound;
+    public AudioClip killChanceSound;
+    public AudioClip riposteSound;
+    public AudioClip riposteSuccesSound;
+    public AudioClip riposteSuccesSoundEnd;
+    public AudioSource audioSource;
+    
 
+    private void Start()
+    {
+        
+    }
     private void Awake()
     {
         audioSource = GetComponent<AudioSource>();
+    }
+    private void Update()
+    {
+        
     }
     public void Step(AnimationEvent animationEvent)
     {
@@ -27,6 +43,30 @@ public class PlaySounds : MonoBehaviour
     {
         audioSource.PlayOneShot(rollSound);
     }
+    private void WooshSound()
+    {
+        audioSource.PlayOneShot(wooshSound);
+    }
+    private void BlockSound()
+    {
+        audioSource.PlayOneShot(blockSound);
+    }
+    private void KillChanceSound()
+    {
+        audioSource.PlayOneShot(killChanceSound);
+    }
+    private void RiposteSound()
+    {
+        audioSource.PlayOneShot(riposteSound);
+    }
+    private void RiposteSuccesSound()
+    {
+        audioSource.PlayOneShot(riposteSuccesSound);
+    }
+    private void RiposteSuccesSoundEnd()
+    {
+        audioSource.PlayOneShot(riposteSuccesSoundEnd);
+    }
     private void SpellSound()
     {
         audioSource.PlayOneShot(spellSound);
@@ -34,6 +74,14 @@ public class PlaySounds : MonoBehaviour
     private void SpecialSound()
     {
         audioSource.PlayOneShot(specialSound);
+    }
+    private void DamageSound()
+    {
+        audioSource.PlayOneShot(damageSound);
+    }
+    private void StopSound()
+    {
+        audioSource.Stop();
     }
     private AudioClip GetRandomClip()
     {

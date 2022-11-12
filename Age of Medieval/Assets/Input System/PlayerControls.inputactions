@@ -305,9 +305,18 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Blocking",
+                    "name": "Parry",
                     "type": "Button",
                     "id": "289ca6c5-73f9-4404-a2cb-738785f3a8ef",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "LB",
+                    "type": "Button",
+                    "id": "eb20a3c3-14b0-4745-8d54-9c11acebfdcd",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -586,7 +595,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Blocking",
+                    "action": "Parry",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -597,7 +606,29 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Blocking",
+                    "action": "Parry",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "28d74589-c4e2-4b27-91c1-1722566b0dc4",
+                    "path": "<Gamepad>/leftShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "LB",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "dcb85d07-fc2d-4d1a-8749-16f59e455a0a",
+                    "path": "<Keyboard>/q",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "LB",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

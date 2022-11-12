@@ -14,6 +14,9 @@ namespace AoM
         public int baseDamage = 25;
         public int criticalDamageMuiltiplier = 4;
 
+        [Header("Absorption")]
+        public float physicalDamageAbsorption;
+
         [Header("Attack Animations")]
         public string OH_Light_Attack_1;
         public string OH_Light_Attack_2;
@@ -34,8 +37,6 @@ namespace AoM
 
 
         [Header("Idle Animations")]
-        public string right_hand_idle;
-        public string left_hand_idle;
         public string th_idle;
 
         [Header("Stamina Costs")]

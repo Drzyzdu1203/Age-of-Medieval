@@ -29,8 +29,6 @@ MonoBehaviour:
   TH_Heavy_Attack_1: TH_Heavy_Attack_1
   TH_Heavy_Attack_2: TH_Heavy_Attack_2
   weapon_art: 
-  right_hand_idle: Right_Arm_Idle_01
-  left_hand_idle: Left_Arm_Idle_01
   th_idle: TH_Idle
   baseStamina: 10
   lightAttackMultiplier: 1

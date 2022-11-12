@@ -29,6 +29,7 @@ namespace AoM
         public bool isUsingLeftHand;
         public bool isInvulerable;
 
+
         private void Awake()
         {
             cameraHandler = FindObjectOfType<CameraHandler>();
@@ -51,6 +52,7 @@ namespace AoM
             isUsingRightHand = anim.GetBool("isUsingRightHand");
             isUsingLeftHand = anim.GetBool("isUsingLeftHand");
             isInvulerable = anim.GetBool("isInvulnerable");
+            anim.SetBool("isBlocking", isBlocking);
             anim.SetBool("isInAir", isInAir);
             anim.SetBool("isDead", playerStats.isDead);
 
@@ -76,7 +78,7 @@ namespace AoM
             inputHandler.rollFlag = false;
             inputHandler.lightAttack_Input = false;
             inputHandler.heavyAttack_Input = false;
-            inputHandler.blocking_Input = false;
+            inputHandler.parry_Input = false;
             inputHandler.d_Pad_Up = false;
             inputHandler.d_Pad_Down = false;
             inputHandler.d_Pad_Left = false;

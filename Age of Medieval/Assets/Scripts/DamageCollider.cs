@@ -8,12 +8,10 @@ namespace AoM
     {
         public CharacterManager characterManager;
         Collider damageCollider;
-        AudioSource audioSource;
-
+        private AudioSource audioSource;
+        public AudioClip parrySound;
         public AudioClip damage;
-        public AudioClip whoosh;
-  
-
+        public AudioClip woosh;
         public int currentWeaponDamage;
 
         private void Awake()
@@ -23,14 +21,13 @@ namespace AoM
             damageCollider.isTrigger = true;
             damageCollider.enabled = false;
             audioSource = GetComponent<AudioSource>();
-           
         }
 
 
         public void EnableDamageCollider()
         {
             damageCollider.enabled = true;
-            audioSource.PlayOneShot(whoosh);
+            audioSource.PlayOneShot(woosh);
         }
         public void DisaleDamageCollider()
         {
@@ -42,24 +39,35 @@ namespace AoM
             {
                 PlayerStats playerStats = collision.GetComponent<PlayerStats>();
                 CharacterManager enemyCharacterManager = collision.GetComponent<CharacterManager>();
+                BlockingCollider shield = collision.transform.GetComponentInChildren<BlockingCollider>();
 
-                if(enemyCharacterManager != null)
+                if (enemyCharacterManager != null)
                 {
-                    if(enemyCharacterManager.isParrying)
+                    if (enemyCharacterManager.isParrying)
                     {
                         characterManager.GetComponentInChildren<AnimatorManager>().PlayTargetAnimation("Parried", true);
+                        audioSource.PlayOneShot(parrySound);
                         return;
+                        
+                    }
+                    else if (shield != null && enemyCharacterManager.isBlocking)
+                    {
+                        float physicalDamageAfterBlock =
+                            currentWeaponDamage - (currentWeaponDamage * shield.blockingPhysicalDamageAbsorption) / 100;
+
+                        if (playerStats != null)
+                        {
+                            playerStats.TakeDamage(Mathf.RoundToInt(physicalDamageAfterBlock), "Block Guard");
+                            
+                            return;
+                        }
                     }
                 }
 
                 if (playerStats != null)
                 {
-                    
-                    
-                        playerStats.TakeDamage(currentWeaponDamage);
-                        audioSource.PlayOneShot(damage);
-                    
-
+                    playerStats.TakeDamage(currentWeaponDamage);
+                    audioSource.PlayOneShot(damage);
                 }
 
             }
@@ -68,6 +76,7 @@ namespace AoM
             {
                 EnemyStats enemyStats = collision.GetComponent<EnemyStats>();
                 CharacterManager enemyCharacterManager = collision.GetComponent<CharacterManager>();
+                BlockingCollider shield = collision.transform.GetComponentInChildren<BlockingCollider>();
 
                 if (enemyCharacterManager != null)
                 {
@@ -75,6 +84,19 @@ namespace AoM
                     {
                         characterManager.GetComponentInChildren<AnimatorManager>().PlayTargetAnimation("Parried", true);
                         return;
+                    }
+                    else if (shield != null && enemyCharacterManager.isBlocking)
+                    {
+                        float physicalDamageAfterBlock =
+                            currentWeaponDamage - (currentWeaponDamage * shield.blockingPhysicalDamageAbsorption) / 100;
+
+                        if (enemyStats != null)
+                        {
+                            enemyStats.TakeDamage(Mathf.RoundToInt(physicalDamageAfterBlock), "Block Guard");
+                            
+                            return;
+                            
+                        }
                     }
                 }
 

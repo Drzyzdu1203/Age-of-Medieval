@@ -77,7 +77,7 @@ GameObject:
   - component: {fileID: 3855364197790274792}
   - component: {fileID: 5561869545945228583}
   - component: {fileID: 8598339149739127588}
-  - component: {fileID: 6223270469661426511}
+  - component: {fileID: 204622841404879731}
   m_Layer: 0
   m_Name: w_sword
   m_TagString: Untagged
@@ -175,10 +175,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20d5dc0754cfe5943b1439ecba715b69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characterManager: {fileID: 0}
+  parrySound: {fileID: 8300000, guid: 30658b51446b3004487ad4e3c195e270, type: 3}
   damage: {fileID: 8300000, guid: 5dd027187a1f86543ba4a009fd50271a, type: 3}
-  whoosh: {fileID: 8300000, guid: 1ef191cb6ac3ab94ab94615a48a02683, type: 3}
+  woosh: {fileID: 8300000, guid: 1ef191cb6ac3ab94ab94615a48a02683, type: 3}
   currentWeaponDamage: 25
---- !u!82 &6223270469661426511
+--- !u!82 &204622841404879731
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -190,7 +192,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.2
+  m_Volume: 1
   m_Pitch: 1
   Loop: 0
   Mute: 0
