@@ -15,7 +15,6 @@ namespace AoM
         WeaponSlotManager weaponSlotManager;
 
 
-
         public string lastAttack;
 
 
@@ -33,10 +32,7 @@ namespace AoM
             inputHandler = GetComponentInParent<InputHandler>();    
 
         }
-        public void ActivatingCombat ()
-        {
-            this.enabled = false;
-        }
+
         public void HandleWeaponCombo(WeaponItem weapon)
         {
             if (playerStats.currentStamina <= 0)

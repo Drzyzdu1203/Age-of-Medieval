@@ -40,7 +40,7 @@ namespace AoM
         public bool comboFlag;
         public bool lockOnFlag;
         public bool inventoryFlag;
-
+        
 
        
 
@@ -111,6 +111,11 @@ namespace AoM
         private void OnDisable()
         {
             inputActions.Disable();
+        }
+
+        public void ActivatingCombat()
+        {
+            this.enabled = true;
         }
 
         public void TickInput(float delta)

@@ -14575,6 +14575,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 8021886031331297942}
+        m_TargetAssemblyTypeName: AoM.InputHandler, Assembly-CSharp
+        m_MethodName: ActivatingCombat
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1774932382
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17204,11 +17216,11 @@ PrefabInstance:
       objectReference: {fileID: 8300000, guid: 13e510acd694d35488784db20c926c61, type: 3}
     - target: {fileID: 2075354583184101859, guid: 7982ad8c5c9f6984d890664eb2bec26f, type: 3}
       propertyPath: m_Speed
-      value: 5
+      value: 500
       objectReference: {fileID: 0}
     - target: {fileID: 2075354583184101859, guid: 7982ad8c5c9f6984d890664eb2bec26f, type: 3}
       propertyPath: m_Radius
-      value: 0.1
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2075354583184101859, guid: 7982ad8c5c9f6984d890664eb2bec26f, type: 3}
       propertyPath: m_AutoBraking
@@ -17216,11 +17228,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2075354583184101859, guid: 7982ad8c5c9f6984d890664eb2bec26f, type: 3}
       propertyPath: m_Acceleration
-      value: 8
+      value: 500
       objectReference: {fileID: 0}
     - target: {fileID: 2075354583184101859, guid: 7982ad8c5c9f6984d890664eb2bec26f, type: 3}
       propertyPath: m_AngularSpeed
-      value: 120
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 2075354583552658444, guid: 7982ad8c5c9f6984d890664eb2bec26f, type: 3}
       propertyPath: healthLevel
@@ -17705,6 +17717,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8300000, guid: 1ef191cb6ac3ab94ab94615a48a02683, type: 3}
     - target: {fileID: 479547790, guid: b82461a3648120241822e3f358ba9b8d, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 479547790, guid: b82461a3648120241822e3f358ba9b8d, type: 3}
       propertyPath: audioSource
       value: 
       objectReference: {fileID: 991230831}
@@ -17860,6 +17876,10 @@ PrefabInstance:
       propertyPath: woosh
       value: 
       objectReference: {fileID: 8300000, guid: 1ef191cb6ac3ab94ab94615a48a02683, type: 3}
+    - target: {fileID: 1010003993456352352, guid: b82461a3648120241822e3f358ba9b8d, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1010003993456352353, guid: b82461a3648120241822e3f358ba9b8d, type: 3}
       propertyPath: rotationSpeed
       value: 18
@@ -17999,6 +18019,10 @@ PrefabInstance:
     - target: {fileID: 1010003993615201168, guid: b82461a3648120241822e3f358ba9b8d, type: 3}
       propertyPath: m_Center.y
       value: 0.79
+      objectReference: {fileID: 0}
+    - target: {fileID: 1010003993615201169, guid: b82461a3648120241822e3f358ba9b8d, type: 3}
+      propertyPath: m_UseGravity
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3969030058377962024, guid: b82461a3648120241822e3f358ba9b8d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -19266,3 +19290,14 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &8021886031331297942 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1010003993456352352, guid: b82461a3648120241822e3f358ba9b8d, type: 3}
+  m_PrefabInstance: {fileID: 7014136036764325615}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1279804887}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8ed839bcf7ca0446b801012ee728d28, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
