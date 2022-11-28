@@ -772,6 +772,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerInventory: {fileID: 0}
   equipmentWindowUI: {fileID: 0}
+  cameraHandler: {fileID: 0}
+  playerTransform: {fileID: 0}
   hudWindow: {fileID: 7448152412846989249}
   selectWindow: {fileID: 6970734975396802863}
   equipmentScreenWindow: {fileID: 0}

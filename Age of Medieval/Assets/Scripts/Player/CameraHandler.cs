@@ -48,6 +48,8 @@ namespace AoM
 
         private void Awake()
         {
+            
+
             myTransform = transform;
             defaultPosition = cameraTransform.localPosition.z;
             ignoreLayers = ~(1 << 8 | 1 << 9 | 1 << 10);
@@ -58,6 +60,8 @@ namespace AoM
         }
         private void Start()
         {
+            Cursor.lockState = CursorLockMode.Confined;
+            Cursor.lockState = CursorLockMode.Locked;
             enviromentLayer = LayerMask.NameToLayer("Ground");
         }
         public void FollowTarget(float delta)
