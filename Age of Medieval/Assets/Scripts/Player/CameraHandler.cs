@@ -59,6 +59,8 @@ namespace AoM
         private void Start()
         {
             enviromentLayer = LayerMask.NameToLayer("Ground");
+            Cursor.lockState = CursorLockMode.Confined;
+            //Cursor.lockState = CursorLockMode.Locked;
         }
         public void FollowTarget(float delta)
         {

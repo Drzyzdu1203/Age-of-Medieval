@@ -8,6 +8,8 @@ namespace AoM
     {
         public PlayerInventory playerInventory;
         public EquipmentWindowUI equipmentWindowUI;
+        public CameraHandler cameraHandler;
+        public Transform playerTransform;
 
         [Header("UI Windows")]
         public GameObject hudWindow;
@@ -62,11 +64,16 @@ namespace AoM
         public void OpenSelectWindow()
         {
             selectWindow.SetActive(true);
+            Cursor.lockState = CursorLockMode.None;
+
+            cameraHandler.targetTransform = null;
         }
 
         public void CloseSelectWindow()
         {
             selectWindow.SetActive(false);
+            Cursor.lockState = CursorLockMode.Locked;
+            cameraHandler.targetTransform = playerTransform;
         }
 
         public void CloseAllInventoryWindows()
