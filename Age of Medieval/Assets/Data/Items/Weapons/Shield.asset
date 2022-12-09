@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1e55ceb03871aa4bb6fc056d662433d, type: 3}
   m_Name: Shield
   m_EditorClassIdentifier: 
-  itemIcon: {fileID: 21300000, guid: 9d948c5362cc6ff4abee2d712b7e3e92, type: 3}
+  itemIcon: {fileID: 21300000, guid: cba322eef50a57149ac211889e1fd369, type: 3}
   itemName: Shield_03
   modelPrefab: {fileID: 1559874831427729445, guid: 7290deee34d108a4988808daa35e7f91, type: 3}
   isUnarmed: 0

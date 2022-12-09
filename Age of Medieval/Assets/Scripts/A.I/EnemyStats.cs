@@ -58,7 +58,8 @@ namespace AoM
             if (currentHealth <= 0)
             {
                 HandleDeath();
-                
+                enemyCollider.enabled = false;
+                enemyRigidbody.useGravity = false;
             }
             
         }

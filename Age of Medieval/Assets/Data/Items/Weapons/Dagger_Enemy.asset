@@ -10,14 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e1e55ceb03871aa4bb6fc056d662433d, type: 3}
-  m_Name: Dagger
+  m_Name: Dagger_Enemy
   m_EditorClassIdentifier: 
   itemIcon: {fileID: 21300000, guid: 1aa6a8b2cce60ea4c8e4863c3e32952b, type: 3}
   itemName: Sztylet
-  modelPrefab: {fileID: 7905235633952499638, guid: 6696bdea6589ee142966d6d384953b02, type: 3}
+  modelPrefab: {fileID: 7905235633952499638, guid: 480ecf1d5204e2c4faf25091e7e774d5, type: 3}
   isUnarmed: 0
   baseDamage: 25
   criticalDamageMuiltiplier: 5
+  physicalDamageAbsorption: 0
   OH_Light_Attack_1: OH_Light_Attack_1
   OH_Light_Attack_2: OH_Light_Attack_2
   OH_Light_Attack_3: OH_Light_Attack_3
@@ -28,6 +29,7 @@ MonoBehaviour:
   TH_Light_Attack_3: TH_Light_Attack_3
   TH_Heavy_Attack_1: TH_Heavy_Attack_1
   TH_Heavy_Attack_2: TH_Heavy_Attack_2
+  weapon_art: 
   th_idle: TH_Idle
   baseStamina: 8
   lightAttackMultiplier: 1
@@ -36,3 +38,4 @@ MonoBehaviour:
   isFaithCaster: 0
   isPyroCaster: 0
   isMeleeWeapon: 1
+  isShieldWeapon: 0

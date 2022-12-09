@@ -29,6 +29,7 @@ namespace AoM
         public bool roll_Input;
         public bool jump_Input;
         public bool inventory_Input;
+        public bool esc_Input;
         public bool lockOnInput;
         public bool right_Stick_Right_Input;
         public bool right_Stick_Left_Input;
@@ -98,6 +99,7 @@ namespace AoM
                 inputActions.PlayerActions.Jump.performed += i => jump_Input = true;
                 inputActions.PlayerActions.Inventory.performed += i => inventory_Input = true;
                 inputActions.PlayerActions.X.performed += i => x_Input = true;
+                inputActions.PlayerActions.Esc.performed += i => esc_Input = true;
                 inputActions.PlayerActions.LockOn.performed += i => lockOnInput = true;
                 inputActions.PlayerMovement.LockOnTargetRight.performed += i => right_Stick_Right_Input = true;
                 inputActions.PlayerMovement.LockOnTargetLeft.performed += i => right_Stick_Left_Input = true;
@@ -235,7 +237,10 @@ namespace AoM
         private void HandleInventoryInput()
         {
  
-
+            if(esc_Input) 
+            {
+                
+            }
             if (inventory_Input)
             {
                 

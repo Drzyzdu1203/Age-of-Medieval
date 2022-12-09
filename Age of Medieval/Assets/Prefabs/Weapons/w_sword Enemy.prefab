@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 254104694888969666}
   m_Layer: 0
-  m_Name: w_sword
+  m_Name: w_sword Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -76,7 +76,7 @@ GameObject:
   - component: {fileID: 3855364197791372840}
   - component: {fileID: 3855364197790274792}
   - component: {fileID: 5561869545945228583}
-  - component: {fileID: 688910642627117124}
+  - component: {fileID: 538056970523133946}
   - component: {fileID: 204622841404879731}
   m_Layer: 0
   m_Name: w_sword
@@ -163,7 +163,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.93, y: 0.05709377, z: 0.14554812}
   m_Center: {x: -0.5717656, y: -0.004991361, z: -0.003904454}
---- !u!114 &688910642627117124
+--- !u!114 &538056970523133946
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -172,7 +172,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3855364197792533032}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ddfe2dc945850ac46998483b8851e0d8, type: 3}
+  m_Script: {fileID: 11500000, guid: 808c1be1991b6744f8a77c655bc5a4a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   characterManager: {fileID: 0}

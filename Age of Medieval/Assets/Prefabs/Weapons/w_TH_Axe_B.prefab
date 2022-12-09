@@ -75,7 +75,7 @@ GameObject:
   - component: {fileID: 7501420508809676390}
   - component: {fileID: 7501420508808349254}
   - component: {fileID: 7501420508807382150}
-  - component: {fileID: 8335288217182192132}
+  - component: {fileID: 2658636600747057529}
   - component: {fileID: 5479446289581636171}
   m_Layer: 0
   m_Name: w_TH_Axe_B
@@ -149,7 +149,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &8335288217182192132
+--- !u!114 &2658636600747057529
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -158,9 +158,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 7501420508809386566}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 20d5dc0754cfe5943b1439ecba715b69, type: 3}
+  m_Script: {fileID: 11500000, guid: 808c1be1991b6744f8a77c655bc5a4a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characterManager: {fileID: 0}
+  audioSource: {fileID: 0}
+  parrySound: {fileID: 0}
+  damage: {fileID: 8300000, guid: 5dd027187a1f86543ba4a009fd50271a, type: 3}
+  woosh: {fileID: 8300000, guid: 1ef191cb6ac3ab94ab94615a48a02683, type: 3}
   currentWeaponDamage: 50
 --- !u!65 &5479446289581636171
 BoxCollider:

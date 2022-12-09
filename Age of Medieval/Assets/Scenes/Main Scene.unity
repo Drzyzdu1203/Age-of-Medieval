@@ -776,15 +776,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4680757731159730826, guid: 050555e4ea9c68b4cb216925b0fd9828, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 26.691021
+      value: 27.69
       objectReference: {fileID: 0}
     - target: {fileID: 4680757731159730826, guid: 050555e4ea9c68b4cb216925b0fd9828, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 12.244134
+      value: 11.85
       objectReference: {fileID: 0}
     - target: {fileID: 4680757731159730826, guid: 050555e4ea9c68b4cb216925b0fd9828, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 24.971428
+      value: 26.1
       objectReference: {fileID: 0}
     - target: {fileID: 4680757731159730826, guid: 050555e4ea9c68b4cb216925b0fd9828, type: 3}
       propertyPath: m_LocalRotation.w
@@ -3232,7 +3232,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8783306491909106419, guid: f02116c209ecd9e488fc4d2cd8996133, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 27.09135
+      value: 28.217
       objectReference: {fileID: 0}
     - target: {fileID: 8783306491909106419, guid: f02116c209ecd9e488fc4d2cd8996133, type: 3}
       propertyPath: m_LocalPosition.y
@@ -3696,7 +3696,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2075354582906358495, guid: 7982ad8c5c9f6984d890664eb2bec26f, type: 3}
       propertyPath: detectionRadius
-      value: 5
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 2075354582906358495, guid: 7982ad8c5c9f6984d890664eb2bec26f, type: 3}
       propertyPath: riposteCollider
@@ -12573,7 +12573,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.537
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -13989,15 +13989,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7405846476849834440, guid: 67cd517655b7186489d7c87b0f2619b5, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 26.092793
+      value: 25.622
       objectReference: {fileID: 0}
     - target: {fileID: 7405846476849834440, guid: 67cd517655b7186489d7c87b0f2619b5, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 12.253766
+      value: 12.456
       objectReference: {fileID: 0}
     - target: {fileID: 7405846476849834440, guid: 67cd517655b7186489d7c87b0f2619b5, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 24.502815
+      value: 23.382
       objectReference: {fileID: 0}
     - target: {fileID: 7405846476849834440, guid: 67cd517655b7186489d7c87b0f2619b5, type: 3}
       propertyPath: m_LocalRotation.w
@@ -17349,7 +17349,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2075354582906358495, guid: 7982ad8c5c9f6984d890664eb2bec26f, type: 3}
       propertyPath: detectionRadius
-      value: 5
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 2075354582906358495, guid: 7982ad8c5c9f6984d890664eb2bec26f, type: 3}
       propertyPath: riposteCollider
@@ -17361,7 +17361,7 @@ PrefabInstance:
       objectReference: {fileID: 325967812}
     - target: {fileID: 2075354582906358495, guid: 7982ad8c5c9f6984d890664eb2bec26f, type: 3}
       propertyPath: maximumAttackRange
-      value: 2
+      value: 2.2
       objectReference: {fileID: 0}
     - target: {fileID: 2075354582906358495, guid: 7982ad8c5c9f6984d890664eb2bec26f, type: 3}
       propertyPath: backStabBoxCollider
@@ -20961,7 +20961,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   radius: 3
   interactbleText: "[E] Podnie\u015B przedmiot"
-  weapon: {fileID: 11400000, guid: 61ba1c57345624d49b95e9df0fedb1fc, type: 2}
+  weapon: {fileID: 11400000, guid: 16f6410c0c54bb14789d4d642e672f4e, type: 2}
 --- !u!1 &1741078071 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1010003992836329507, guid: b82461a3648120241822e3f358ba9b8d, type: 3}
@@ -25707,7 +25707,7 @@ PrefabInstance:
     - target: {fileID: 5866286758065876308, guid: 7982ad8c5c9f6984d890664eb2bec26f, type: 3}
       propertyPath: rightHandWeapon
       value: 
-      objectReference: {fileID: 11400000, guid: f653ab7cdb2dc374f84b74cc6c646238, type: 2}
+      objectReference: {fileID: 11400000, guid: 5dcdbaa6010fa9f4b875140876e75689, type: 2}
     - target: {fileID: 5866286758065876308, guid: 7982ad8c5c9f6984d890664eb2bec26f, type: 3}
       propertyPath: rightHandDamageCollider
       value: 

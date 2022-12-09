@@ -19,6 +19,10 @@ namespace AoM
 
         public virtual void AttemptToConsumeItem(PlayerAnimatorManager playerAnimatorManager, WeaponSlotManager weaponSlotManager, PlayerEffectsManager playerEffectsManager)
         {
+            if (currentItemAmount == 0)
+            {
+                itemModel.SetActive(false);
+            }
             if (currentItemAmount > 0)
             {
                 playerAnimatorManager.PlayTargetAnimation(consumeAnimation, isInteracting);
