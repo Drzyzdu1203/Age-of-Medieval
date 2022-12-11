@@ -106,7 +106,7 @@ namespace AoM
 
             if (isPreformingAction)
             {
-                if (currentRecoveryTime <= 0)
+                if (currentRecoveryTime <= 0.95)
                 {
                     isPreformingAction = false;
                 }
