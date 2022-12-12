@@ -72,7 +72,7 @@ namespace AoM
             enemyAnimatorManager.PlayTargetAnimation("twohanded_06_death_B", true);
             isDead = true;
             Destroy(enemyCollider, 10);
-            Destroy(gameObject, 10);
+            Destroy(gameObject, 15);
         }
 
     }

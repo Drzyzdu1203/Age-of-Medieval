@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics.Tracing;
 using System.Reflection;
 using UnityEngine;
 
@@ -93,6 +94,7 @@ namespace AoM
             }
             else
             {
+                
                 float velocity = 0;
 
                 Vector3 dir = currentLockOnTarget.transform.position - transform.position;
@@ -109,8 +111,13 @@ namespace AoM
                 Vector3 eulerAngle = targetRotation.eulerAngles;
                 eulerAngle.y = 0;
                 cameraPivotTransform.localEulerAngles = eulerAngle;
+                
             }
-
+            if (enemyStats.isDead == true)
+            {
+                inputHandler.lockOnFlag= false;
+                currentLockOnTarget = null;
+            }
            
         }
 

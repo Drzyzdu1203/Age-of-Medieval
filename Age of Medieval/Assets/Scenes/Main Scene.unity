@@ -5301,7 +5301,7 @@ RectTransform:
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -38190,7 +38190,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2075354583552658445, guid: 7982ad8c5c9f6984d890664eb2bec26f, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2075354583552658545, guid: 7982ad8c5c9f6984d890664eb2bec26f, type: 3}
       propertyPath: m_RootOrder
@@ -52880,7 +52880,7 @@ PrefabInstance:
       objectReference: {fileID: 191771664}
     - target: {fileID: 1010003993456352357, guid: b82461a3648120241822e3f358ba9b8d, type: 3}
       propertyPath: healthLevel
-      value: 30
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1010003993456352357, guid: b82461a3648120241822e3f358ba9b8d, type: 3}
       propertyPath: staminaRegenerationAmount
