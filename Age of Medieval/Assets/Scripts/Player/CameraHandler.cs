@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Reflection;
 using UnityEngine;
 
 namespace AoM
@@ -8,7 +9,7 @@ namespace AoM
     {
         InputHandler inputHandler;
         PlayerManager playerManager;
-        
+        EnemyStats enemyStats;
 
         public Transform targetTransform;
         public Transform cameraTransform;
@@ -54,10 +55,11 @@ namespace AoM
             targetTransform = FindObjectOfType<PlayerManager>().transform;
             inputHandler = FindObjectOfType<InputHandler>();
             playerManager = FindObjectOfType<PlayerManager>();
-            
+            enemyStats = FindObjectOfType<EnemyStats>();
         }
         private void Start()
         {
+            
             enviromentLayer = LayerMask.NameToLayer("Ground");
             Cursor.lockState = CursorLockMode.Confined;
             //Cursor.lockState = CursorLockMode.Locked;
@@ -108,6 +110,8 @@ namespace AoM
                 eulerAngle.y = 0;
                 cameraPivotTransform.localEulerAngles = eulerAngle;
             }
+
+           
         }
 
         private void HandleCameraCollisions(float delta)
@@ -207,14 +211,16 @@ namespace AoM
                         rightLockTarget = availableTargets[k];
                     }
                 }
+
             }
         }
 
         public void ClearLockOnTargets()
         {
-            availableTargets.Clear();
-            nearestLockOnTarget = null;
-            currentLockOnTarget = null;
+
+                availableTargets.Clear();
+                nearestLockOnTarget = null;
+                currentLockOnTarget = null;
         }
 
         public void SetCameraHeight()
@@ -223,13 +229,17 @@ namespace AoM
             Vector3 newLockedPosition = new Vector3(0, lockedPivotPosition);
             Vector3 newUnlockedPosition = new Vector3(0, unlockedPivotPosition);
 
+
+
             if (currentLockOnTarget != null)
             {
                 cameraPivotTransform.transform.localPosition = Vector3.SmoothDamp(cameraPivotTransform.transform.localPosition, newLockedPosition, ref velocity, Time.deltaTime);
+               
             }
             else
             {
                 cameraPivotTransform.transform.localPosition = Vector3.SmoothDamp(cameraPivotTransform.transform.localPosition, newUnlockedPosition, ref velocity, Time.deltaTime);
+                
             }
         }
 
