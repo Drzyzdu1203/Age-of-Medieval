@@ -778,6 +778,7 @@ MonoBehaviour:
   selectWindow: {fileID: 6970734975396802863}
   equipmentScreenWindow: {fileID: 0}
   weaponInventoryWindow: {fileID: 6970734975839290291}
+  gameOverUI: {fileID: 0}
   rightHandSlot01Selected: 0
   rightHandSlot02Selected: 0
   leftHandSlot01Selected: 0

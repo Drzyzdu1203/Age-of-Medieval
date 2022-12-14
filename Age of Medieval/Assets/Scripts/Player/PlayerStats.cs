@@ -15,6 +15,9 @@ namespace AoM
         PlayerAnimatorManager animatorHandler;
         EnemyManager enemyManager;
 
+
+        public UIManager gameManager;
+
         public float staminaRegenerationAmount = 1;
         public float staminaRegenTimer = 0;
         private void Awake()
@@ -77,6 +80,7 @@ namespace AoM
             {
                 currentHealth = 0;
                 animatorHandler.PlayTargetAnimation("twohanded_06_death_B", true);
+                gameManager.gameOver();
                 isDead = true;
                 
             }

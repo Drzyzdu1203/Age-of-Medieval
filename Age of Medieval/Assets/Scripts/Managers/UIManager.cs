@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace AoM
 {
     public class UIManager : MonoBehaviour
     {
+        
         public PlayerInventory playerInventory;
         public EquipmentWindowUI equipmentWindowUI;
         public CameraHandler cameraHandler;
@@ -16,6 +18,7 @@ namespace AoM
         public GameObject selectWindow;
         public GameObject equipmentScreenWindow;
         public GameObject weaponInventoryWindow;
+        public GameObject gameOverUI;
 
         [Header("Equipment Window Slot Selected")]
         public bool rightHandSlot01Selected;
@@ -89,6 +92,21 @@ namespace AoM
             rightHandSlot02Selected = false;
             leftHandSlot01Selected = false;
             leftHandSlot02Selected = false;
+        }
+
+        public void gameOver()
+        {
+            gameOverUI.SetActive(true);
+        }
+
+        public void restart()
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
+
+        public void mainMenu()
+        {
+            SceneManager.LoadScene("MainMenu");
         }
     }
 }
