@@ -13,8 +13,6 @@ namespace AoM
         public AudioClip damage;
         public AudioClip woosh;
         public int currentWeaponDamage;
-        
-
 
         private void Awake()
         {
@@ -24,6 +22,7 @@ namespace AoM
             damageCollider.enabled = false;
             audioSource = GetComponent<AudioSource>();
         }
+
 
         public void EnableDamageCollider()
         {

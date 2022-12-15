@@ -10,7 +10,6 @@ namespace AoM
         EnemyLocomotionManager enemyLocomotionManager;
         EnemyAnimatorManager enemyAnimatorManager;
         EnemyStats enemyStats;
-        PlayerStats playerStats;
 
         public State currentState;
         public CharacterStats currentTarget;
@@ -41,7 +40,6 @@ namespace AoM
             enemyLocomotionManager = GetComponent<EnemyLocomotionManager>();
             enemyAnimatorManager = GetComponentInChildren<EnemyAnimatorManager>();
             enemyStats = GetComponent<EnemyStats>();
-            playerStats= FindObjectOfType<PlayerStats>();
             enemyRigidBody = GetComponent<Rigidbody>();          
             navMeshAgent = GetComponentInChildren<NavMeshAgent>();
             navMeshAgent.enabled = false;
@@ -77,13 +75,7 @@ namespace AoM
                     SwitchToNextState(nextState);
                 }
             }
-            if (playerStats.isDead == true)
-            {
-                currentState = null;
-                currentTarget = null;
-            }
-
-            if (enemyStats.isDead)
+            if(enemyStats.isDead)
             {
                 currentState = null; 
                 StartCoroutine(ExecuteAfterTime(5));
@@ -114,7 +106,7 @@ namespace AoM
 
             if (isPreformingAction)
             {
-                if (currentRecoveryTime <= 0.95)
+                if (currentRecoveryTime <= 0)
                 {
                     isPreformingAction = false;
                 }

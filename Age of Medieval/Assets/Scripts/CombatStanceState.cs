@@ -55,7 +55,7 @@ namespace AoM
                 enemyManager.transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, enemyManager.rotationSpeed / Time.deltaTime);
             }
             //Rotate with pathfinding (navmesh)
-            if (enemyManager.isPreformingAction)
+            else
             {
                 Vector3 relativeDirection = transform.InverseTransformDirection(enemyManager.navMeshAgent.desiredVelocity);
                 Vector3 targetVelocity = enemyManager.enemyRigidBody.velocity;

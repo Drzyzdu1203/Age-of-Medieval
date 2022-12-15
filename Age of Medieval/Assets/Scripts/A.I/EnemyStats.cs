@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 
@@ -44,7 +43,6 @@ namespace AoM
             {
                 currentHealth = 0;
                 isDead = true;
-                
             }
         }
         public void TakeDamage(int damage, string damageAnimation = "infantry_05_damage")
@@ -60,8 +58,8 @@ namespace AoM
             if (currentHealth <= 0)
             {
                 HandleDeath();
-                
-
+                enemyCollider.enabled = false;
+                enemyRigidbody.useGravity = false;
             }
             
         }
@@ -71,8 +69,8 @@ namespace AoM
             currentHealth = 0;
             enemyAnimatorManager.PlayTargetAnimation("twohanded_06_death_B", true);
             isDead = true;
-            Destroy(enemyCollider, 10);
-            Destroy(gameObject, 15);
+            enemyCollider.enabled = false;
+            enemyRigidbody.useGravity = false;
         }
 
     }
