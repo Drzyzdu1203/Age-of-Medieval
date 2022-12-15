@@ -19,6 +19,7 @@ namespace AoM
         public GameObject equipmentScreenWindow;
         public GameObject weaponInventoryWindow;
         public GameObject gameOverUI;
+        public GameObject menuWindow;
 
         [Header("Equipment Window Slot Selected")]
         public bool rightHandSlot01Selected;
@@ -63,7 +64,14 @@ namespace AoM
             }
             #endregion
         }
-
+        public void OponMenuWindow()
+        {
+            menuWindow.SetActive(true);
+        }
+        public void CloseMenuWindow()
+        {
+            menuWindow.SetActive(false);
+        }
         public void OpenSelectWindow()
         {
             selectWindow.SetActive(true);
@@ -107,6 +115,14 @@ namespace AoM
         public void mainMenu()
         {
             SceneManager.LoadScene("MainMenu");
+        }
+        public void PauseGameStart()
+        {
+            Time.timeScale = 0.2f;
+        }
+        public void PauseGameStop()
+        {
+            Time.timeScale = 1;
         }
     }
 }

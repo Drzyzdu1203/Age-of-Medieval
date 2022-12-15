@@ -79,23 +79,10 @@ namespace AoM
             }
             if (playerStats.isDead == true)
             {
-                currentState = null;
                 currentTarget = null;
             }
 
-            if (enemyStats.isDead)
-            {
-                currentState = null; 
-                StartCoroutine(ExecuteAfterTime(5));
-                
-                IEnumerator ExecuteAfterTime(float time)
-                {
-                    yield return new WaitForSeconds(time);
 
-                    Destroy(GetComponent<Collider>());
-                    
-                }
-            }
 
         }
 

@@ -237,20 +237,18 @@ namespace AoM
         private void HandleInventoryInput()
         {
  
-            if(esc_Input) 
-            {
-                
-            }
             if (inventory_Input)
             {
                 
                 inventoryFlag = !inventoryFlag;
+                
 
                 if (inventoryFlag)
                 {
                     uiManager.OpenSelectWindow();
                     uiManager.UpdateUI();         
                     uiManager.hudWindow.SetActive(false);
+                    //iManager.CloseMenuWindow();
                 }
                 else
                 {
@@ -259,6 +257,8 @@ namespace AoM
                     uiManager.hudWindow.SetActive(true);
                 }
             }
+
+            
         }
 
         private void HandleLockOnInput()

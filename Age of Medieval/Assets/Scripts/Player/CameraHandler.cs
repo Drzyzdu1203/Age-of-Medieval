@@ -209,7 +209,11 @@ namespace AoM
                 }
             }
         }
-
+        public void SelectPlayerTransformAndDeselectInventoryFlag()
+        {
+            targetTransform = playerManager.transform;
+            inputHandler.inventoryFlag = false;
+        }
         public void ClearLockOnTargets()
         {
             availableTargets.Clear();
