@@ -6,6 +6,12 @@ namespace AoM
 {
     public class DamageColliderPlayer : DamageCollider
     {
+        ParticleSystem blood;
+
+        private void Start()
+        {
+            blood = GetComponent<ParticleSystem>();
+        }
         private void OnTriggerEnter(Collider collision)
         {
 
@@ -41,6 +47,7 @@ namespace AoM
                 {
                     enemyStats.TakeDamage(currentWeaponDamage);
                     audioSource.PlayOneShot(damage);
+                    blood.Play();
                 }
             }
         }
