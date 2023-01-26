@@ -47933,6 +47933,76 @@ PrefabInstance:
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 761641e2afef4c844a01398def042a1a, type: 3}
+--- !u!1 &2027267131 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5836000626966836365, guid: 9f8b1621428d68c4ba05f89ae5f570ad, type: 3}
+  m_PrefabInstance: {fileID: 947443982}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2027267135
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2027267131}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78bd8df5ec1faa942ae7c94ece30fc11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  start: 0
+  curve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.4169899
+      value: 0.04621166
+      inSlope: -0.10387298
+      outSlope: -0.10387298
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.6054884
+      value: 0.007673405
+      inSlope: -0.060225837
+      outSlope: -0.060225837
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.7990772
+      value: -0.0029806625
+      inSlope: -0.09371433
+      outSlope: -0.09371433
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.94225985
+      value: -0.005806012
+      inSlope: -0.012703543
+      outSlope: -0.012703543
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  duration: 1
 --- !u!1 &2035692891
 GameObject:
   m_ObjectHideFlags: 0
@@ -54607,15 +54677,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1010003993456352367, guid: b82461a3648120241822e3f358ba9b8d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 72
+      value: 74.4
       objectReference: {fileID: 0}
     - target: {fileID: 1010003993456352367, guid: b82461a3648120241822e3f358ba9b8d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 5.785
+      value: 2.6
       objectReference: {fileID: 0}
     - target: {fileID: 1010003993456352367, guid: b82461a3648120241822e3f358ba9b8d, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 43.19
+      value: 45.77
       objectReference: {fileID: 0}
     - target: {fileID: 1010003993456352367, guid: b82461a3648120241822e3f358ba9b8d, type: 3}
       propertyPath: m_LocalRotation.w

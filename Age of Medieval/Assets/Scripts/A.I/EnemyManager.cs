@@ -12,6 +12,8 @@ namespace AoM
         EnemyStats enemyStats;
         PlayerStats playerStats;
 
+        public ConstantForce gravity;
+
         public State currentState;
         public CharacterStats currentTarget;
         public NavMeshAgent navMeshAgent;
@@ -59,6 +61,9 @@ namespace AoM
             HandleStateMachine();
             isinteracting = enemyAnimatorManager.anim.GetBool("isinteracting");
             enemyAnimatorManager.anim.SetBool("isDead", enemyStats.isDead);
+            gravity = gameObject.AddComponent<ConstantForce>();
+            gravity.force = new Vector3(0.0f, -30f, 0.0f);
+            
         }
         private void LateUpdate()
         {
@@ -107,6 +112,7 @@ namespace AoM
                 }
             }
         }
+
 
     }
 }

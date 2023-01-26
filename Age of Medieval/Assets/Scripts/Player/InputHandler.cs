@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.InputManagerEntry;
 
 namespace AoM
 {
@@ -56,6 +57,7 @@ namespace AoM
         PlayerAnimatorManager playerAnimatorManager;
         PlayerEffectsManager playerEffectsManager;
         PlayerStats playerStats;
+        PlayerLocomotion playerLocomotion;
         BlockingCollider blockingCollider;
         WeaponSlotManager weaponSlotManager;
         CameraHandler cameraHandler;
@@ -72,6 +74,7 @@ namespace AoM
             playerInventory = GetComponent<PlayerInventory>();
             playerManager = GetComponent<PlayerManager>();
             playerStats = GetComponent<PlayerStats>();
+            playerLocomotion = GetComponent<PlayerLocomotion>();
             playerEffectsManager = GetComponentInChildren<PlayerEffectsManager>();
             playerAnimatorManager = GetComponentInChildren<PlayerAnimatorManager>();
             weaponSlotManager = GetComponentInChildren<WeaponSlotManager>();
@@ -249,12 +252,14 @@ namespace AoM
                     uiManager.UpdateUI();         
                     uiManager.hudWindow.SetActive(false);
                     //iManager.CloseMenuWindow();
+                    
                 }
                 else
                 {
                     uiManager.CloseSelectWindow();
                     uiManager.CloseAllInventoryWindows();
                     uiManager.hudWindow.SetActive(true);
+                    
                 }
             }
 
@@ -342,3 +347,4 @@ namespace AoM
         }
     }
 }
+

@@ -7,11 +7,13 @@ namespace AoM
     public class DamageColliderPlayer : DamageCollider
     {
         ParticleSystem blood;
-
+        Shake shake;
         private void Start()
-        {
+        {   
             blood = GetComponent<ParticleSystem>();
+            shake = FindObjectOfType<Shake>();
         }
+
         private void OnTriggerEnter(Collider collision)
         {
 
@@ -20,6 +22,7 @@ namespace AoM
                 EnemyStats enemyStats = collision.GetComponent<EnemyStats>();
                 CharacterManager enemyCharacterManager = collision.GetComponent<CharacterManager>();
                 BlockingCollider shield = collision.transform.GetComponentInChildren<BlockingCollider>();
+                shake.start = true;
 
                 if (enemyCharacterManager != null)
                 {
@@ -45,9 +48,10 @@ namespace AoM
 
                 if (enemyStats != null)
                 {
-                    enemyStats.TakeDamage(currentWeaponDamage);
+                    enemyStats.TakeDamage(currentWeaponDamage);               
                     audioSource.PlayOneShot(damage);
                     blood.Play();
+                    
                 }
             }
         }
