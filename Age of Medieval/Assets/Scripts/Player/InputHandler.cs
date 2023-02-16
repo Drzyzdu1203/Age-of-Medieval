@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static UnityEngine.InputManagerEntry;
+//using static UnityEngine.InputManagerEntry;
 
 namespace AoM
 {
